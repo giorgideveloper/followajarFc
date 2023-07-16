@@ -1,0 +1,34 @@
+
+import RegisterForm from "@/components/Auth/RegisterForm"
+import UpsertProfileForm from "@/components/Auth/UpsertProfileForm"
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { cookies } from "next/headers"
+import Image from "next/image"
+import { redirect } from "next/navigation"
+
+
+const Profile = async () => {
+    const supabase = createServerComponentClient({ cookies })
+
+    const { data: { session } } = await supabase.auth.getSession()
+
+    if (!session) redirect('/')
+    const userId = session.user.id
+
+    let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`*`)
+        .eq('id', userId)
+        .single()
+
+    return (
+        <div className="card w-full md:w-2/3 lg:w-2/3 bg-base-100 shadow-xl mx-auto mt-6">
+            <div className="card-body">
+                <h2 className="card-title">პროფილის რედაქტირება</h2>
+                <UpsertProfileForm defaults={{ ...data }} />
+            </div>
+        </div>
+    )
+}
+
+export default Profile
