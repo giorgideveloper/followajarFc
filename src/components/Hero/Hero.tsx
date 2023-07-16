@@ -32,9 +32,9 @@ const Hero = () => {
                 height={234}
                 poster="th.jpeg"
             >
-                {/* <source src="./Ajara-Tourist-Alphabet.mp4" type="video/mp4"></source> */}
+                <source src="./Ajara-Tourist-Alphabet.mp4" type="video/mp4"></source>
                 <source src="./Ajara-Tourist-Alphabet.mp4" type="video/ogg" />
-                <source src="./Ajara-Tourist-Alphabet.webm" type="video/webm"></source>
+                {/* <source src="./Ajara-Tourist-Alphabet.webm" type="video/webm"></source> */}
             </video>
 
             {/* <video src="https://www.youtube.com/watch?v=qyTZLWNtf84"  width={500} height={300} autoPlay loop muted /> */}
