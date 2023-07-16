@@ -27,7 +27,6 @@ export default async function RootLayout({
     .eq('id', userId)
     .single()
 
-  console.log('data', data);
   return (
     <html lang="en">
       <body className={`${bpgArial.variable} ${bpgArialCaps.variable}`}>

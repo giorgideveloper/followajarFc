@@ -25,7 +25,7 @@ const Hero = () => {
 
             <video
                 ref={videoRef}
-                className="shadow-2xl h-1/2"
+                className="w-full shadow-2xl h-1/2"
                 autoPlay
                 muted={true}
                 loop

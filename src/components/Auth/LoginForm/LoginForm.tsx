@@ -48,7 +48,6 @@ const LoginForm: FC<LoginFormProps> = ({ setStatus, onSub }) => {
             if (error) {
                 setError(error?.message)
             }
-            // console.log(data);
 
             if (data.user) {
                 onSub()
@@ -56,7 +55,6 @@ const LoginForm: FC<LoginFormProps> = ({ setStatus, onSub }) => {
                 // router.reload()
             }
             setLoading(false)
-            // console.log(data);
             console.log(error?.message);
 
         } catch (error) {

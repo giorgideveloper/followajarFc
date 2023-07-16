@@ -66,7 +66,6 @@ const UpsertProfileForm: FC<RegisterFormProps> = ({ defaults, onSub }) => {
                 yt,
                 updated_at: new Date(),
             }
-            console.log(updates);
 
             let { error } = await supabase.from('profiles').upsert(updates)
 

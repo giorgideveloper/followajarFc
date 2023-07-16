@@ -57,8 +57,6 @@ const RegisterForm: FC<RegisterFormProps> = ({ setStatus, onSub }) => {
     })
 
     const onSubmit: SubmitHandler<IFormInput> = async (values) => {
-        console.log(values);
-
         const { email, password, ...rest } = values
         try {
             setError('')
@@ -83,7 +81,6 @@ const RegisterForm: FC<RegisterFormProps> = ({ setStatus, onSub }) => {
             if (data) {
                 setConfirmation(true)
                 reset()
-                console.log(data);
 
                 // router.reload()
             }
