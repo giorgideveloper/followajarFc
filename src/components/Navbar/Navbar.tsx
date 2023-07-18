@@ -62,7 +62,7 @@ const Navbar = ({ metadata }: any) => {
                             return (
                                 <li key={`nav-mob-${i}`}>
                                     <Link
-                                        className={isActive ? 'text-blue' : 'text-black'}
+                                        className={` ${isActive ? 'text-blue' : 'text-black'}`}
                                         href={link.href}
                                         key={link.name}
                                     >
@@ -90,7 +90,7 @@ const Navbar = ({ metadata }: any) => {
                         return (
                             <li key={`nav-${i}`}>
                                 <Link
-                                    className={`  border-b-cyan-800  ${isActive ? 'text-base font-semibold border-b-2 rounded-none rounded-t-md' : 'text-base'}`}
+                                    className={`hover:!bg-none hover:scale-110 border-b-cyan-800  ${isActive ? 'text-base font-semibold border-b-2 rounded-none rounded-t-md' : 'text-base'}`}
                                     href={link.href}
                                     key={link.name}
                                 >
@@ -119,7 +119,7 @@ const Navbar = ({ metadata }: any) => {
                                     <li>
                                         <button onClick={handleSignOut}>გასვლა</button>
                                     </li>
-                                </ul> 
+                                </ul>
                             </div>
                         </>
                         :

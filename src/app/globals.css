@@ -151,3 +151,8 @@ body {
     height: auto;
   }
 }
+
+
+.menu li > a :hover {
+  background-color: red;
+}

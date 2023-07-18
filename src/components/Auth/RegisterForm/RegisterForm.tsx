@@ -58,12 +58,14 @@ const RegisterForm: FC<RegisterFormProps> = ({ setStatus, onSub }) => {
 
     const onSubmit: SubmitHandler<IFormInput> = async (values) => {
         const { email, password, ...rest } = values
+        console.log(values);
+
         try {
             setError('')
             setConfirmation(false)
 
             setLoading(true)
-            const { data, error } = await supabase.auth.signUp({
+            const { data, error, } = await supabase.auth.signUp({
                 email,
                 password,
                 options: {
@@ -74,20 +76,29 @@ const RegisterForm: FC<RegisterFormProps> = ({ setStatus, onSub }) => {
             })
 
             if (error) {
-                setError(error?.message)
+                console.log('erorrr');
+                throw error
             }
 
             if (onSub) onSub()
             if (data) {
+                console.log('balaa');
+                
                 setConfirmation(true)
                 reset()
 
                 // router.reload()
             }
-            setLoading(false)
 
         } catch (error) {
+            //@ts-ignore
+            setError(error?.message)
+
             console.log(error);
+
+        }
+        finally {
+            setLoading(false)
 
         }
     }
