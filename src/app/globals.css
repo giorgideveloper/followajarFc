@@ -139,7 +139,7 @@ body {
     width: 100%;
   }
 }
-
+/* 
 @media screen and (max-width: 499px) {
   .modal__content {
     background: transparent;
@@ -151,7 +151,7 @@ body {
   .modal__video-style {
     height: auto;
   }
-}
+} */
 
 
 .menu li > a :hover {

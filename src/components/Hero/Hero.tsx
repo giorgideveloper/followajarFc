@@ -13,7 +13,7 @@ const Hero = () => {
     }, [])
 
     return (
-        <div className="relative flex items-center justify-center h-screen mb-12 overflow-hidden">
+        <div className="relative flex h-screen  overflow-hidden">
             {/* <video
                 ref={bluredVideoRef}
                 autoPlay
@@ -22,16 +22,14 @@ const Hero = () => {
                 src="./Ajara Tourist Alphabet.mp4"
                 poster="https://vaibhav1663.github.io/Youtube-Ambient-Mode/poster.jpg"
                 id="blurred"></video> */}
-            <div
-                className="relative z-30 p-5 text-2xl text-white bg-purple-300 bg-opacity-50 rounded-xl"
-            >
-                <p>#გამომყევიაჭარაში</p>
-                <p>იმოგზაურე აჭარაში და მოიგე 100 000 ლარი</p>
+            <div className="relative z-30  -top-40 w-full self-center text-white bg-opacity-50 rounded-xl">
+                <p className="text-center font-bold text-3xl lg:text-6xl tracking-widest font-arial-caps">#გამომყევიაჭარაში</p>
+                <p className="text-center font-bold text-xl lg:text-2xl mt-5 tracking-widest font-arial-caps">იმოგზაურე აჭარაში და მოიგე 100 000 ლარი</p>
             </div>
             <video
                 ref={videoRef}
                 // className="w-full shadow-2xl h-1/2"
-                className="absolute z-10 w-auto min-w-full min-h-full max-w-none"
+                className="absolute z-10 w-auto min-w-full min-h-1/2 max-w-none"
                 autoPlay
                 muted={true}
                 loop
