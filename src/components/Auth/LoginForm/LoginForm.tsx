@@ -2,9 +2,9 @@ import { createClientComponentClient, createServerComponentClient } from "@supab
 import { FC, useState } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import Input from "@/components/Form/Input"
-import { useRouter } from "next/router"
 import { cookies } from "next/headers"
-import { redirect } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
+import Link from "next/link"
 
 
 interface IFormInput {
@@ -14,10 +14,10 @@ interface IFormInput {
 
 interface LoginFormProps {
     onSub: () => void
-    setStatus: (status: string) => void
 }
 
-const LoginForm: FC<LoginFormProps> = ({ setStatus, onSub }) => {
+const LoginForm: FC<LoginFormProps> = ({ onSub }) => {
+    const router = useRouter()
     const [error, setError] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const supabase = createClientComponentClient()
@@ -92,7 +92,7 @@ const LoginForm: FC<LoginFormProps> = ({ setStatus, onSub }) => {
                 {error && <span className="text-red-700 mt-2">{error}</span>}
             </form>
             <span className='mt-8'>{`არ გაქვს არგარიში`}?
-                <a href="#" className="text-blue-600 hover:text-blue-800 hover:underline" onClick={() => setStatus('SIGNUP')}> რეგისტრაცია</a>
+                <Link href="/register" className="text-blue-600 hover:text-blue-800 hover:underline"> რეგისტრაცია</Link>
             </span>
         </>
     )

@@ -27,6 +27,10 @@ const navLinks = [
         href: '/contact',
         name: 'კონტაქტი'
     },
+    {
+        href: '/register',
+        name: 'რეგისტრაცია'
+    },
 ]
 
 const Navbar = ({ metadata }: any) => {

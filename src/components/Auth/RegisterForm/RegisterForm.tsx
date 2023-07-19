@@ -1,7 +1,10 @@
 'use client'
+import Checkbox from "@/components/Form/Checkbox"
 import Input from "@/components/Form/Input"
 import { randomString } from "@/utils/random"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 
@@ -20,14 +23,15 @@ interface IFormInput {
     ig: string
     yt: string
     tk: string
+    rules: boolean
 }
 
 interface RegisterFormProps {
-    setStatus?: (status: string) => void
     onSub?: () => void
 }
 
-const RegisterForm: FC<RegisterFormProps> = ({ setStatus, onSub }) => {
+const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
+    const router = useRouter()
     const [error, setError] = useState<string>('')
     const [confirmation, setConfirmation] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(false)
@@ -83,7 +87,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ setStatus, onSub }) => {
             if (onSub) onSub()
             if (data) {
                 console.log('balaa');
-                
+
                 setConfirmation(true)
                 reset()
 
@@ -227,6 +231,13 @@ const RegisterForm: FC<RegisterFormProps> = ({ setStatus, onSub }) => {
                 /> {errors.avatar_url && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>}
 
 
+                <Controller
+                    name="rules"
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field }) => <Checkbox {...field} label="ვეთანხმები წესებს და პირობებს" />}
+                />{errors.rules && <span className="text-red-700 mt-2">* გთხოვთ დაეთანხმოთ წესებს და პირობებს</span>}
+                
                 <div>
                     <button className="btn btn-block btn-primary" type='submit' disabled={loading}>
                         {loading && <span className="loading loading-spinner"></span>}
@@ -240,30 +251,11 @@ const RegisterForm: FC<RegisterFormProps> = ({ setStatus, onSub }) => {
                         <span>შეამოწმეთ ელ.ფოსტა და დაადასტურეთ ანგარიში!</span>
                     </div>
                 }
-                {/* <input type="text" placeholder="personalNumber" className="input input-bordered w-full max-w-xs" />
-<input type="text" placeholder="name" className="input input-bordered w-full max-w-xs" />
-<input type="text" placeholder="lastname" className="input input-bordered w-full max-w-xs" />
-<input type="text" placeholder="birthday" className="input input-bordered w-full max-w-xs" />
-<input type="text" placeholder="phone" className="input input-bordered w-full max-w-xs" />
-<input type="text" placeholder="fb" className="input input-bordered w-full max-w-xs" />
-<input type="text" placeholder="ig" className="input input-bordered w-full max-w-xs" />
-<input type="text" placeholder="tk" className="input input-bordered w-full max-w-xs" />
-<input type="text" placeholder="yt" className="input input-bordered w-full max-w-xs" />
-<input type="text" placeholder="avatar_url" className="input input-bordered w-full max-w-xs" /> */}
 
-                {/* <Auth
-                    supabaseClient={supabase}
-                    view={status == "SIGNIN" ? "sign_in" : "sign_up"}
-                    appearance={{ theme: ThemeSupa }}
-                    theme="light"
-                    // showLinks={false}
-                    providers={[]}
-                    redirectTo="http://localhost:3000/auth/callback"
-                /> */}
             </form>
             <span className='mt-3'>
                 გაქვთ ანგარიში?
-                <a href="#" className="text-blue-600 hover:text-blue-800 hover:underline" onClick={() => { if (setStatus) setStatus('SIGNIN') }}> შესვლა</a>
+                <Link href="/login" className="text-blue-600 hover:text-blue-800 hover:underline"> შესვლა</Link>
             </span>
         </>
     )

@@ -19,7 +19,7 @@ const Letter = ({ letter, src }: Alphabet) => {
             key={letter}
             onClick={openModal}
             className="py-2 px-3 sm:py-4 sm:px-4 md:py-5 md:px-5 lg:py-3 lg:px-10">
-            <p className="font-medium text-3xl sm:text-4xl md:text-4xl lg:text-5xl p-1 hover:scale-125 transition-all text-gray-600">{letter}</p>
+            <p className="font-medium text-3xl sm:text-4xl md:text-4xl lg:text-5xl p-1 hover:scale-125 transition-all text-gray-800">{letter}</p>
             {modal ? (
                 <section className="modal__bg">
                     <div className="modal__align">

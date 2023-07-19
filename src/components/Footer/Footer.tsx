@@ -19,7 +19,7 @@ const Footer = () => {
                     <a href="mailto:infovisitbatumi@gmail.com" className="link link-hover text-md text-gray-500 font-arial">infovisitbatumi@gmail.com</a>
                     <a className="link link-hover text-md text-gray-500 font-arial">84/86 ფარნავაზ მეფის ქუჩა, ბათუმი, საქართველო</a>
                 </div>
-                <div>
+                {/* <div>
                     <span className="footer-title text-base label-text font-arial">მობილური აპლიკაციები</span>
                     <a href="https://apps.apple.com/us/app/anbani-tour/id1579766195"
                         className="link link-hover ">
@@ -36,7 +36,7 @@ const Footer = () => {
                             height={50}
                             src="/play-store.webp"
                             alt="" /></a>
-                </div>
+                </div> */}
                 <div>
                     <span className="footer-title text-base label-text font-arial">სოციალური ქსელები</span>
                     <div className="grid grid-flow-col gap-5">

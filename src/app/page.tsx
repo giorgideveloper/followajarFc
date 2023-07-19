@@ -1,9 +1,6 @@
 import Alphabet from '@/components/Alphabet/Alphabet'
-import Footer from '@/components/Footer/Footer'
 import Hero from '@/components/Hero'
-import Navbar from '@/components/Navbar'
 import Reels from '@/components/Reels'
-import Image from 'next/image'
 
 export default function Home() {
   return (

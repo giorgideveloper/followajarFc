@@ -1,6 +1,15 @@
 'use client'
 import Image from 'next/image'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+
+import { Pagination, Navigation } from 'swiper/modules';
 
 const reels = new Array(15).fill(5)
 
@@ -14,7 +23,9 @@ const html = [
 
 // const url = 'https://www.tiktok.com/api/search/general/full/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-US&browser_name=Mozilla&browser_online=true&browser_platform=MacIntel&browser_version=5.0%20%28Linux%3B%20Android%206.0%3B%20Nexus%205%20Build%2FMRA58N%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F114.0.0.0%20Mobile%20Safari%2F537.36&channel=tiktok_web&cookie_enabled=true&device_id=7255584047769978373&device_platform=web_mobile&focus_state=true&from_page=search&history_len=8&is_fullscreen=false&is_page_visible=true&keyword=%23batumi&offset=0&os=android&priority_region=&referer=&region=GE&screen_height=762&screen_width=1933&search_source=normal_search&tz_name=Asia%2FTbilisi&web_search_code=%7B%22tiktok%22%3A%7B%22client_params_x%22%3A%7B%22search_engine%22%3A%7B%22ies_mt_user_live_video_card_use_libra%22%3A1%2C%22mt_search_general_user_live_card%22%3A1%7D%7D%7D%7D&webcast_language=en&msToken=vK3jsiGVWBA9Gk5q0meOENcsUoYKnd8Fitk_lOZ9f3MUNkEVDTV2k8uRHswcgyU6JNz3RveYQQTqCvnGigTqP2IvI3qzDiUnrS6oDJ0EfN8o-4ELsRx7UTa0fDdEvQONIliiAt2EwWjHvYc=&X-Bogus=DFSzywGLQRUANy5htj1Zyfok/RK0&_signature=_02B4Z6wo00001yRrR6AAAIDAdBwDWO7Cnu8kS0MAAK223c'
 
+
 const Reels = () => {
+    const [swiperRef, setSwiperRef] = useState(null);
 
     // const getReels = () => {
     //     fetch('https://www.tiktok.com/api/search/general/full/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-US&browser_name=Mozilla&browser_online=true&browser_platform=MacIntel&browser_version=5.0%20(Linux%3B%20Android%206.0%3B%20Nexus%205%20Build%2FMRA58N)%20AppleWebKit%2F537.36%20(KHTML,%20like%20Gecko)%20Chrome%2F114.0.0.0%20Mobile%20Safari%2F537.36&channel=tiktok_web&cookie_enabled=true&device_platform=web_mobile&focus_state=true&from_page=search&history_len=2&is_fullscreen=false&is_page_visible=true&keyword=%23batumi&offset=0&os=android&priority_region&referer&region=GE&screen_height=513&screen_width=1933&search_source=normal_search&tz_name=Asia%2FTbilisi&web_search_code=%7B%22tiktok%22%3A%7B%22client_params_x%22%3A%7B%22search_engine%22%3A%7B%22ies_mt_user_live_video_card_use_libra%22%3A1,%22mt_search_general_user_live_card%22%3A1%7D%7D%7D%7D&webcast_language=en')
@@ -25,14 +36,78 @@ const Reels = () => {
         // getReels()
     }, [])
     return (
-        <div className="carousel carousel-center max-w-full p-4 space-x-4 rounded-box my-10 md:my-20">
-            {reels.map((item, i) =>
-                <div className="carousel-item" key={i}>
-                    <div dangerouslySetInnerHTML={{ __html: html[Math.round(Math.random() * (html.length - 1))] }}></div>
+        <div className='my-20'>
+            <h1 className="font-medium text-xl sm:text-2xl md:text-2xl lg:text-2xl p-1 ml-10 text-gray-900">კამპანიის ფარგლებში ბოლოს დამატებული პოსტები</h1>
+            <div className="divider"></div>
+            <Swiper
+                onSwiper={setSwiperRef}
+                slidesPerView={1}
+                // centeredSlides={true}
+                spaceBetween={30}
+                breakpoints={{
+                    '@0.00': {
+                      slidesPerView: 1,
+                      spaceBetween: 10,
+                    },
+                    '@0.75': {
+                      slidesPerView: 2,
+                      spaceBetween: 20,
+                    },
+                    '@1.00': {
+                      slidesPerView: 3,
+                      spaceBetween: 30,
+                    },
+                    '@1.50': {
+                      slidesPerView: 4,
+                      spaceBetween: 30,
+                    },
+                  }}
+                // pagination={{
+                //     type: 'fraction',
+                // }}
+                navigation={true}
+                modules={[Pagination, Navigation]}
+                className="mySwiper"
+            >
+                {reels.map((item, i) =>
+                    <SwiperSlide key={i}>
+                        <div dangerouslySetInnerHTML={{ __html: html[Math.round(Math.random() * (html.length - 1))] }}></div>
+                        {/* <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"  /> */}
+                    </SwiperSlide>
+                )}
+            </Swiper>
+
+            {/* <div className=" carousel w-full">
+                <div className="relative">
+
+                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+                        <a href="#slide4" className="btn btn-circle">❮</a>
+                        <a href="#slide2" className="btn btn-circle">❯</a>
+                    </div>
                 </div>
-            )
-            }
-        </div >
+                {reels.map((item, i) =>
+                    <div id={`slide${i}`} className="carousel-item relative w-full">
+                        <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg" className="w-full" />
+                    </div>
+                )
+                }
+
+
+            </div> */}
+
+
+
+
+
+            {/* <div className="carousel carousel-center max-w-full p-4 space-x-4 rounded-box">
+                 {reels.map((item, i) =>
+                     <div className="carousel-item" key={i}>
+                         <div dangerouslySetInnerHTML={{ __html: html[Math.round(Math.random() * (html.length - 1))] }}></div>
+                     </div>
+                 )
+                 }
+             </div > */}
+        </div>
     )
 }
 
