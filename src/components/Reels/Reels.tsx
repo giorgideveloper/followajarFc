@@ -25,7 +25,7 @@ const html = [
 
 
 const Reels = () => {
-    const [swiperRef, setSwiperRef] = useState(null);
+    const [swiperRef, setSwiperRef] = useState<any>(null);
 
     // const getReels = () => {
     //     fetch('https://www.tiktok.com/api/search/general/full/?aid=1988&app_language=en&app_name=tiktok_web&browser_language=en-US&browser_name=Mozilla&browser_online=true&browser_platform=MacIntel&browser_version=5.0%20(Linux%3B%20Android%206.0%3B%20Nexus%205%20Build%2FMRA58N)%20AppleWebKit%2F537.36%20(KHTML,%20like%20Gecko)%20Chrome%2F114.0.0.0%20Mobile%20Safari%2F537.36&channel=tiktok_web&cookie_enabled=true&device_platform=web_mobile&focus_state=true&from_page=search&history_len=2&is_fullscreen=false&is_page_visible=true&keyword=%23batumi&offset=0&os=android&priority_region&referer&region=GE&screen_height=513&screen_width=1933&search_source=normal_search&tz_name=Asia%2FTbilisi&web_search_code=%7B%22tiktok%22%3A%7B%22client_params_x%22%3A%7B%22search_engine%22%3A%7B%22ies_mt_user_live_video_card_use_libra%22%3A1,%22mt_search_general_user_live_card%22%3A1%7D%7D%7D%7D&webcast_language=en')
