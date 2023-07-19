@@ -6,6 +6,7 @@ type InputProps = {
 } & InputHTMLAttributes<HTMLInputElement>
 
 const Checkbox = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+
     const { label, value, ...rest } = props
     return (
         <div className="flex items-center gap-2">

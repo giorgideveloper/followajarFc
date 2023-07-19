@@ -235,9 +235,9 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
                     name="rules"
                     control={control}
                     rules={{ required: true }}
-                    render={({ field }) => <Checkbox {...field} label="ვეთანხმები წესებს და პირობებს" />}
+                    render={({ field: { value, ...rest } }) => <Checkbox {...rest} label="ვეთანხმები წესებს და პირობებს" />}
                 />{errors.rules && <span className="text-red-700 mt-2">* გთხოვთ დაეთანხმოთ წესებს და პირობებს</span>}
-                
+
                 <div>
                     <button className="btn btn-block btn-primary" type='submit' disabled={loading}>
                         {loading && <span className="loading loading-spinner"></span>}
