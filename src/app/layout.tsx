@@ -11,6 +11,8 @@ export const metadata = {
   description: 'visit batumi',
 }
 
+export const revalidate = 0;
+
 export default async function RootLayout({
   children,
 }: {
