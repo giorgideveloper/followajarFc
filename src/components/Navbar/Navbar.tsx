@@ -24,12 +24,12 @@ const navLinks = [
         name: 'მონაწილეები'
     },
     {
-        href: '/contact',
-        name: 'კონტაქტი'
-    },
-    {
         href: '/register',
         name: 'რეგისტრაცია'
+    },
+    {
+        href: '/contact',
+        name: 'კონტაქტი'
     },
 ]
 
@@ -77,14 +77,15 @@ const Navbar = ({ metadata }: any) => {
                         })}
                     </ul>
                 </div>
-                <a className="">
+                <Link href="/" className="">
                     <Image
+
                         alt=''
                         src={'/logo.png'}
                         width={90}
                         height={50}
                     />
-                </a>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

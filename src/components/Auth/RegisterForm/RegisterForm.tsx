@@ -1,7 +1,7 @@
 'use client'
 import Checkbox from "@/components/Form/Checkbox"
 import Input from "@/components/Form/Input"
-import { randomString } from "@/utils/random"
+import { getRandomInt, randomString } from "@/utils/random"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -46,17 +46,17 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
         reset
     } = useForm<IFormInput>({
         defaultValues: {
-            // name: 'John',
-            // lastname: 'Doe',
-            // email: 'miriankakhidze@gmail.com',
-            // password: '1qazXSW@',
-            // birthday: 'string',
-            // tel: 'string',
-            // personalNumber: '61006055453',
-            // fb: '',
-            // ig: '',
-            // yt: '',
-            // tk: ''
+            name: 'John',
+            lastname: 'Doe',
+            email: 'miriankakhidze@gmail.com',
+            password: '1qazXSW@',
+            birthday: 'string',
+            tel: 'string',
+            personalNumber: '61006055453',
+            fb: '',
+            ig: '',
+            yt: '',
+            tk: ''
         }
     })
 
@@ -69,12 +69,15 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
             setConfirmation(false)
 
             setLoading(true)
+
+
             const { data, error, } = await supabase.auth.signUp({
                 email,
                 password,
                 options: {
                     data: {
-                        ...rest
+                        ...rest,
+                        tour: getRandomInt(1, 8)
                     },
                 },
             })
@@ -161,7 +164,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
                         <Controller
                             name="personalNumber"
                             control={control}
-                            rules={{ required: true }}
+                            rules={{ required: true, }}
                             render={({ field }) => <Input {...field} type="text" label="პირადი ნომერი" placeholder="პირადი ნომერი" />}
                         /> {errors.personalNumber && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>}
                     </div>
@@ -172,7 +175,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
                         <Controller
                             name="password"
                             control={control}
-                            rules={{ required: true }}
+                            rules={{ required: true, minLength: 6 }}
                             render={({ field }) => <Input {...field} type="password" label="პაროლი" placeholder="პაროლი" />}
                         /> {errors.password && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>}
                     </div>
@@ -180,7 +183,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
                         <Controller
                             name="rePassword"
                             control={control}
-                            rules={{ required: true }}
+                            rules={{ required: true, minLength: 6 }}
                             render={({ field }) => <Input {...field} type="password" label="გაიმეორეთ პაროლი" placeholder="პაროლი" />}
                         /> {errors.rePassword && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>}
                     </div>

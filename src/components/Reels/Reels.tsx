@@ -54,12 +54,12 @@ const Reels = () => {
                       spaceBetween: 20,
                     },
                     '@1.00': {
-                      slidesPerView: 3,
+                      slidesPerView: 4,
                       spaceBetween: 30,
                     },
                     '@1.50': {
-                      slidesPerView: 4,
-                      spaceBetween: 30,
+                      slidesPerView: 6,
+                      spaceBetween: 90,
                     },
                   }}
                 // pagination={{
@@ -70,7 +70,7 @@ const Reels = () => {
                 className="mySwiper"
             >
                 {reels.map((item, i) =>
-                    <SwiperSlide key={i}>
+                    <SwiperSlide key={i} className='gap-32' >
                         <div dangerouslySetInnerHTML={{ __html: html[Math.round(Math.random() * (html.length - 1))] }}></div>
                         {/* <img src="https://daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.jpg"  /> */}
                     </SwiperSlide>

@@ -191,7 +191,7 @@ const part6: Alphabet[] = [
 const Alphabet = () => {
     return (
         <>
-            <h2 className={`text-center font-bold text-2xl lg:text-6xl mt-2 tracking-widest font-arial-caps text-gray-900`}>გამომყევი აჭარაში</h2>
+            <h2 className={`text-center font-bold text-2xl lg:text-6xl mt-20 tracking-widest font-arial-caps text-gray-900`}>გამომყევი აჭარაში</h2>
             <div className="card w-full bg-base-100">
                 <div className="card-body text-center">
                     <div className="flex-row">
