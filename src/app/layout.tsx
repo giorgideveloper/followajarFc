@@ -35,8 +35,8 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-YB0QW5TRGT" />
-      <Script>
+      <Script id="gllogleApi" async src="https://www.googletagmanager.com/gtag/js?id=G-YB0QW5TRGT" />
+      <Script id="scrt">
         {` window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-YB0QW5TRGT');`}
       </Script>
       <body className={`${bpgArial.variable} ${bpgArialCaps.variable}`}>

@@ -1,4 +1,4 @@
-import GoogleMapReact from 'google-map-react';
+// import GoogleMapReact from 'google-map-react';
 
 const defaultProps = {
     center: {
@@ -9,7 +9,7 @@ const defaultProps = {
 };
 
 
-const Marker = ({ text }) => {
+const Marker = ({ text }:any) => {
     return (
         <p>{text}</p>
     )
