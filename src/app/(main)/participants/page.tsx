@@ -23,11 +23,16 @@ export default Page
 
 const UserCard = ({ name, lastname, status, ig, fb, yt, tk, avatar_url }: any) => {
     return (
-         <div className="card card-compact bg-base-100 shadow-xl">
+        <div className="card card-compact bg-base-100 shadow-xl">
             <div className="card-body">
                 <div className="avatar">
                     <div className="w-full rounded-md">
-                        <img  src={`https://qncbnxbxcvvacstnmmdk.supabase.co/storage/v1/object/public/avatars/${avatar_url}`}/>
+                        <Image
+                            className="rounded-md"
+                            fill
+                            src={`https://qncbnxbxcvvacstnmmdk.supabase.co/storage/v1/object/public/avatars/${avatar_url}`}
+                            alt=""
+                        />
                     </div>
                 </div>
                 <h2 className="card-title">{name} {lastname}</h2>

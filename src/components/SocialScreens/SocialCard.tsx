@@ -102,6 +102,7 @@ const SocialCard: FC<SocialCardProps> = ({ id, title, userId }) => {
                         {screens.length > 0 &&
                             screens.map(item =>
                                 <Image
+                                    key={item.id}
                                     className='rounded-sm'
                                     alt=''
                                     width={80}
