@@ -14,8 +14,7 @@ const Tabs = ({ data }: any) => {
             </TabList>
             <TabPanel>
                 <TourPackage
-                    id={7}
-                // id={data.tour} 
+                    id={data.tour}
                 />
             </TabPanel>
             {/* <TabPanel>
