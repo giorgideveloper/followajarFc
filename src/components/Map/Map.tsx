@@ -1,15 +1,17 @@
-// import GoogleMapReact from 'google-map-react';
+'use client'
+
+import GoogleMapReact from 'google-map-react';
 
 const defaultProps = {
     center: {
-        lat: 10.99835602,
-        lng: 77.01502627
+        lat: 41.992724,
+        lng: 42.979218
     },
-    zoom: 11
+    zoom: 8
 };
 
 
-const Marker = ({ text }:any) => {
+const Marker = ({ text }: any) => {
     return (
         <p>{text}</p>
     )
@@ -18,8 +20,8 @@ const Marker = ({ text }:any) => {
 
 const Map = () => {
     return (
-        <div style={{ height: '100vh', width: '100%' }}>
-            {/* <GoogleMapReact
+        <div style={{ height: '60vh', width: '100%' }}>
+            <GoogleMapReact
                 bootstrapURLKeys={{ key: "AIzaSyBzCvOuRZOMAoVHCd3FaP_3lDYfn2jyMoY" }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
@@ -29,7 +31,7 @@ const Map = () => {
                     // lng={30.337844}
                     text="ა"
                 />
-            </GoogleMapReact> */}
+            </GoogleMapReact>
         </div>
     )
 }

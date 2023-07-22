@@ -1,10 +1,10 @@
 
-import RegisterForm from "@/components/Auth/RegisterForm"
 import UpsertProfileForm from "@/components/Auth/UpsertProfileForm"
+import Tabs from "@/components/Tabs"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
-import Image from "next/image"
 import { redirect } from "next/navigation"
+import { useState } from "react"
 
 
 const Profile = async () => {
@@ -24,8 +24,17 @@ const Profile = async () => {
     return (
         <div className="card w-full md:w-2/3 lg:w-2/3 bg-base-100 shadow-xl mx-auto mt-6">
             <div className="card-body">
-                <h2 className="card-title">პროფილის რედაქტირება</h2>
-                <UpsertProfileForm defaults={{ ...data }} />
+                <Tabs>
+                    <Tabs.Item label="პაკეტი">
+                        See ya later, <em>Alligator</em>!
+                    </Tabs.Item>
+                    <Tabs.Item label="სქრინები">
+                        See ya later, <em>Alligator</em>!
+                    </Tabs.Item>
+                    <Tabs.Item label="პროფილის რედაქტირება">
+                        <UpsertProfileForm defaults={{ ...data }} />
+                    </Tabs.Item>
+                </Tabs>
             </div>
         </div>
     )

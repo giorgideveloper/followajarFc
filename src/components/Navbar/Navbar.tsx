@@ -117,7 +117,7 @@ const Navbar = ({ metadata }: any) => {
                                         <img src={`https://qncbnxbxcvvacstnmmdk.supabase.co/storage/v1/object/public/avatars/${metadata?.avatar_url}`} />
                                     </div>
                                 </label>
-                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                <ul tabIndex={0} className="mt-3 z-20 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                                     <li>
                                         <Link href='/profile'>პროფილი</Link>
                                     </li>

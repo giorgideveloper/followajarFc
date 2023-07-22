@@ -14,7 +14,7 @@ export default function Home() {
       {/* </div> */}
       <Alphabet />
       <Reels />
-      {/* <Map /> */}
+      <Map />
       {/* <div className="divider"></div>  */}
       {/* <div className='container mx-auto'> */}
       {/* </div> */}

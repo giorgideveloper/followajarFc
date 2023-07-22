@@ -48,11 +48,12 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
         defaultValues: {
             name: 'John',
             lastname: 'Doe',
-            email: 'miriankakhidze@gmail.com',
+            email: 'mkakh1dz3@gmail.com',
             password: '1qazXSW@',
+            rePassword: '1qazXSW@',
             birthday: 'string',
             tel: 'string',
-            personalNumber: '61006055453',
+            personalNumber: '61006055412',
             fb: '',
             ig: '',
             yt: '',
@@ -61,7 +62,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
     })
 
     const onSubmit: SubmitHandler<IFormInput> = async (values) => {
-        const { email, password, ...rest } = values
+        const { email, password, rules, ...rest } = values
         console.log(values);
 
         try {

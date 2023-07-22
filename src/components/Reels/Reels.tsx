@@ -54,12 +54,12 @@ const Reels = () => {
                       spaceBetween: 20,
                     },
                     '@1.00': {
-                      slidesPerView: 4,
+                      slidesPerView: 3,
                       spaceBetween: 30,
                     },
                     '@1.50': {
-                      slidesPerView: 6,
-                      spaceBetween: 90,
+                      slidesPerView: 4,
+                      spaceBetween: 50,
                     },
                   }}
                 // pagination={{
