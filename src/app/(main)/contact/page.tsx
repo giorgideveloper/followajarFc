@@ -1,6 +1,51 @@
 import Input from "@/components/Form/Input"
 
 const Page = () => {
+
+    async function sendMail(formData: FormData) {
+        'use server'
+        const nodemailer = require("nodemailer")
+        const data = Object.fromEntries(formData.entries())
+
+        const transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: true,
+            auth: {
+                user: process.env.NEXT_EMAIL_USER,
+                pass: process.env.NEXT_EMAIL_PASSWORD,
+            }
+        });
+
+
+        try {
+
+            transporter.verify(async function (error: any, success: any) {
+                if (error) {
+                    console.log('error', error);
+                } else {
+                    console.log("Server is ready to take our messages");
+
+                    const info = await transporter.sendMail({
+                        from: data.email,
+                        to: process.env.NEXT_EMAIL_USER,
+                        subject: data.subject,
+                        text: data.text
+                        // html: "<b>Hello world?</b>", // html body
+                    });
+
+                    console.log("Message sent: %s", info.messageId);
+
+                }
+            });
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+
+
     return (
         <div className="container mx-auto px-4">
             <div className="my-10">
@@ -50,21 +95,29 @@ const Page = () => {
 
             <div className="divider"></div>
 
-            <h1 className="text-2xl mb-10">დაგვიკავშირდით</h1>
-            <form className="w-full md:w-1/3">
-                <div className="flex flex-col gap-4 my-6 w-full">
-                    <Input label="სახელი" placeholder="თქვენი სახელი" />
-                    <Input label="ელ. ფოსტა" placeholder="ელ. ფოსტა" />
-                    <Input label="სათაური" placeholder="თემის სათაური" />
 
-                    <div>
-                        <textarea className="textarea textarea-bordered w-full" placeholder="ტექსტი"></textarea>
-                    </div>
-                    <div>
-                        <button className="btn btn-neutral">გაგზავნა</button>
-                    </div>
+            <div className="card w-full bg-base-100 shadow-xl">
+                {/* <h1 className="text-2xl mb-10">დაგვიკავშირდით</h1> */}
+
+                <div className="card-body">
+                    <h2 className="card-title">დაგვიკავშირდით</h2>
+                    <form className="w-full md:w-1/3" action={sendMail}>
+                        <div className="flex flex-col gap-4 my-6 w-full">
+                            <Input name="name" label="სახელი" placeholder="თქვენი სახელი" required />
+                            <Input name="email" type="email" label="ელ. ფოსტა" placeholder="ელ. ფოსტა" required />
+                            <Input name="subject" label="სათაური" placeholder="თემის სათაური" required />
+                            <div>
+                                <textarea name="text" className="textarea textarea-bordered w-full" placeholder="ტექსტი" required></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" className="btn btn-neutral">გაგზავნა</button>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
-            </form>
+
+            </div>
 
         </div>
     )

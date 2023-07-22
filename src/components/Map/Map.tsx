@@ -20,15 +20,15 @@ const Marker = ({ text }: any) => {
 
 const Map = () => {
     return (
-        <div style={{ height: '60vh', width: '100%' }}>
+        <div style={{ height: '60vh', width: '100%', margin: 'auto' }}>
             <GoogleMapReact
-                bootstrapURLKeys={{ key: "AIzaSyBzCvOuRZOMAoVHCd3FaP_3lDYfn2jyMoY" }}
+                bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY ?? '' }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
             >
                 <Marker
-                    // lat={59.955413}
-                    // lng={30.337844}
+                    lat={41.992724}
+                    lng={42.979218}
                     text="ა"
                 />
             </GoogleMapReact>

@@ -16,7 +16,7 @@ export default [
                 ციხისძირში მოხვედრისთანავე ეზიარები ამ ყოველივეს.
                 <p>სასარგებლო ინფორმაცია:</p>
                 <ul>
-                    <li>პეტრას ციხე: https://tinyurl.com/4udk4ejw </li>
+                    <li>პეტრას ციხე: <a href="https://tinyurl.com/4udk4ejw" target="_blank" >https://tinyurl.com/4udk4ejw</a> </li>
                     <li>ციხისძირი: https://tinyurl.com/mvw2xh4j </li>
                     <li>ციხისძირის შუქურა – ახალი დასასვენებელი ადგილი ისტორიულ აგარაკებთან, პლაჟთან ახლოს: https://gobatumi.com/ka/news/cikhisdziris-shuqura</li>
                     <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
@@ -181,26 +181,26 @@ export default [
                     <b>ჭვანა</b> - თუკი ბუნება გიყვარს, ჭვანას ხეობა პირველივე ნახვისთანავე მოგხიბლავს!
                     <p>არაჩვეულებრივი პეიზაჟებისა და თბილი გარემოს გარდა, ჭვანას ხეობაში დაგხვდებათ ჯადოსნური შესახედაობის ხაბელაშვილების უნიკალური ხის თაღოვანი ხიდი, რომელიც სამ საუკუნეს ითვლის</p>
                     <ul>
-                        <li>ჭვანა: https://tinyurl.com/477fhd4t</li>
-                        <li>ხაბელაშვილების ხის თაღოვანი ხიდი: https://infoajara.com/u/8047828</li>
-                        <li>ლელთის ტბა: https://infoajara.com/u/5040703</li>
-                        <li>ბრილი-ლელთის ტბა-ხაბელაშვილები (ჭვანის ხეობა): https://infoajara.com/u/9699702</li>
+                        <li>ჭვანა: <a href="https://tinyurl.com/477fhd4t" target="_blank">https://tinyurl.com/477fhd4t</a></li>
+                        <li>ხაბელაშვილების ხის თაღოვანი ხიდი: <a href="https://infoajara.com/u/8047828" target="_blank">https://infoajara.com/u/8047828</a></li>
+                        <li>ლელთის ტბა: <a href="https://infoajara.com/u/5040703" target="_blank">https://infoajara.com/u/5040703</a></li>
+                        <li>ბრილი-ლელთის ტბა-ხაბელაშვილები (ჭვანის ხეობა): <a href="https://infoajara.com/u/9699702" target="_blank">https://infoajara.com/u/9699702</a></li>
                     </ul>
                 </li>
                 <li>
                     <b>ჯარა</b> - ტრადიციული ქართული სკაა, მასში თაფლის წარმოების საუკუნოვან ტრადიციას არამატერიალური კულტურული მემკვიდრეობის ძეგლის სტატუსი აქვს
                     ბუნებისა და ადამიანის ურთიერთსასარგებლო თანაცხოვრების ამ იდეალური მაგალითის ხილვა აჭარაში შეგიძლია.
                     <ul>
-                        <li>https://infoajara.com/u/3845019</li>
-                        <li>აჭარის მეფუტკრეობის ბიზნეს ასოციაცია: https://geobeekeepers.ge/index.php?m=181/</li>
+                        <li><a href="https://infoajara.com/u/3845019" target="_blank">https://infoajara.com/u/3845019</a></li>
+                        <li>აჭარის მეფუტკრეობის ბიზნეს ასოციაცია: <a href="https://geobeekeepers.ge/index.php?m=181/" target="_blank">https://geobeekeepers.ge/index.php?m=181/</a></li>
                         <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
                     </ul>
                 </li>
                 <li>
                     <b>ბოტანიკური ბაღი</b> - თუკი გსურს დედამიწაზე პატარა, მწვანე სამოთხეში აღმოჩნდე, განსაკუთრებული მრავალფეროვნებით გამორჩეული ბათუმის ბოტანიკური ბაღი უნდა მოინიშნო, აქ ყოველი სტუმრობა ახალი შთაბეჭდილებები და ემოციებია
                     <ul>
-                        <li>ბოტანიკური ბაღი: http://bbg.ge/ge/home</li>
-                        <li>ზიპ ლაინი - https://www.ziplinegeorgia.ge/ ; 555 59 59 52 - ზიპ ლაინის ეროვნული ფედერაცია;</li>
+                        <li>ბოტანიკური ბაღი: <a href="http://bbg.ge/ge/home" target="_blank">http://bbg.ge/ge/home</a></li>
+                        <li>ზიპ ლაინი - <a href="https://www.ziplinegeorgia.ge/" target="_blank">https://www.ziplinegeorgia.ge/</a> ; 555 59 59 52 - ზიპ ლაინის ეროვნული ფედერაცია;</li>
                     </ul>
 
                 </li>
