@@ -2,24 +2,28 @@
 import { Tab, TabList, TabPanel, Tabs as Tb } from 'react-tabs';
 import UpsertProfileForm from "../Auth/UpsertProfileForm";
 import TourPackage from '../TourPackage';
-const Tabs = ({ data }: any) => {
-    console.log(data);
+import SocialScreens from '../SocialScreens';
+
+const Tabs = ({ data,userId }: any) => {
 
     return (
-        <Tb className="tabs" selectedTabClassName='tab-active'>
+        <Tb
+            className=""
+
+            selectedTabClassName='tab-active'>
             <TabList>
-                <Tab className="tab tab-lifted">პაკეტი</Tab>
-                {/* <Tab>სქრინები</Tab> */}
-                <Tab>პროფილის რედაქტირება</Tab>
+                <Tab className="tab tab-lg tab-lifted font-arial-caps">პაკეტი</Tab>
+                <Tab className="tab tab-lg tab-lifted font-arial-caps">სქრინები</Tab>
+                <Tab className="tab tab-lg tab-lifted font-arial-caps">პროფილის რედაქტირება</Tab>
             </TabList>
             <TabPanel>
                 <TourPackage
                     id={data.tour}
                 />
             </TabPanel>
-            {/* <TabPanel>
-                <h2>Any content 2</h2>
-            </TabPanel> */}
+            <TabPanel>
+                <SocialScreens userId={userId} />
+            </TabPanel>
             <TabPanel>
                 <UpsertProfileForm defaults={{ ...data }} />
             </TabPanel>

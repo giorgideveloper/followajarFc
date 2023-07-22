@@ -7,8 +7,10 @@ export default function Auth() {
     const router = useRouter()
     return (
         <div className="w-full md:w-2/3 mx-auto p-6">
-            <div className="w-full md:w-1/2 mx-auto p-6">
-                <LoginForm onSub={() => router.replace('/')} />
+            <div className="card w-full lg:w-1/2 bg-base-100 shadow-xl mx-auto mt-6">
+                <div className="card-body">
+                    <LoginForm onSub={() => router.replace('/')} />
+                </div>
             </div>
         </div>
     )

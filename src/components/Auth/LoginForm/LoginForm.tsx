@@ -17,12 +17,10 @@ interface LoginFormProps {
 }
 
 const LoginForm: FC<LoginFormProps> = ({ onSub }) => {
-    const router = useRouter()
     const [error, setError] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const supabase = createClientComponentClient()
 
-    // const router = useRouter()
     const {
         control,
         register,
@@ -30,12 +28,7 @@ const LoginForm: FC<LoginFormProps> = ({ onSub }) => {
         watch,
         formState: { errors },
 
-    } = useForm<IFormInput>({
-        defaultValues: {
-            // email: 'miriankakhidze@gmail.com',
-            // password: '1qazXSW@'
-        }
-    })
+    } = useForm<IFormInput>({})
 
     const onSubmit: SubmitHandler<IFormInput> = async (values) => {
         try {

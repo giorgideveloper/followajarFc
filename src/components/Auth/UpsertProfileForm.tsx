@@ -95,7 +95,7 @@ const UpsertProfileForm: FC<RegisterFormProps> = ({ defaults, onSub }) => {
 
     return (
         <>
-            <form className='space-y-6 my-4 w-full' onSubmit={handleSubmit(onSubmit)}>
+            <form className='space-y-6 my-6 w-full' onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="flex flex-col lg:flex-row items-start justify-between gap-6 mt-4">
 

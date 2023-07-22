@@ -63,7 +63,6 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
 
     const onSubmit: SubmitHandler<IFormInput> = async (values) => {
         const { email, password, rules, ...rest } = values
-        console.log(values);
 
         try {
             setError('')
