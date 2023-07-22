@@ -46,18 +46,18 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
         reset
     } = useForm<IFormInput>({
         defaultValues: {
-            name: 'John',
-            lastname: 'Doe',
-            email: 'mkakh1dz3@gmail.com',
-            password: '1qazXSW@',
-            rePassword: '1qazXSW@',
-            birthday: 'string',
-            tel: 'string',
-            personalNumber: '61006055412',
-            fb: '',
-            ig: '',
-            yt: '',
-            tk: ''
+            // name: 'John',
+            // lastname: 'Doe',
+            // email: 'mkakh1dz3@gmail.com',
+            // password: '1qazXSW@',
+            // rePassword: '1qazXSW@',
+            // birthday: 'string',
+            // tel: 'string',
+            // personalNumber: '61006055412',
+            // fb: '',
+            // ig: '',
+            // yt: '',
+            // tk: ''
         }
     })
 
