@@ -9,7 +9,7 @@ const Tabs = ({ data }: any) => {
         <Tb className="tabs" selectedTabClassName='tab-active'>
             <TabList>
                 <Tab className="tab tab-lifted">პაკეტი</Tab>
-                <Tab>სქრინები</Tab>
+                {/* <Tab>სქრინები</Tab> */}
                 <Tab>პროფილის რედაქტირება</Tab>
             </TabList>
             <TabPanel>
