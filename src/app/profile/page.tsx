@@ -5,7 +5,9 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { useState } from "react"
+import { Tab, TabList, TabPanel } from "react-tabs"
 
+import 'react-tabs/style/react-tabs.css';
 
 const Profile = async () => {
     const supabase = createServerComponentClient({ cookies })
@@ -24,17 +26,7 @@ const Profile = async () => {
     return (
         <div className="card w-full md:w-2/3 lg:w-2/3 bg-base-100 shadow-xl mx-auto mt-6">
             <div className="card-body">
-                <Tabs>
-                    <Tabs.Item label="პაკეტი">
-                        See ya later, <em>Alligator</em>!
-                    </Tabs.Item>
-                    <Tabs.Item label="სქრინები">
-                        See ya later, <em>Alligator</em>!
-                    </Tabs.Item>
-                    <Tabs.Item label="პროფილის რედაქტირება">
-                        <UpsertProfileForm defaults={{ ...data }} />
-                    </Tabs.Item>
-                </Tabs>
+                <Tabs data={data} />
             </div>
         </div>
     )

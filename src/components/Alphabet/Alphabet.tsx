@@ -192,7 +192,7 @@ const Alphabet = () => {
     return (
         <>
             <h2 className={`text-center font-bold text-2xl lg:text-6xl mt-20 tracking-widest font-arial-caps text-gray-900`}>გამომყევი აჭარაში</h2>
-            <div className="card w-full bg-base-100">
+            <div className="card w-full bg-none">
                 <div className="card-body text-center">
                     <div className="flex-row">
                         {part1.map((item, index) => (

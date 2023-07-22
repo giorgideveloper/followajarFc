@@ -1,51 +1,31 @@
 'use client'
-import { ReactNode, useState } from "react"
-
-const Item = ({ className, onClick, label }: any) => {
-
-    return (
-        <a className={className} onClick={onClick}>{label}</a>
-    )
-}
-
-
-const Tabs = ({ children }: any) => {
-    const [activeTab, setActiveTab] = useState<number>(0)
-
-    const onClickTabItem = (index: number) => {
-        setActiveTab(index)
-    }
+import { Tab, TabList, TabPanel, Tabs as Tb } from 'react-tabs';
+import UpsertProfileForm from "../Auth/UpsertProfileForm";
+import TourPackage from '../TourPackage';
+const Tabs = ({ data }: any) => {
+    console.log(data);
 
     return (
-        <>
-            <div className="tabs">
-                {children.map((child: any, i: number) => {
-                    console.log('child.props', child.props);
-
-                    let className = 'tab tab-lifted';
-
-                    if (activeTab === i) {
-                        className += ' tab-active';
-                    }
-
-                    return (
-                        <Item
-                            key={`tab-${i}`}
-                            className={className}
-                            onClick={() => onClickTabItem(i)}
-                        />
-                    );
-                })}
-            </div>
-
-            {/* {children.map((child, i: number) => {
-                if (i !== activeTab) return undefined;
-                return child.props.children;
-            })} */}
-        </>
+        <Tb className="tabs" selectedTabClassName='tab-active'>
+            <TabList>
+                <Tab className="tab tab-lifted">პაკეტი</Tab>
+                <Tab>სქრინები</Tab>
+                <Tab>პროფილის რედაქტირება</Tab>
+            </TabList>
+            <TabPanel>
+                <TourPackage
+                    id={7}
+                // id={data.tour} 
+                />
+            </TabPanel>
+            {/* <TabPanel>
+                <h2>Any content 2</h2>
+            </TabPanel> */}
+            <TabPanel>
+                <UpsertProfileForm defaults={{ ...data }} />
+            </TabPanel>
+        </Tb>
     )
 }
 
 export default Tabs
-
-Tabs.Item = Item

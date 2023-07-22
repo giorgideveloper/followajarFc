@@ -41,13 +41,9 @@ export default async function RootLayout({
       </Script>
       <body className={`${bpgArial.variable} ${bpgArialCaps.variable}`}>
         <Navbar metadata={data} />
-        {/* <Image
-        className='absolute'
-          alt=''
-          src={'/bg.png'}
-          fill
-        /> */}
-        {children}
+        <main className='main'>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

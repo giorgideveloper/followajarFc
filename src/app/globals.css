@@ -15,12 +15,18 @@
     /* --background-end-rgb: 0, 0, 0; */
   }
 }
+.main{
 
-body {
-  /* background-image: url('../../public/bg.png'); */
+  background-image: url('../../public/bg1.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 50% 0;
+  background-position: 30% 50%;
+}
+body {
+  /* background-image: url('../../public/bg.png'); */
+  /* background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 30% 0; */
   /* opacity: 0.4; */
 
   /* color: rgb(var(--foreground-rgb)); */
