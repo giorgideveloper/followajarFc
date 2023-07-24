@@ -26,7 +26,7 @@ export default function Home() {
       <Hero />
       {/* </div> */}
       <Alphabet />
-      {/* <Reels /> */}
+      <Reels />
       <MyAwesomeMap />
       {/* <div className="divider"></div>  */}
       {/* <div className='container mx-auto'> */}
