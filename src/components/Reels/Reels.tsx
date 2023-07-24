@@ -1,31 +1,19 @@
 'use client'
-import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
-
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { Navigation, Pagination } from 'swiper/modules';
 
-const Reels = async () => {
-    const [swiperRef, setSwiperRef] = useState<any>(null);
-    const supabase = createClientComponentClient()
-
-    let { data: reels, error } = await supabase
-        .from('reels')
-        .select('*')
-        .order('id', { ascending: false })
-
+const Reels = ({ data }: any) => {
     return (
         <div className='my-20'>
             <h1 className="font-medium text-xl sm:text-2xl md:text-2xl lg:text-2xl p-1 ml-10 text-gray-900">კამპანიის ფარგლებში ბოლოს დამატებული პოსტები</h1>
             <div className="divider"></div>
             <Swiper
-                onSwiper={setSwiperRef}
+                // onSwiper={setSwiperRef}
                 slidesPerView={1}
                 // centeredSlides={true}
                 spaceBetween={30}
@@ -36,24 +24,38 @@ const Reels = async () => {
                     },
                     '@0.75': {
                         slidesPerView: 2,
-                        spaceBetween: 20,
+                        spaceBetween: 10,
                     },
                     '@1.00': {
                         slidesPerView: 3,
-                        spaceBetween: 30,
+                        spaceBetween: 15,
                     },
                     '@1.50': {
                         slidesPerView: 4,
-                        spaceBetween: 50,
+                        spaceBetween: 20,
                     },
                 }}
                 navigation={true}
                 modules={[Pagination, Navigation]}
                 className="mySwiper"
             >
-                {reels?.map((item, i) =>
-                    <SwiperSlide key={i} className='gap-32' >
-                        <div dangerouslySetInnerHTML={{ __html: item.html }}></div>
+                {data?.map((item: any, i: number) =>
+                    <SwiperSlide key={i} className='w-full bg-transparent' >
+                        <iframe
+                            width={350}
+                            className='w-full mx-auto h-screen'
+                            src={item.html}></iframe>
+                        {/* <iframe
+                            className='w-full'
+                            src="https://www.tiktok.com/embed/7072819797184171310"
+                            // width={300}
+                            height={600}
+                            // className={iframe}
+                            // allowfullscreen
+                            // scrolling="no"
+                            allow="encrypted-media;"
+                        ></iframe> */}
+                        {/* <div dangerouslySetInnerHTML={{ __html: item.html }}></div> */}
                     </SwiperSlide>
                 )}
             </Swiper>
