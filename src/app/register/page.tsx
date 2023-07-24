@@ -1,7 +1,9 @@
-
 import RegisterForm from "@/components/Auth/RegisterForm"
 import { Metadata } from "next"
 import { openGraphImage } from "../shared-metadata"
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 
 export const metadata: Metadata = {
     title: 'რეგისტრაცია',
@@ -11,7 +13,12 @@ export const metadata: Metadata = {
     },
 }
 
-export default function Page() {
+export default async function Page() {
+    const supabase = createServerComponentClient({ cookies })
+
+    const { data: { session } } = await supabase.auth.getSession()
+
+    if (session) redirect('/')
 
     return (
         <div className="w-full lg:w-3/4 mx-auto p-6">

@@ -1,12 +1,9 @@
 
-import UpsertProfileForm from "@/components/Auth/UpsertProfileForm"
 import Tabs from "@/components/Tabs"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
-import { useState } from "react"
-import { Tab, TabList, TabPanel } from "react-tabs"
-import 'react-tabs/style/react-tabs.css';
+import 'react-tabs/style/react-tabs.css'
 import './profile.css'
 
 const Profile = async () => {

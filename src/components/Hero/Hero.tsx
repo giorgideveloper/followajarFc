@@ -26,30 +26,9 @@ const Hero = () => {
             </div>
             <div className="video-content space-y-2">
                 <h1 className="font-light text-3xl lg:text-6xl tracking-widest font-fira-go">#გამომყევიაჭარაში</h1>
-                <h3 className="font-light text-xl lg:text-2xl tracking-widest mt-5 ">იმოგზაურე აჭარაში და მოიგე 100 000 ლარი</h3>
+                <h3 className="font-light text-xl lg:text-2xl tracking-widest mt-5 ">მოიგე 100 000 ლარი</h3>
             </div>
         </section>
-
-
-        // <div className="relative mb-20">
-        //     <video
-        //         ref={videoRef}
-        //         className="absolute w-full "
-        //         autoPlay
-        //         muted={true}
-        //         loop
-        //         // height={634}
-        //         // poster="th.jpeg"
-        //     >
-        //         <source src="/Ajara-Tourist-Alphabet.mp4" type="video/mp4"></source>
-        //         <source src="/Ajara-Tourist-Alphabet.mp4" type="video/ogg" />
-        //         <source src="/Ajara-Tourist-Alphabet.webm" type="video/webm"></source>
-        //     </video>
-        //     <div className="absolute  z-2 w-full text-black bg-opacity-50 rounded-xl">
-        //         <p className="text-center font-bold text-3xl lg:text-6xl tracking-widest font-fira-go">#გამომყევიაჭარაში</p>
-        //         <p className="text-center font-bold text-xl lg:text-2xl mt-5 tracking-widest font-fira-go">იმოგზაურე აჭარაში და მოიგე 100 000 ლარი</p>
-        //     </div>
-        // </div>
     )
 }
 

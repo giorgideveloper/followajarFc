@@ -185,10 +185,10 @@ body {
   }
 } */
 
-
+/* 
 .menu li>a :hover {
   background-color: red;
-}
+} */
 
 .swiper {
   width: 100%;
@@ -198,7 +198,8 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
+  
+  
 
   /* Center slide text vertically */
   display: flex;
@@ -215,9 +216,9 @@ body {
 
 .swiper {
   width: 100%;
-  max-height: 650px;
+  max-height: 750px;
   /* height: 580px; */
-  margin: 20px auto;
+  /* margin: 20px auto; */
 }
 
 .append-buttons {
@@ -236,6 +237,8 @@ body {
   margin: 0 10px;
   font-size: 13px;
 }
+
+/* videooo */
 
 .video-docker video {
   top: 50%;

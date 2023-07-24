@@ -13,6 +13,7 @@ const Reels = ({ data }: any) => {
             <h1 className="font-medium text-xl sm:text-2xl md:text-2xl lg:text-2xl p-1 ml-10 text-gray-900">კამპანიის ფარგლებში ბოლოს დამატებული პოსტები</h1>
             <div className="divider"></div>
             <Swiper
+            
                 // onSwiper={setSwiperRef}
                 slidesPerView={1}
                 // centeredSlides={true}
@@ -43,7 +44,7 @@ const Reels = ({ data }: any) => {
                     <SwiperSlide key={i} className='w-full bg-transparent' >
                         <iframe
                             width={350}
-                            className='w-full mx-auto h-screen'
+                            className='w-full h-screen'
                             src={item.html}></iframe>
                         {/* <iframe
                             className='w-full'
