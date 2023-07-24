@@ -11,5 +11,10 @@ const bpgArialCaps = localFont({
     display: 'swap',
     variable: '--font-arial-caps',
 })
+const firaGo = localFont({
+    src: './FiraGO-Regular.ttf',
+    display: 'swap',
+    variable: '--font-fira-go',
+})
 
-export { bpgArial, bpgArialCaps }
+export { bpgArial, bpgArialCaps, firaGo }

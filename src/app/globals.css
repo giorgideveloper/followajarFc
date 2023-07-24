@@ -15,13 +15,15 @@
     /* --background-end-rgb: 0, 0, 0; */
   }
 }
-.main{
 
-  background-image: url('../../public/bg1.png');
+.main {
+
+  background-image: url('../../public/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 30% 50%;
 }
+
 body {
   /* background-image: url('../../public/bg.png'); */
   /* background-repeat: no-repeat;
@@ -188,10 +190,6 @@ body {
   background-color: red;
 }
 
-
-
-
-
 .swiper {
   width: 100%;
   height: 100%;
@@ -238,8 +236,6 @@ body {
   margin: 0 10px;
   font-size: 13px;
 }
-
-
 
 .video-docker video {
   top: 50%;

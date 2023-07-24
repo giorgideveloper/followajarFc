@@ -1,7 +1,18 @@
+import { Metadata } from 'next'
+import { openGraphImage } from '../../shared-metadata'
+
+export const metadata: Metadata = {
+    title: 'პროექტის შესახებ',
+    openGraph: {
+        ...openGraphImage,
+        title: 'პროექტის შესახებ',
+    },
+}
+
 const Page = () => {
     return (
         <div className="container mx-auto my-10">
-            <div className="m-auto max-w-sm md:max-w-5xl">
+            <div className="mx-5 sm:m-auto max-w-sm md:max-w-5xl">
                 <article className="prose max-w-full text-justify">
                     <h1 className="text-center text-2xl md:text-4xl">პროექტის შესახებ</h1>
                     <p className="text-black">პროექტის შესახებ: აჭარის ტურიზმის დეპარტამენტმა შიდა ტურიზმის სტიმულირების მიზნით დაიწყო სარეკლამო კამპანია <b>„გამომყევი აჭარაში“</b>, რომლის ფარგლებშიც ქართველ ბლოგერებს, მოგზაურებს, ინფლუენსერებს, ფოტოგრაფ/ვიდეოგრაფებსა და ცნობილ სახეებს საშუალება ეძლევათ იმოგზაურონ აჭარაში, შექმნან საინტერესო კონტენტი, გაუზიარონ გამომწერებს და მოიგონ კამპანიის მთავარი პრიზი <b>100, 000 ლარი</b>.</p>

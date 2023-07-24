@@ -12,9 +12,9 @@ const Tabs = ({ data,userId }: any) => {
 
             selectedTabClassName='tab-active'>
             <TabList>
-                <Tab className="tab tab-lg tab-lifted font-arial-caps">პაკეტი</Tab>
-                <Tab className="tab tab-lg tab-lifted font-arial-caps">სქრინები</Tab>
-                <Tab className="tab tab-lg tab-lifted font-arial-caps">პროფილის რედაქტირება</Tab>
+                <Tab className="tab tab-lg tab-lifted font-fira-go">პაკეტი</Tab>
+                <Tab className="tab tab-lg tab-lifted font-fira-go">სქრინები</Tab>
+                <Tab className="tab tab-lg tab-lifted font-fira-go">პროფილის რედაქტირება</Tab>
             </TabList>
             <TabPanel>
                 <TourPackage

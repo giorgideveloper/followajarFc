@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        'fira-go': ['var(--font-fira-go)'],
         arial: ['var(--font-arial)'],
         'arial-caps': ['var(--font-arial-caps)'],
       },

@@ -27,10 +27,9 @@ interface IFormInput {
 }
 
 interface RegisterFormProps {
-    onSub?: () => void
 }
 
-const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
+const RegisterForm: FC<RegisterFormProps> = () => {
     const router = useRouter()
     const [error, setError] = useState<string>('')
     const [confirmation, setConfirmation] = useState<boolean>(false)
@@ -87,7 +86,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
                 throw error
             }
 
-            if (onSub) onSub()
+            // if (onSub) onSub()
             if (data) {
                 console.log('balaa');
 
@@ -246,7 +245,7 @@ const RegisterForm: FC<RegisterFormProps> = ({ onSub }) => {
                         {loading && <span className="loading loading-spinner"></span>}
                         რეგისტრაცია</button>
                 </div>
-                {error && <span className="text-red-700 mt-2">{error}</span>}
+                {/* {error && <span className="text-red-700 mt-2">{error}</span>} */}
                 {
                     confirmation &&
                     <div className="alert alert-success">

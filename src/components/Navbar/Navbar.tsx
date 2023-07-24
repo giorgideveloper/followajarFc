@@ -25,7 +25,8 @@ const navLinks = [
     },
     {
         href: '/register',
-        name: 'რეგისტრაცია'
+        name: 'რეგისტრაცია',
+        protected: true
     },
     {
         href: '/contact',
@@ -46,6 +47,17 @@ const Navbar = ({ metadata }: any) => {
         router.refresh()
     }
 
+    const handleClick = () => {
+        const elem = document.activeElement;
+        if (elem) {
+            setTimeout(() => {
+                //@ts-ignore
+                elem?.blur();
+            }, 100)
+        }
+    };
+
+
     useEffect(() => {
         supabase.auth.onAuthStateChange((_, sess) => {
             setSession(sess)
@@ -53,7 +65,7 @@ const Navbar = ({ metadata }: any) => {
     }, [])
 
     return (
-        <div className={`navbar px-5 md:px-20 bg-base-100 shadow-sm font-arial-caps`}>
+        <div className={`navbar px-5 md:px-20 bg-base-100 shadow-sm font-fira-go`}>
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -63,8 +75,8 @@ const Navbar = ({ metadata }: any) => {
                         {navLinks.map((link, i) => {
                             const isActive = pathname.startsWith(link.href)
 
-                            return (
-                                <li key={`nav-mob-${i}`}>
+                            return !(link.protected && session) && (
+                                <li key={`nav-mob-${i}`} onClick={handleClick}>
                                     <Link
                                         className={` ${isActive ? 'text-blue' : 'text-black'}`}
                                         href={link.href}
@@ -77,9 +89,9 @@ const Navbar = ({ metadata }: any) => {
                         })}
                     </ul>
                 </div>
-                <Link href="/" className="">
+                <Link href="/" className="p-0 m-0">
                     <Image
-
+                        className="w-24 h-20 md:h-auto object-contain"
                         alt=''
                         src={'/logo.png'}
                         width={90}
@@ -92,7 +104,7 @@ const Navbar = ({ metadata }: any) => {
                     {navLinks.map((link, i) => {
                         const isActive = pathname == link.href
 
-                        return (
+                        return !(link.protected && session) && (
                             <li key={`nav-${i}`}>
                                 <Link
                                     className={`hover:!bg-none hover:scale-110 border-b-cyan-800  ${isActive ? 'text-base font-semibold border-b-2 rounded-none rounded-t-md' : 'text-base'}`}
@@ -110,7 +122,7 @@ const Navbar = ({ metadata }: any) => {
                 {
                     session ?
                         <>
-                            <span className="font-arial text-gray-600">{metadata?.name} {metadata?.lastname}</span>
+                            <span className="font-fira-go text-gray-600">{metadata?.name} {metadata?.lastname}</span>
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
@@ -118,7 +130,7 @@ const Navbar = ({ metadata }: any) => {
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="mt-3 z-20 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                    <li>
+                                    <li onClick={handleClick}>
                                         <Link href='/profile'>პროფილი</Link>
                                     </li>
                                     <li>
@@ -128,7 +140,7 @@ const Navbar = ({ metadata }: any) => {
                             </div>
                         </>
                         :
-                        <a href="login" className="font-arial text-gray-600">შესვლა</a>
+                        <Link href='/login' className="font-fira-go text-gray-600">შესვლა</Link>
                 }
             </div>
         </div>

@@ -1,50 +1,33 @@
+'use client'
+
 import Input from "@/components/Form/Input"
+import { sendMail } from "./action"
+
+import { useRef, useState } from "react"
+import Submit from "./form"
+import { openGraphImage } from "@/app/shared-metadata"
+import { Metadata } from "next"
+
+  const metadata: Metadata = {
+    title: 'კონტაქტი',
+    openGraph: {
+        ...openGraphImage,
+        title: 'კონტაქტი',
+    },
+}
 
 const Page = () => {
+    const [status, setStatus] = useState<string>('')
+    const formRef = useRef<HTMLFormElement>(null)
 
-    async function sendMail(formData: FormData) {
-        'use server'
-        const nodemailer = require("nodemailer")
+    const formHandle = async (formData: FormData) => {
         const data = Object.fromEntries(formData.entries())
 
-        const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: true,
-            auth: {
-                user: process.env.NEXT_EMAIL_USER,
-                pass: process.env.NEXT_EMAIL_PASSWORD,
-            }
-        });
+        const response = await sendMail(data)
 
-
-        try {
-
-            transporter.verify(async function (error: any, success: any) {
-                if (error) {
-                    console.log('error', error);
-                } else {
-                    console.log("Server is ready to take our messages");
-
-                    const info = await transporter.sendMail({
-                        from: data.email,
-                        to: process.env.NEXT_EMAIL_USER,
-                        subject: data.subject,
-                        text: data.text
-                        // html: "<b>Hello world?</b>", // html body
-                    });
-
-                    console.log("Message sent: %s", info.messageId);
-
-                }
-            });
-
-        } catch (error) {
-            console.log(error);
-
-        }
+        if (response?.status === 200) setStatus(response.message)
+        formRef?.current?.reset()
     }
-
 
     return (
         <div className="container mx-auto px-4">
@@ -97,22 +80,31 @@ const Page = () => {
 
 
             <div className="card w-full bg-base-100 shadow-xl">
-                {/* <h1 className="text-2xl mb-10">დაგვიკავშირდით</h1> */}
-
                 <div className="card-body">
                     <h2 className="card-title">დაგვიკავშირდით</h2>
-                    <form className="w-full md:w-1/3" action={sendMail}>
+                    <form className="w-full md:w-1/3" action={formHandle} ref={formRef}>
                         <div className="flex flex-col gap-4 my-6 w-full">
                             <Input name="name" label="სახელი" placeholder="თქვენი სახელი" required />
                             <Input name="email" type="email" label="ელ. ფოსტა" placeholder="ელ. ფოსტა" required />
                             <Input name="subject" label="სათაური" placeholder="თემის სათაური" required />
                             <div>
+                                <label className="text-lg font-medium text-gray-900">
+                                    <span className="text-base label-text">ტექსტი</span>
+                                </label>
                                 <textarea name="text" className="textarea textarea-bordered w-full" placeholder="ტექსტი" required></textarea>
                             </div>
                             <div>
-                                <button type="submit" className="btn btn-neutral">გაგზავნა</button>
+                                <Submit ></Submit>
                             </div>
                         </div>
+
+                        {status == 'success' &&
+                            <div className="alert alert-success">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span>შეტყობინება წარმატებით გაიგზავნა!</span>
+                            </div>
+                        }
+
                     </form>
 
                 </div>

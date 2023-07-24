@@ -1,17 +1,24 @@
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar'
 import './globals.css'
+import "leaflet/dist/leaflet.css";
 
-import { bpgArial, bpgArialCaps } from '@/styles/fonts'
+import { bpgArial, bpgArialCaps, firaGo } from '@/styles/fonts'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import Script from 'next/script'
 import Image from 'next/image'
+import { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Visit batumi',
-  description: 'visit batumi',
+export const metadata: Metadata = {
+  title: 'Followajara',
+  description: "აჭარის ტურიზმის დეპარტამენტმა შიდა ტურიზმის სტიმულირების მიზნით დაიწყო სარეკლამო კამპანია „გამომყევი აჭარაში“, რომლის ფარგლებშიც ქართველ ბლოგერებს, მოგზაურებს, ინფლუენსერებს, ფოტოგრაფ/ვიდეოგრაფებსა და ცნობილ სახეებს საშუალება ეძლევათ იმოგზაურონ აჭარაში, შექმნან საინტერესო კონტენტი, გაუზიარონ გამომწერებს და მოიგონ კამპანიის მთავარი პრიზი 100, 000 ლარი",
+  openGraph: {
+    title: 'Followajara',
+    description: "აჭარის ტურიზმის დეპარტამენტმა შიდა ტურიზმის სტიმულირების მიზნით დაიწყო სარეკლამო კამპანია „გამომყევი აჭარაში“, რომლის ფარგლებშიც ქართველ ბლოგერებს, მოგზაურებს, ინფლუენსერებს, ფოტოგრაფ/ვიდეოგრაფებსა და ცნობილ სახეებს საშუალება ეძლევათ იმოგზაურონ აჭარაში, შექმნან საინტერესო კონტენტი, გაუზიარონ გამომწერებს და მოიგონ კამპანიის მთავარი პრიზი 100, 000 ლარი",
+  },
 }
+
 
 export const revalidate = 0;
 
@@ -39,7 +46,7 @@ export default async function RootLayout({
       <Script id="scrt">
         {` window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-YB0QW5TRGT');`}
       </Script>
-      <body className={`${bpgArial.variable} ${bpgArialCaps.variable}`}>
+      <body className={`${bpgArial.variable} ${bpgArialCaps.variable} ${firaGo.variable} font-fira-go`}>
         <Navbar metadata={data} />
         <main className='main'>
           {children}

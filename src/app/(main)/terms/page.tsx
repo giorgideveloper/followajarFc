@@ -1,9 +1,20 @@
+import { Metadata } from 'next'
 import './terms.css'
+import { openGraphImage } from '@/app/shared-metadata'
+
+export const metadata: Metadata = {
+    title: 'წესები და პირობები',
+    openGraph: {
+        ...openGraphImage,
+        title: 'წესები და პირობები',
+    },
+}
+
 
 const Page = () => {
     return (
         <div className="container mx-auto my-10">
-            <div className="m-auto max-w-sm md:max-w-5xl text-black">
+            <div className="mx-5 sm:m-auto max-w-sm md:max-w-5xl text-black">
                 <article className="prose max-w-full text-justify ">
                     <h1 className="text-center text-2xl md:text-4xl">წესები და პირობები</h1>
                     <h3>მონაწილეობის კრიტერიუმები: ვის შეუძლია მონაწილეობა?</h3>

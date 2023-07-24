@@ -8,19 +8,19 @@ const Footer = () => {
             <div className="divider"></div>
             <footer className="footer p-10 text-base-content justify-between">
                 <div>
-                    <span className="footer-title text-base label-text font-arial">ჩვენი სხვა ვებ-გვერდები</span>
-                    <a className="link link-hover text-md text-gray-500 font-arial" target="_blank" href="http://visitbatumi.com">visitbatumi.com</a>
-                    <a className="link link-hover text-md text-gray-500 font-arial" target="_blank" href="http://visitajara.com">visitajara.com</a>
-                    <a className="link link-hover text-md text-gray-500 font-arial" target="_blank" href="http://Batumievents.com">batumievents.com</a>
+                    <span className="footer-title text-base label-text font-fira-go">ჩვენი სხვა ვებ-გვერდები</span>
+                    <a className="link link-hover text-md text-gray-500 font-fira-go" target="_blank" href="http://visitbatumi.com">visitbatumi.com</a>
+                    <a className="link link-hover text-md text-gray-500 font-fira-go" target="_blank" href="http://visitajara.com">visitajara.com</a>
+                    <a className="link link-hover text-md text-gray-500 font-fira-go" target="_blank" href="http://Batumievents.com">batumievents.com</a>
                 </div>
                 <div>
-                    <span className="footer-title text-base label-text font-arial">საკონტაქტო ინფორმაცია</span>
-                    <a className="link link-hover text-md text-gray-500 font-arial">(+995) 577 90 90 93/91</a>
-                    <a href="mailto:infovisitbatumi@gmail.com" className="link link-hover text-md text-gray-500 font-arial">infovisitbatumi@gmail.com</a>
-                    <a className="link link-hover text-md text-gray-500 font-arial">84/86 ფარნავაზ მეფის ქუჩა, ბათუმი, საქართველო</a>
+                    <span className="footer-title text-base label-text font-fira-go">საკონტაქტო ინფორმაცია</span>
+                    <a className="link link-hover text-md text-gray-500 font-fira-go">(+995) 577 90 90 93/91</a>
+                    <a href="mailto:infovisitbatumi@gmail.com" className="link link-hover text-md text-gray-500 font-fira-go">infovisitbatumi@gmail.com</a>
+                    <a className="link link-hover text-md text-gray-500 font-fira-go">84/86 ფარნავაზ მეფის ქუჩა, ბათუმი, საქართველო</a>
                 </div>
                 {/* <div>
-                    <span className="footer-title text-base label-text font-arial">მობილური აპლიკაციები</span>
+                    <span className="footer-title text-base label-text font-fira-go">მობილური აპლიკაციები</span>
                     <a href="https://apps.apple.com/us/app/anbani-tour/id1579766195"
                         className="link link-hover ">
                         <Image
@@ -38,7 +38,7 @@ const Footer = () => {
                             alt="" /></a>
                 </div> */}
                 <div>
-                    <span className="footer-title text-base label-text font-arial">სოციალური ქსელები</span>
+                    <span className="footer-title text-base label-text font-fira-go">სოციალური ქსელები</span>
                     <div className="grid grid-flow-col gap-5">
                         <a href="https://www.facebook.com/visitbatumi" target="_blank" className="m-auto"><img src="./fb3.svg" alt="" width={30} height={30} /></a>
                         <a href="https://youtube.com/@Gobatumi" target="_blank" className="m-auto"><img src="./yt1.svg" alt="" width={30} height={30} /></a>

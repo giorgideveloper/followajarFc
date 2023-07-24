@@ -1,10 +1,10 @@
-import { createClientComponentClient, createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+'use client'
+import Input from "@/components/Form/Input"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import Input from "@/components/Form/Input"
-import { cookies } from "next/headers"
-import { redirect, useRouter } from "next/navigation"
-import Link from "next/link"
 
 
 interface IFormInput {
@@ -12,20 +12,17 @@ interface IFormInput {
     password: string
 }
 
-interface LoginFormProps {
-    onSub: () => void
-}
+interface LoginFormProps { }
 
-const LoginForm: FC<LoginFormProps> = ({ onSub }) => {
+const LoginForm: FC<LoginFormProps> = () => {
+    const router = useRouter()
     const [error, setError] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
     const supabase = createClientComponentClient()
 
     const {
         control,
-        register,
         handleSubmit,
-        watch,
         formState: { errors },
 
     } = useForm<IFormInput>({})
@@ -43,19 +40,20 @@ const LoginForm: FC<LoginFormProps> = ({ onSub }) => {
             }
 
             if (data.user) {
-                onSub()
-                // redirect('/app/')
-                // router.reload()
+                router.refresh()
+
+                setTimeout(() => {
+                    router.replace('/profile')
+                }, 100);
             }
-            setLoading(false)
-            console.log(error?.message);
 
         } catch (error) {
             console.log(error);
 
+        } finally {
+            setLoading(false)
         }
     }
-
 
     return (
         <>
@@ -66,7 +64,6 @@ const LoginForm: FC<LoginFormProps> = ({ onSub }) => {
                     rules={{ required: true }}
                     render={({ field }) => <Input {...field} label="ელ. ფოსტა" placeholder="ელ. ფოსტა" />}
                 />
-                {/* <Input label="name" type="email" register={register} required /> */}
                 {errors.email && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>}
 
                 <Controller

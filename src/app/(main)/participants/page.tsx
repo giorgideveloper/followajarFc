@@ -1,6 +1,17 @@
+import { openGraphImage } from "@/app/shared-metadata"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+import { Metadata } from "next"
 import { cookies } from "next/headers"
 import Image from "next/image"
+
+export const metadata: Metadata = {
+    title: 'მონაწილეები',
+    openGraph: {
+        ...openGraphImage,
+        title: 'მონაწილეები',
+    },
+}
+
 
 const Page = async () => {
     const supabase = createServerComponentClient({ cookies })
