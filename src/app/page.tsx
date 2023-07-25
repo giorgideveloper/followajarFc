@@ -23,6 +23,7 @@ export default async function Home() {
   let { data: reels, error } = await supabase
     .from('reels')
     .select('*')
+    .eq('active', true)
     .order('id', { ascending: false })
     .limit(25)
 

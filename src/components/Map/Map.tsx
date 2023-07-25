@@ -21,8 +21,8 @@ const markers = [
         title: 'ბოტანიკური ბაღი',
         position:
         {
-            lat: 41.6921091,
-            lng: 41.7074848
+            lat: 41.695768,
+            lng: 41.712146
         },
     },
     {
@@ -30,8 +30,8 @@ const markers = [
         title: 'გონიოს ციხე',
         position:
         {
-            lat: 41.5736833,
-            lng: 41.5724976
+            lat: 41.573170,
+            lng: 41.573216
         },
     },
     {
@@ -44,12 +44,30 @@ const markers = [
         },
     },
     {
+        letter: 'ე',
+        title: 'ევროპის მოედანი',
+        position:
+        {
+            lat: 41.651120,
+            lng: 41.636191
+        },
+    },
+    {
+        letter: 'ვ',
+        title: 'ველობილიკი ',
+        position:
+        {
+            lat: 41.647591,
+            lng: 41.620594
+        },
+    },
+    {
         letter: 'ზ',
         title: 'ზღვა',
         position:
         {
-            lat: 41.656423,
-            lng: 41.633144
+            lat: 41.8286517, 
+            lng: 41.7750078
         },
     },
     {
@@ -66,8 +84,8 @@ const markers = [
         title: 'იახნი',
         position:
         {
-            lat: 41.799330,
-            lng: 41.787096
+            lat: 41.797924,
+            lng:  41.786068
         },
     },
     {
@@ -75,8 +93,8 @@ const markers = [
         title: 'კვარიათი',
         position:
         {
-            lat: 41.5511055,
-            lng: 41.5643521
+            lat: 41.545749, 
+            lng: 41.561787
         },
     },
     {
@@ -84,8 +102,8 @@ const markers = [
         title: 'ლაზური ნავი',
         position:
         {
-            lat: 41.529038,
-            lng: 41.5489589
+            lat: 41.521867, 
+            lng: 41.549204
         },
     },
     {
@@ -93,8 +111,8 @@ const markers = [
         title: 'მაჭახელა',
         position:
         {
-            lat: 41.4881364,
-            lng: 41.8591731
+            lat: 41.489290, 
+            lng: 41.858906
         },
     },
     {
@@ -102,8 +120,8 @@ const markers = [
         title: 'ნობელები',
         position:
         {
-            lat: 41.6620388,
-            lng: 41.6801917
+            lat: 41.661698,
+            lng:  41.680265
         },
     },
     {
@@ -120,8 +138,8 @@ const markers = [
         title: 'პეტრას ციხე',
         position:
         {
-            lat: 41.7672517,
-            lng: 41.7536537
+            lat: 41.768576, 
+            lng:41.753206
         },
     },
     {
@@ -129,8 +147,8 @@ const markers = [
         title: 'ჟანგბადი',
         position:
         {
-            lat: 41.863777,
-            lng: 41.790268
+            lat:41.863688,
+            lng:  41.789911
         },
     },
     {
@@ -138,8 +156,8 @@ const markers = [
         title: 'რვაფეხა',
         position:
         {
-            lat: 41.6503631,
-            lng: 41.6253826
+            lat: 41.650014, 
+            lng: 41.625316
         },
     },
     {
@@ -147,8 +165,8 @@ const markers = [
         title: 'სხალთა',
         position:
         {
-            lat: 41.5846583,
-            lng: 42.3264525
+            lat: 41.584570,
+            lng: 42.329392
         },
     },
     {
@@ -156,8 +174,8 @@ const markers = [
         title: 'ტბიყელის ტბა',
         position:
         {
-            lat: 41.771111,
-            lng: 42.090757
+            lat: 41.770887, 
+            lng:42.090285
         },
     },
     {
@@ -165,8 +183,8 @@ const markers = [
         title: 'უჩხო ',
         position:
         {
-            lat: 41.6390650,
-            lng: 42.3046284
+            lat: 41.696954, 
+            lng:42.310812
         },
     },
     {
@@ -174,8 +192,8 @@ const markers = [
         title: 'ფრინველებზე დაკვირვება',
         position:
         {
-            lat: 41.6840167,
-            lng: 41.7315113
+            lat: 41.684470,
+            lng:  41.729928
         },
     },
     {
@@ -192,8 +210,8 @@ const markers = [
         title: 'ღამის ბათუმი',
         position:
         {
-            lat: 41.6367312,
-            lng: 41.6197333
+            lat: 41.636654, 
+            lng: 41.618648
         },
     },
     {
@@ -201,8 +219,8 @@ const markers = [
         title: 'ყავა ბათუმური',
         position:
         {
-            lat: 41.655644,
-            lng: 41.642918
+            lat:41.649380, 
+            lng:41.644850
         },
     },
     {
@@ -219,8 +237,8 @@ const markers = [
         title: 'ჩირუხი',
         position:
         {
-            lat: 41.5564324,
-            lng: 42.3068915
+            lat: 41.476720,
+            lng:  42.469798
         },
     },
     {
@@ -237,8 +255,8 @@ const markers = [
         title: 'ძველი ბათუმი',
         position:
         {
-            lat: 41.651531,
-            lng: 41.638223
+            lat: 41.6502136, 
+            lng: 41.6385755
         },
     },
     {
@@ -273,8 +291,8 @@ const markers = [
         title: 'ჯარა',
         position:
         {
-            lat: 41.570796,
-            lng: 41.979458
+            lat: 41.569776, 
+            lng: 41.979913
         },
     },
     {
@@ -282,8 +300,8 @@ const markers = [
         title: 'ჰორიზონტები',
         position:
         {
-            lat: 41.625699,
-            lng: 41.656162
+            lat: 41.5424240,
+            lng:  41.5578457
         },
     },
 ]

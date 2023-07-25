@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { openGraphImage } from '../../shared-metadata'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
     title: 'პროექტის შესახებ',
@@ -11,6 +12,8 @@ export const metadata: Metadata = {
 
 const Page = () => {
     return (
+        <>
+                <Image src='/1600x200.jpg'  width={1600}  height={200} objectFit='cover' className='w-full' alt='გვერდი' />
         <div className="container mx-auto my-10">
             <div className="mx-5 sm:m-auto max-w-sm md:max-w-5xl">
                 <article className="prose max-w-full text-justify">
@@ -36,6 +39,8 @@ const Page = () => {
                 </article>
             </div>
         </div>
+        </>
+
     )
 }
 

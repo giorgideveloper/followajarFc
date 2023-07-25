@@ -13,6 +13,7 @@ const Profile = async () => {
 
     if (!session) redirect('/')
     const userId = session.user.id
+    const userEmail = session.user.email
 
     let { data, error, status } = await supabase
         .from('profiles')
@@ -23,7 +24,7 @@ const Profile = async () => {
     return (
         <div className="card w-full md:w-2/3 lg:w-2/3 bg-base-100 shadow-xl mx-auto mt-6">
             <div className="card-body">
-                <Tabs data={data} userId={userId} />
+                <Tabs data={data} userId={userId} userEmail={userEmail} />
             </div>
         </div>
     )

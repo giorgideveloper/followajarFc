@@ -13,7 +13,7 @@ const Reels = ({ data }: any) => {
             <h1 className="font-medium text-xl sm:text-2xl md:text-2xl lg:text-2xl p-1 ml-10 text-gray-900">კამპანიის ფარგლებში ბოლოს დამატებული პოსტები</h1>
             <div className="divider"></div>
             <Swiper
-            
+
                 // onSwiper={setSwiperRef}
                 slidesPerView={1}
                 // centeredSlides={true}
@@ -42,21 +42,25 @@ const Reels = ({ data }: any) => {
             >
                 {data?.map((item: any, i: number) =>
                     <SwiperSlide key={i} className='w-full bg-transparent' >
-                        <iframe
-                            width={350}
-                            className='w-full h-screen'
-                            src={item.html}></iframe>
+                        {item.social !== 'ig' ?
+                            <iframe
+                                width={350}
+                                className='w-full h-screen'
+                                src={item.html}></iframe>
+                            :
+                            <div dangerouslySetInnerHTML={{ __html: item.html }}></div>
+                        }
+
                         {/* <iframe
-                            className='w-full'
-                            src="https://www.tiktok.com/embed/7072819797184171310"
-                            // width={300}
-                            height={600}
-                            // className={iframe}
-                            // allowfullscreen
-                            // scrolling="no"
-                            allow="encrypted-media;"
-                        ></iframe> */}
-                        {/* <div dangerouslySetInnerHTML={{ __html: item.html }}></div> */}
+                        className='w-full'
+                        src="https://www.tiktok.com/embed/7072819797184171310"
+                        // width={300}
+                        height={600}
+                        // className={iframe}
+                        // allowfullscreen
+                        // scrolling="no"
+                        allow="encrypted-media;"
+                    ></iframe> */}
                     </SwiperSlide>
                 )}
             </Swiper>
