@@ -34,11 +34,14 @@ const Letter: FC<LetterProps> = ({ letter, src }) => {
                 className="bg-contain bg-no-repeat p-4 md:p-10"
                 style={{
                     backgroundImage: 'url(/pin.svg)',
-                    backgroundPosition: '50% 50%', 
+                    backgroundPosition: '50% 50%',
                 }}
             >
                 <p
-                    className="font-medium text-lg -mt-4  md:text-3xl lg:text-4xl  p-1 hover:scale-125 transition-all text-gray-800"
+                    style={{
+                        color: '#1959FF'
+                    }}
+                    className="font-medium text-lg -mt-4  md:text-3xl lg:text-4xl  p-1 hover:scale-125 transition-all   "
                 >{letter} </p>
                 {modal ? (
                     <section className="modal__bg">

@@ -7,7 +7,6 @@ export async function updateUser(formData: any): Promise<{ status: number, messa
     try {
         const supabase = createServerComponentClient({ cookies })
 
-
         const { data, error } = await supabase.auth.updateUser({
             email: formData.userEmail,
             password: formData.password,

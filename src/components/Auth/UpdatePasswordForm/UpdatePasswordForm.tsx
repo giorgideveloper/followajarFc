@@ -8,7 +8,6 @@ const UpdatePasswordForm = ({ userEmail }: any) => {
     const formRef = useRef<HTMLFormElement>(null)
     const formHandle = async (formData: FormData) => {
         const data = Object.fromEntries(formData.entries())
-
         const response = await updateUser({ ...data, userEmail })
 
         if (response?.status === 200) setStatus(response.message)
@@ -19,8 +18,8 @@ const UpdatePasswordForm = ({ userEmail }: any) => {
         <>
             <form className='space-y-4 my-4' action={formHandle} ref={formRef}>
 
-                <Input label="პაროლი" type="password" placeholder="********" />
-                <Input label="გაიმეორეთ პაროლი" type="rePassword" placeholder="********" />
+                <Input name="password" label="პაროლი" type="password" placeholder="********" />
+                <Input label="გაიმეორეთ პაროლი" type="password" placeholder="********" />
 
                 <div>
                     <Submit ></Submit>
