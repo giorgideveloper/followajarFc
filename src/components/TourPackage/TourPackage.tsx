@@ -15,7 +15,7 @@ const TourPackage = ({ id }: { id: string }) => {
             <div className='flex flex-wrap flex-row gap-5 mt-10'>
 
                 {data?.places.map((item, index) =>
-                    <PlaceButton {...item} id={index} />
+                    <PlaceButton key={index} {...item} id={index} />
                 )}
             </div>
             {/* <div dangerouslySetInnerHTML={{ __html: content }} className='text-black' /> */}
