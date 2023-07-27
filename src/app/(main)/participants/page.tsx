@@ -19,12 +19,12 @@ const Page = async () => {
 
 
 
-    const { data: users, error } = await supabase
-        .from('users')
-        .select('*')
-        // .eq('active', true);
+    // const { data: users, error } = await supabase
+    //     .from('users')
+    //     .select('*')
+    //     // .eq('active', true);
 
-    console.log('users', users,error);
+    // console.log('users', users,error);
 
     return (
         <div className="container mx-auto my-4 px-7">
