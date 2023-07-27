@@ -1,3 +1,4 @@
+'use client'
 import { useRef, useState } from "react"
 import { updateUser } from "./action"
 import Input from "@/components/Form/Input"

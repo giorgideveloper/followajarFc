@@ -1,3 +1,4 @@
+
 import UpdatePasswordForm from "@/components/Auth/UpdatePasswordForm"
 
 const Page = () => {
