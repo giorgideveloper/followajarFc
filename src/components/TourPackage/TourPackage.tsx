@@ -10,7 +10,7 @@ const TourPackage = ({ id }: { id: string }) => {
 
 
     return (
-        <article className="prose max-w-full text-justify mt-10">
+        <div className="max-w-full text-justify mt-10">
             <h1 className="text-center text-xl">{romans[parseInt(id) - 1]} პაკეტის ინფორმაცია</h1>
             <div className='flex flex-wrap flex-row gap-5 mt-10'>
 
@@ -19,7 +19,7 @@ const TourPackage = ({ id }: { id: string }) => {
                 )}
             </div>
             {/* <div dangerouslySetInnerHTML={{ __html: content }} className='text-black' /> */}
-        </article>
+        </div>
     )
 }
 

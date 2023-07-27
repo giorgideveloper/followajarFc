@@ -17,4 +17,15 @@ const firaGo = localFont({
     variable: '--font-fira-go',
 })
 
-export { bpgArial, bpgArialCaps, firaGo }
+const Adaptirebuli = localFont({
+    src: './Adaptirebuli_1.otf',
+    display: 'swap',
+    variable: '--font-adaptirebuli',
+})
+const GeoGza = localFont({
+    src: './geo-gza.ttf',
+    display: 'swap',
+    variable: '--font-geo-gza',
+})
+
+export { bpgArial, bpgArialCaps, firaGo, Adaptirebuli, GeoGza }

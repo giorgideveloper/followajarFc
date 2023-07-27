@@ -41,7 +41,7 @@ const Letter: FC<LetterProps> = ({ letter, src }) => {
                     style={{
                         color: '#1959FF'
                     }}
-                    className="font-medium text-lg -mt-4 md:text-3xl lg:text-4xl  p-1 hover:scale-125 transition-all   "
+                    className="font-medium text-xl -mt-4 md:text-6xl lg:text-6xl  p-1 hover:scale-125 transition-all  font-adaptirebuli  "
                 >{letter} </p>
                 {modal ? (
                     <section className="modal__bg">

@@ -19,9 +19,7 @@ const Tabs = ({ data, userId, userEmail }: any) => {
                 <Tab className="tab tab-lg tab-lifted font-fira-go">პაროლის შეცვლა</Tab>
             </TabList>
             <TabPanel>
-                <TourPackage
-                    id={data.tour}
-                />
+                <TourPackage id={data.tour} />
             </TabPanel>
             <TabPanel>
                 <SocialScreens userId={userId} />
@@ -30,7 +28,7 @@ const Tabs = ({ data, userId, userEmail }: any) => {
                 <UpsertProfileForm defaults={{ ...data }} />
             </TabPanel>
             <TabPanel>
-                <UpdatePasswordForm  userEmail={userEmail}/>
+                <UpdatePasswordForm userEmail={userEmail} />
             </TabPanel>
         </Tb>
     )

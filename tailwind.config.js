@@ -8,6 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        'adaptirebuli': ['var(--font-adaptirebuli)'],
+        'geo-gza': ['var(--font-geo-gza)'],
         'fira-go': ['var(--font-fira-go)'],
         arial: ['var(--font-arial)'],
         'arial-caps': ['var(--font-arial-caps)'],

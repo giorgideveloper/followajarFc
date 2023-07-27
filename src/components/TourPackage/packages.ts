@@ -8,10 +8,10 @@ export default [
                 აქვე, იცოდით, რომ ტბაში წითელ ნუსხაში შეყვანილი კავკასიური ტრიტონი ბინადრობს?!
                 <p>სასარგებლო ინფორმაცია:</p>
                 <ul>
-                    <li>ტბიყელის ტბა: <a href="https://tinyurl.com/2azvufkt" target="_blank">https://tinyurl.com/2azvufkt</a></li>
-                    <li>კინტრიშის ეროვნული პარკი: <a href="https://old.visitajara.com/kintrishi-national-park" target="_blank">https://old.visitajara.com/kintrishi-national-park</a></li>
-                    <li>ეკო-სათავგადასავლო მარშრუტი ტბა ტბიყელზე: https://tinyurl.com/e222ed3a</li>
-                    <li>ტბა ტბიყელი და კინტრიშის დანისლული ნაკრძალი: https://gobatumi.com/ka/news/tba-tbikeli-da-kintrishis-danisluli-nakrdzali</li>
+                    <li>ტბიყელის ტბა: <a href="https://visitajara.com/sights/188" target="_blank">https://visitajara.com/sights/188</a></li>
+                    <li>კინტრიშის ეროვნული პარკი: <a href="https://visitajara.com/sights/78" target="_blank">https://visitajara.com/sights/78</a></li>
+                    <li>ეკო-სათავგადასავლო მარშრუტი ტბა ტბიყელზე: <a href="https://visitajara.com/routes/13" target="_blank">https://visitajara.com/routes/13 </a></li>
+                    <li>ტბა ტბიყელი და კინტრიშის დანისლული ნაკრძალი: <a href="https://gobatumi.com/ka/news/tba-tbikeli-da-kintrishis-danisluli-nakrdzali" target="_blank">https://gobatumi.com/ka/news/tba-tbikeli-da-kintrishis-danisluli-nakrdzali</a></li>
                     <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
                 </ul>`
             },
@@ -21,9 +21,9 @@ export default [
                 ციხისძირში მოხვედრისთანავე ეზიარები ამ ყოველივეს.
                 <p>სასარგებლო ინფორმაცია:</p>
                 <ul>
-                    <li>პეტრას ციხე: <a href="https://tinyurl.com/4udk4ejw" target="_blank" >https://tinyurl.com/4udk4ejw</a> </li>
-                    <li>ციხისძირი: https://tinyurl.com/mvw2xh4j </li>
-                    <li>ციხისძირის შუქურა – ახალი დასასვენებელი ადგილი ისტორიულ აგარაკებთან, პლაჟთან ახლოს: https://gobatumi.com/ka/news/cikhisdziris-shuqura</li>
+                    <li>პეტრას ციხე: <a href="https://visitajara.com/sights/45" target="_blank" >https://visitajara.com/sights/45</a> </li>
+                    <li>ციხისძირი: <a href="https://tinyurl.com/mvw2xh4j" target="_blank">https://tinyurl.com/mvw2xh4j</a> </li>
+                    <li>ციხისძირის შუქურა – ახალი დასასვენებელი ადგილი ისტორიულ აგარაკებთან, პლაჟთან ახლოს: <a href="https://gobatumi.com/ka/news/cikhisdziris-shuqura" target="_blank">https://gobatumi.com/ka/news/cikhisdziris-shuqura</a></li>
                     <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
                 </ul>`
             },
@@ -33,7 +33,7 @@ export default [
                 <p>ბათუმელების, და არამხოლოდ ბათუმელების, ერთ-ერთი საყვარელი რიტუალია, </p>
                 <p>აქ მომზადებულ ყავას სხვა სურნელი და გემო აქვს! </p>
                 <ul>
-                    <li>https://tinyurl.com/2s4c4e6w</li>
+                    <li><a href="https://tinyurl.com/2s4c4e6w" target="_blank">https://tinyurl.com/2s4c4e6w</a></li>
                 </ul>`
             },
             {
@@ -48,7 +48,7 @@ export default [
                 <p>აქვე ძველი ბათუმის ეკონომიკური და კულტურული განვითარების ისტორიის შესახებაც გაიგებ ბევრ სიახლეს.</p>
                 <p>სასარგებლო ბმულები: </p>
                 <ul>
-                    <li>ძმები ნობელების სახ.ბათუმის ტექნოლოგიური მუზეუმი: https://tinyurl.com/mrn3azn7 </li>
+                    <li>ძმები ნობელების სახ.ბათუმის ტექნოლოგიური მუზეუმი: <a href="https://tinyurl.com/mrn3azn7" target="_blank">https://tinyurl.com/mrn3azn7</a> </li>
                 </ul>`
             },
             {
@@ -69,15 +69,15 @@ export default [
                 description: ` <b>ხიხანის ციხე</b> - აჭარის მთებში, ღრუბლებთან ახლოს მდებარე ხიხანის ციხისკენ მიმავალი რთული და დამღლელი ბილიკით გაყვები ისტორიის ნაკვალევს,
                 <p>რომლის ბოლოსაც ციხე და გადაშლილი ხედი ზღაპრულ სამყაროში გაგრძნობინებს თავს.</p>
                 <ul>
-                    <li>ხიხანის ციხე - მწვანე სამოთხე, ღრუბლებთან ახლოს - https://tinyurl.com/mtv3cytc</li>
-                    <li>https://tinyurl.com/4kxbd8de</li>
+                    <li>ხიხანის ციხე - მწვანე სამოთხე, ღრუბლებთან ახლოს - <a href="https://tinyurl.com/mtv3cytc" target="_blank">https://tinyurl.com/mtv3cytc</a></li>
+                    <li><a href="https://visitajara.com/sights/111" target="_blank">https://visitajara.com/sights/111 </a></li>
                     <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
                 </ul>`
             },
             {
                 title: 'დანდალოს ხიდი',
                 description: ` <b>დანდალოს ხიდი</b> - სოფელ დანდალოს თბილი ხალხითა და აჭარული სტუმართმასპინძლობით მოხიბლულს, არ გამოგრჩეს, ბუნებაში ჩაფლული, დანდალოს საუკუნოვანი თაღოვანი ხიდი, რომელიც მდინარე აჭარისწყალზე დგას და ქართული სახიდე-სამშენებლო ხელოვნების უნიკალური ნიმუშია
-                https://tinyurl.com/mryut66d
+                <a href="https://visitajara.com/sights/25" target="_blank">https://visitajara.com/sights/25 </a>
 `
             },
             {
@@ -97,9 +97,9 @@ export default [
                     და აქვე, თქვენ იცოდით რომ ამ პატარა ქალაქში საქართველოში ყველაზე გრძელი ქუჩა მდებარეობს?!
                 </p>
                 <ul>
-                    <li> ქობულეთში მოგზაურობის 10 მთავარი მიზეზი: https://tinyurl.com/52y96yza</li>
-                    <li>   https://visitajara.com/</li>
-                    <li> https://gobatumi.com/ka</li>
+                    <li> ქობულეთში მოგზაურობის 10 მთავარი მიზეზი: <a href="https://tinyurl.com/52y96yza" target="_blank">https://tinyurl.com/52y96yza</a></li>
+                    <li><a href="https://visitajara.com/" target="_blank">https://visitajara.com/</a></li>
+                    <li><a href="https://gobatumi.com/ka" target="_blank">https://gobatumi.com/ka</a></li>
                     <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
                 </ul>`
             },
@@ -108,8 +108,8 @@ export default [
                 description: `  წვიმა - ფოთლებზე მოწკაპუნე წვიმის წვეთების ხმა, ნისლში გახვეული ადგილები, მყუდრო და მისტიკური გარემო, წვიმა არის ბედნიერება!
                 <p>და უკვე იცი, რომ ბათუმი წვიმისას კიდევ უფრო განსხვავებულად ლამაზია?! აქაც არჩევანში შეზღუდული არა ხარ,</p>
                 <ul>
-                    <li>მტირალას ეროვნული პარკი: https://tinyurl.com/muc8vnx4</li>
-                    <li>მარშრუტები: https://tinyurl.com/3awnbp4w</li>
+                    <li>მტირალას ეროვნული პარკი: <a href="https://tinyurl.com/muc8vnx4" target="_blank">https://tinyurl.com/muc8vnx4</a></li>
+                    <li>მარშრუტები: <a href="https://tinyurl.com/3awnbp4w" target="_blank">https://tinyurl.com/3awnbp4w</a></li>
                 </ul>`
             },
             {
@@ -126,8 +126,8 @@ export default [
                 description: ` <b>უჩხო</b> - თუკი თავგადასავლები და ექსტრემალური სპორტი გიზიდავთ, უჩხოს თქვენთვის ბევრი საინტერესო ადგილი აქვს.
                 <p>უჩხოში შეგიძლიათ კანიონინგით დაკავდეთ, დალაშქროთ კილომეტრნახევრიანი კანიონი და კასკადოვან ჩანჩქერებზე თოკით დაეშვათ.</p>
                 <ul>
-                    <li>დაბა ხულო - სოფ. უჩხო - სოფ. უჩხოს ჩანჩქერები: https://tinyurl.com/wc8sfcfs </li>
-                    <li>კანიონინგი აჭარაში: https://tinyurl.com/venpkpx3</li>
+                    <li>დაბა ხულო - სოფ. უჩხო - სოფ. უჩხოს ჩანჩქერები: <a href="https://visitajara.com/routes/16" target="_blank">https://visitajara.com/routes/16</a></li>
+                    <li>კანიონინგი აჭარაში: <a href="https://visitajara.com/routes/23" target="_blank">https://visitajara.com/routes/23</a></li>
                     <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
                 </ul>`
             },
@@ -137,7 +137,7 @@ export default [
                 <p>პეტრას ციხეს უნდა ეწვიო,
                     აქ ნანახით აუცილებლად მოიხიბლებით </p>
                 <ul>
-                    <li>პეტრას ციხე: https://tinyurl.com/4udk4ejw </li>
+                    <li>პეტრას ციხე: <a href="https://visitajara.com/sights/45" target="_blank">https://visitajara.com/sights/45 </a> </li>
                 </ul>`
             },
             {
@@ -154,8 +154,8 @@ export default [
                 და უკვე იცი, რომ ბათუმი წვიმისას კიდევ უფრო განსხვავებულად ლამაზია?!
                 <p>აქაც არჩევანში შეზღუდული არა ხარ,</p>
                 <ul>
-                    <li>მტირალას ეროვნული პარკი: https://tinyurl.com/muc8vnx4</li>
-                    <li>მარშრუტები: https://tinyurl.com/3awnbp4w</li>
+                    <li>მტირალას ეროვნული პარკი: <a href="https://visitajara.com/sights/77" target="_blank">https://visitajara.com/sights/77</a></li>
+                    <li>მარშრუტები: <a href="https://visitajara.com/routes/7" target="_blank">https://visitajara.com/routes/7</a></li>
                 </ul>`
             },
             {
@@ -182,8 +182,8 @@ export default [
                 description: ` <b>ჩირუხის მთა</b> - თუკი გსურს ღრუბლებზე მაღალა, მზესთან ახლოს ამოყო თავი, ჩირუხის მთებს უნდა ეწვიო,
                 <p>სიმშვიდე, თვალწარმტაცი ბუნება, სუფთა ჰაერი... აქ შენთვის ყველაფერია!</p>
                 <ul>
-                    <li>ჩირუხი -  https://tinyurl.com/3xxvsy9v</li>
-                    <li>ჩირუხი-ხიხანი-გოდერძის ალპური მარშრუტი: https://tinyurl.com/33zax8fy </li>
+                    <li>ჩირუხი -  <a href="https://visitajara.com/alpine-ajara/2" target="_blank">https://visitajara.com/alpine-ajara/2</li>
+                    <li>ჩირუხი-ხიხანი-გოდერძის ალპური მარშრუტი: <a href="https://visitajara.com/routes/10" target="_blank">https://visitajara.com/routes/10 </a></li>
                 </ul>`
             },
             {
@@ -193,9 +193,9 @@ export default [
                 <br />
                 და აქვე, თქვენ იცოდით რომ ამ პატარა ქალაქში საქართველოში ყველაზე გრძელი ქუჩა მდებარეობს?!
                 <ul>
-                    <li>ქობულეთში მოგზაურობის 10 მთავარი მიზეზი: https://tinyurl.com/52y96yza </li>
-                    <li>https://visitajara.com/</li>
-                    <li>https://gobatumi.com/ka</li>
+                    <li>ქობულეთში მოგზაურობის 10 მთავარი მიზეზი: <a href="https://tinyurl.com/52y96yza" target="_blank">https://tinyurl.com/52y96yza</a> </li>
+                    <li><a href="https://visitajara.com/" target="_blank">https://visitajara.com/</a></li>
+                    <li><a href="https://gobatumi.com/ka" target="_blank">https://gobatumi.com/ka</a></li>
                     <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
                 </ul>`
             },
@@ -203,7 +203,7 @@ export default [
                 title: 'გონიოს ციხე',
                 description: ` <b>გონიოს ციხე</b> - ისტორიით ხარ დაინტერესებული?! მაშინ რომაელთა ნაკვალევზე უნდა გაიარო, რამდენიმე წუთით ძველ დროში აღმოჩნდე და გონებაში იმდროინდელი კადრები გააცოცხლო. გონიოს ციხეში მოსმენილი და ნანახი ისტორიაში მოგზაურობის შესაძლებლობას მოგცემს
                 <ul>
-                    <li>გონიოს ციხე: https://tinyurl.com/38cwcy6t</li>
+                    <li>გონიოს ციხე: <a href="https://visitajara.com/sights/189" target="_blank">https://visitajara.com/sights/189 </a></li>
                 </ul>`
             },
             {
@@ -238,8 +238,8 @@ export default [
             <ul>
                 <li>ჭვანა: <a href="https://tinyurl.com/477fhd4t" target="_blank">https://tinyurl.com/477fhd4t</a></li>
                 <li>ხაბელაშვილების ხის თაღოვანი ხიდი: <a href="https://infoajara.com/u/8047828" target="_blank">https://infoajara.com/u/8047828</a></li>
-                <li>ლელთის ტბა: <a href="https://infoajara.com/u/5040703" target="_blank">https://infoajara.com/u/5040703</a></li>
-                <li>ბრილი-ლელთის ტბა-ხაბელაშვილები (ჭვანის ხეობა): <a href="https://infoajara.com/u/9699702" target="_blank">https://infoajara.com/u/9699702</a></li>
+                <li>ლელთის ტბა: <a href="https://visitajara.com/sights/19" target="_blank">https://visitajara.com/sights/19</a></li>
+                <li>ბრილი-ლელთის ტბა-ხაბელაშვილები (ჭვანის ხეობა): <a href="https://visitajara.com/routes/34" target="_blank">https://visitajara.com/routes/34</a></li>
             </ul>`
             },
             {
@@ -294,8 +294,8 @@ export default [
             <p>რომელიც ევროპაში სიდიდით მეორე ადგილზეა, ის გამორჩეულია იმითაც, რომ მას არა აქვს საყრდენი კონსტრუქცია.</p>
             <p>სასარგებლო ბმულები:</p>
             <ul>
-                <li>https://infoajara.com/u/7147195</li>
-                <li>თაგო - სხალთის საფეხმავლო მარშრუტი: https://infoajara.com/u/2315243</li>
+                <li><a href="https://infoajara.com/u/7147195" target="_blank">https://infoajara.com/u/7147195</a></li>
+                <li>თაგო - სხალთის საფეხმავლო მარშრუტი: <a href="https://visitajara.com/routes/8" target="_blank">https://visitajara.com/routes/8 </a></li>
             </ul>
             `
             },
@@ -305,8 +305,8 @@ export default [
                 <b>სხალთა</b> - ხულოში მოხვედრისას, ბუნებასთან ჰარმონიულად შერწყმული სხალთის ეკლესია უნდა მოინახულო,
                 რთულია, სხალთის ხეობას ეწვიო და არ შეგიყვარდეს აქაურობა.
                 <ul>
-                    <li>https://infoajara.com/u/7291734</li>
-                    <li>სხალთა-ხიხანის ისტორიულ-კულტურული მარშრუტი- https://infoajara.com/u/6286068</li>
+                    <li><a href="https://infoajara.com/u/7291734" target="_blank">https://infoajara.com/u/7291734</a></li>
+                    <li>სხალთა-ხიხანის ისტორიულ-კულტურული მარშრუტი- <a href="https://visitajara.com/routes/11" target="_blank">https://visitajara.com/routes/11 </a></li>
                     <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
                 </ul>
                 `
@@ -316,8 +316,8 @@ export default [
                 description: `
                 <b>ბოტანიკური ბაღი</b> - თუკი გსურს დედამიწაზე პატარა, მწვანე სამოთხეში აღმოჩნდე, განსაკუთრებული მრავალფეროვნებით გამორჩეული ბათუმის ბოტანიკური ბაღი უნდა მოინიშნო, აქ ყოველი სტუმრობა ახალი შთაბეჭდილებები და ემოციებია
                 <ul>
-                    <li>ბოტანიკური ბაღი: http://bbg.ge/ge/home</li>
-                    <li>ზიპ ლაინი - https://www.ziplinegeorgia.ge/ ; 555 59 59 52 - ზიპ ლაინის ეროვნული ფედერაცია;</li>
+                    <li>ბოტანიკური ბაღი: <a href="http://bbg.ge/ge/home" target="_blank">http://bbg.ge/ge/home</a></li>
+                    <li>ზიპ ლაინი - <a href="https://www.ziplinegeorgia.ge/" target="_blank">https://www.ziplinegeorgia.ge/</a> ; 555 59 59 52 - ზიპ ლაინის ეროვნული ფედერაცია;</li>
                 </ul>
                 `
             },
@@ -354,11 +354,11 @@ export default [
                 title: 'ზედა მაჭახელა',
                 description: `
                 <b>ზედა მაჭახელა</b> - ეს მაჭახელას სახელგანთქმული თოფია, რომლის დამზადების ტექნიკასა და ისტორიას ხეობაშივე გაეცნობი.
-    <br />
+                <br />
     აქვე, „მაჭახელას თოფის გზა“ მოინიშნე, თუ ჯერ არ გინახავს, ერთ-ერთი საინტერესო მარშრუტი წინ გელის!
     <ul>
-        <li>https://infoajara.com/u/9886689</li>
-        <li>მაჭახელას თოფის გზა: https://infoajara.com/u/7219637</li>
+        <li><a href="https://infoajara.com/u/9886689" target="_blank">https://infoajara.com/u/9886689</a></li>
+        <li>მაჭახელას თოფის გზა: <a href="https://visitajara.com/routes/6" target="_blank">https://visitajara.com/routes/6 </a></li>
     </ul>
     `
             },
@@ -391,9 +391,9 @@ export default [
                 <p>იცოდით, რომ აჭარა მსოფლიოში მტაცებელ ფრინველთა მიგრაციის ერთ-ერთ უდიდეს კორიდორად ითვლება?!</p>
                 <p>წელს ჩვენთან რეკორდიც კი დამყარდა, მილიონზე მეტმა მტაცებელმა ფრინველმა გადაუფრინა რეგიონს, ეს შთამბეჭდავი სანახაობა კი მგონი არ უნდა გამოტოვო</p>
                 <ul>
-                    <li>https://infoajara.com/u/3223766</li>
-                    <li>სახალვაშო: https://old.visitajara.com/ka/mountainous-ajara-sights/Sakhalvasho</li>
-                    <li>საპიკნიკე: https://old.visitajara.com/ka/picnic-areas-details/Shuamta-39</li>
+                    <li><a href="https://visitajara.com/routes/15" target="_blank">https://visitajara.com/routes/15</a></li>
+                    <li>სახალვაშო: <a href="https://batumibirdfest.com/page/5-sakhalvasho " target="_blank">https://batumibirdfest.com/page/5-sakhalvasho </a></li>
+                    <li>საპიკნიკე: <a href="https://batumibirdfest.com/page/6-shuamta" target="_blank">https://batumibirdfest.com/page/6-shuamta</a></li>
                     <li>სხვა დეტალისთვის დაუკავშირდი ტურისტულ საინფორმაციო ცენტრს: 577 90 90 93 / 91</li>
                 </ul>`
             },
