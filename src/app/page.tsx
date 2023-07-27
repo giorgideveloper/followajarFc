@@ -3,11 +3,11 @@ import Hero from '@/components/Hero'
 import Reels from '@/components/Reels'
 import { openGraphImage } from './shared-metadata'
 
-import dynamic from "next/dynamic"
+// import dynamic from "next/dynamic"
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-
-const MyAwesomeMap = dynamic(() => import("@/components/Map"), { ssr: false })
+import Map from '@/components/Map'
+// const MyAwesomeMap = dynamic(() => import("@/components/Map"), { ssr: false })
 
 export const metadata = {
   title: 'მთავარი',
@@ -35,7 +35,8 @@ export default async function Home() {
       {/* </div> */}
       <Alphabet />
       <Reels data={reels} />
-      <MyAwesomeMap />
+
+      <Map />
       {/* <div className="divider"></div>  */}
       {/* <div className='container mx-auto'> */}
       {/* </div> */}

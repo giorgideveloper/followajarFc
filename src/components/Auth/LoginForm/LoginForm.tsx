@@ -74,7 +74,11 @@ const LoginForm: FC<LoginFormProps> = () => {
                 />
                 {errors.password && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>}
 
-                <div>
+                <div className="flex items-center justify-end">
+                    <Link href='reset' className="btn btn-ghost self-end" >დაგავიწყდათ პაროლი?</Link>
+                </div>
+
+                <div >
                     <button className="btn btn-block btn-primary" type='submit'>
                         {loading && <span className="loading loading-spinner"></span>}
                         შესვლა</button>

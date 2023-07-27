@@ -17,6 +17,15 @@ const Page = async () => {
     const supabase = createServerComponentClient({ cookies })
     const res = await supabase.from('profiles').select('*')
 
+
+
+    const { data: users, error } = await supabase
+        .from('users')
+        .select('*')
+        // .eq('active', true);
+
+    console.log('users', users,error);
+
     return (
         <div className="container mx-auto my-4 px-7">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

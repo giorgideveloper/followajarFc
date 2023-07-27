@@ -31,7 +31,7 @@ const Letter: FC<LetterProps> = ({ letter, src }) => {
                 type="button"
                 key={letter}
                 onClick={openModal}
-                className="bg-contain bg-no-repeat p-4 md:p-10"
+                className="bg-contain bg-no-repeat p-4 md:p-10 m-1 md:m-2 lg:m-4 "
                 style={{
                     backgroundImage: 'url(/pin.svg)',
                     backgroundPosition: '50% 50%',
@@ -41,7 +41,7 @@ const Letter: FC<LetterProps> = ({ letter, src }) => {
                     style={{
                         color: '#1959FF'
                     }}
-                    className="font-medium text-lg -mt-4  md:text-3xl lg:text-4xl  p-1 hover:scale-125 transition-all   "
+                    className="font-medium text-lg -mt-4 md:text-3xl lg:text-4xl  p-1 hover:scale-125 transition-all   "
                 >{letter} </p>
                 {modal ? (
                     <section className="modal__bg">

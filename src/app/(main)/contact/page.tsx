@@ -32,7 +32,9 @@ const Page = () => {
     return (
         <div className="container mx-auto px-4">
             <div className="my-10">
-                <iframe
+            <iframe src="https://contact-map.vercel.app" width="100%" height="375"></iframe>
+
+                {/* <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4276.050523350726!2d41.635257207721374!3d41.648192529758134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406786151e3f0a0f%3A0x7c6e5a872743c65!2zODQvODYg4YOk4YOQ4YOg4YOc4YOQ4YOV4YOQ4YOWIOGDm-GDlOGDpOGDmOGDoSDhg6Xhg6Phg6nhg5AsIOGDkeGDkOGDl-GDo-GDm-GDmCA2MDEw!5e0!3m2!1ska!2sge!4v1688888639296!5m2!1ska!2sge"
                     width="100%"
                     height="450"
@@ -43,7 +45,7 @@ const Page = () => {
                     loading="lazy"
                 // referrerpolicy="no-referrer-when-downgrade"
                 >
-                </iframe>
+                </iframe> */}
             </div>
 
 
