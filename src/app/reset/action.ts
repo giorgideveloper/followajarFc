@@ -8,7 +8,7 @@ export async function sendResetLink(formData: any): Promise<{ status: number, me
         const supabase = createServerComponentClient({ cookies })
 
         let { data, error } = await supabase.auth.resetPasswordForEmail(formData.email, {
-            redirectTo: 'https://followajara.ge/auth/reset?next=/profile/update-password'
+            redirectTo: 'https://followajara.ge/auth/reset'
         })
         // console.log("Message sent: %s", data);
         return { status: 200, message: 'success' }
