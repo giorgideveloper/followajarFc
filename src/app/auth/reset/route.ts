@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 export const dynamic = 'force-dynamic';
 
-export async function GET(response: NextResponse, request: NextRequest) {
+export async function GET(request: NextRequest) {
   const requestUrl = new URL(request.url)
   const code = requestUrl.searchParams.get('code')
 
@@ -17,7 +17,7 @@ export async function GET(response: NextResponse, request: NextRequest) {
   const next = requestUrl.searchParams.get('next')
 
   // using NextJS API response object in this example
-  // response.redirect(next)
+  // res.redirect(next)
 
   // URL to redirect to after sign in process completes
   //@ts-ignore
