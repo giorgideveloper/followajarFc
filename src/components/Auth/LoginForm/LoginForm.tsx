@@ -1,6 +1,7 @@
 'use client'
 import Input from "@/components/Form/Input"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { Auth } from "@supabase/auth-ui-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { FC, useState } from "react"
@@ -57,6 +58,9 @@ const LoginForm: FC<LoginFormProps> = () => {
 
     return (
         <>
+         {/* <Auth supabaseClient={supabase} 
+         
+         redirectTo={'https://followajara.ge/auth/reset?next=/profile/update-password'}/> */}
             <form className='space-y-4 my-4' onSubmit={handleSubmit(onSubmit)}>
                 <Controller
                     name="email"

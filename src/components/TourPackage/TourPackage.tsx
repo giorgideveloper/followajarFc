@@ -12,7 +12,7 @@ const TourPackage = ({ id }: { id: string }) => {
     return (
         <div className="max-w-full text-justify mt-10">
             <h1 className="text-center text-xl">{romans[parseInt(id) - 1]} პაკეტის ინფორმაცია</h1>
-            <div className='flex flex-wrap flex-row gap-5 mt-10'>
+            <div className='flex flex-wrap flex-row gap-5 mt-10 justify-center'>
 
                 {data?.places.map((item, index) =>
                     <PlaceButton key={index} {...item} id={index} />
