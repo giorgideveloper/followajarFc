@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar'
 import './globals.css'
 import "leaflet/dist/leaflet.css";
 
-import { bpgArial, bpgArialCaps, firaGo, Adaptirebuli, GeoGza } from '@/styles/fonts'
+import {  firaGo, Adaptirebuli, GeoGza } from '@/styles/fonts'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import Script from 'next/script'
@@ -46,7 +46,7 @@ export default async function RootLayout({
       <Script id="scrt">
         {` window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-YB0QW5TRGT');`}
       </Script>
-      <body className={`${bpgArial.variable} ${bpgArialCaps.variable} ${firaGo.variable} ${Adaptirebuli.variable} ${GeoGza.variable} font-fira-go`}>
+      <body className={`${firaGo.variable} ${Adaptirebuli.variable} ${GeoGza.variable} font-fira-go`}>
         <Navbar metadata={data} />
         <main className='main'>
           {children}

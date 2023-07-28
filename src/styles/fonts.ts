@@ -1,16 +1,5 @@
 import localFont from 'next/font/local'
 
-const bpgArial = localFont({
-    src: './bpg-arial-webfont.woff2',
-    display: 'swap',
-    variable: '--font-arial',
-})
-
-const bpgArialCaps = localFont({
-    src: './bpg-arial-caps-webfont.woff2',
-    display: 'swap',
-    variable: '--font-arial-caps',
-})
 const firaGo = localFont({
     src: './FiraGO-Regular.ttf',
     display: 'swap',
@@ -22,10 +11,11 @@ const Adaptirebuli = localFont({
     display: 'swap',
     variable: '--font-adaptirebuli',
 })
+
 const GeoGza = localFont({
     src: './geo-gza.ttf',
     display: 'swap',
     variable: '--font-geo-gza',
 })
 
-export { bpgArial, bpgArialCaps, firaGo, Adaptirebuli, GeoGza }
+export { firaGo, Adaptirebuli, GeoGza }

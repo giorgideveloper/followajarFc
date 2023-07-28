@@ -11,8 +11,6 @@ module.exports = {
         'adaptirebuli': ['var(--font-adaptirebuli)'],
         'geo-gza': ['var(--font-geo-gza)'],
         'fira-go': ['var(--font-fira-go)'],
-        arial: ['var(--font-arial)'],
-        'arial-caps': ['var(--font-arial-caps)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
