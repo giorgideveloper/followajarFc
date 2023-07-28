@@ -52,7 +52,7 @@ const Page = () => {
             <div className="flex flex-wrap gap-10 my-10 justify-between items-start">
                 <div className="">
                     <h3 className="text-lg mb-3">დაგვირეკეთ</h3>
-                    <p className="text-slate-600 text-sm">(+995) 577 90 90 93/91</p>
+                    <p className="text-slate-600 text-sm">(+995) 599 16 99 09</p>
                 </div>
 
                 <div className="">

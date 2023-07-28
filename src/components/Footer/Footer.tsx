@@ -15,7 +15,7 @@ const Footer = () => {
                 </div>
                 <div>
                     <span className="footer-title text-base label-text font-fira-go">საკონტაქტო ინფორმაცია</span>
-                    <a className="link link-hover text-md text-gray-500 font-fira-go">(+995) 577 90 90 93/91</a>
+                    <a className="link link-hover text-md text-gray-500 font-fira-go">(+995) 599 16 99 09</a>
                     <a href="mailto:infovisitbatumi@gmail.com" className="link link-hover text-md text-gray-500 font-fira-go">infovisitbatumi@gmail.com</a>
                     <a className="link link-hover text-md text-gray-500 font-fira-go">84/86 ფარნავაზ მეფის ქუჩა, ბათუმი, საქართველო</a>
                 </div>
