@@ -28,7 +28,6 @@ const Hero = () => {
                 <p className="text-3xl lg:text-7xl tracking-widest font-geo-gza"><span className="font-fira-go">#</span>gamomyeviaWaraSi</p>
                 <p className="text-3xl lg:text-7xl tracking-widest font-geo-gza">da moige</p>
                 <p className="font-bold text-5xl lg:text-9xl tracking-widest mt-10 font-geo-gza">100 000 ₾</p>
-                {/* <h3 className="font-light text-3xl lg:text-6xl tracking-widest mt-10 font-geo-gza">100 000 ლარი</h3> */}
             </div>
         </section>
     )
