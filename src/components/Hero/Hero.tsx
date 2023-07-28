@@ -24,10 +24,10 @@ const Hero = () => {
 
                 </video>
             </div>
-            <div className="video-content space-y-2">
-                <p className="font-light text-3xl lg:text-6xl tracking-widest font-geo-gza"><span className="font-fira-go">#</span>გამომყევიაჭარაში</p>
-                <p className="font-light text-3xl lg:text-6xl tracking-widest font-geo-gza">და მოიგე</p>
-                <p className="font-light text-3xl lg:text-6xl tracking-widest mt-10 font-geo-gza">100 000 ლარი</p>
+            <div className="video-content space-y-8">
+                <p className="text-3xl lg:text-7xl tracking-widest font-geo-gza"><span className="font-fira-go">#</span>gamomyeviaWaraSi</p>
+                <p className="text-3xl lg:text-7xl tracking-widest font-geo-gza">da moige</p>
+                <p className="font-bold text-3xl lg:text-9xl tracking-widest mt-10 font-geo-gza">100 000 ₾</p>
                 {/* <h3 className="font-light text-3xl lg:text-6xl tracking-widest mt-10 font-geo-gza">100 000 ლარი</h3> */}
             </div>
         </section>

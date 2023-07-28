@@ -13,7 +13,7 @@ const Adaptirebuli = localFont({
 })
 
 const GeoGza = localFont({
-    src: './geo-gza.ttf',
+    src: './geo-gza.woff',
     display: 'swap',
     variable: '--font-geo-gza',
 })

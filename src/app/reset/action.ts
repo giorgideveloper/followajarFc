@@ -10,7 +10,7 @@ export async function sendResetLink(formData: any): Promise<{ status: number, me
         let { data, error } = await supabase.auth.resetPasswordForEmail(formData.email, {
             redirectTo: 'https://followajara.ge/api/auth/reset?next=/profile/update-password'
         })
-        console.log("Message sent: %s", data);
+        // console.log("Message sent: %s", data);
         return { status: 200, message: 'success' }
     } catch (error) {
         console.log(error);
