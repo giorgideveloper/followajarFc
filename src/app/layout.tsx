@@ -1,13 +1,12 @@
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar'
 import './globals.css'
-import "leaflet/dist/leaflet.css";
 
 import {  firaGo, Adaptirebuli, GeoGza } from '@/styles/fonts'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import Script from 'next/script'
-import Image from 'next/image'
+
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
