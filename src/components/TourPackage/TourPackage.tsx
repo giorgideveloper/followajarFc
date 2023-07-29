@@ -1,9 +1,7 @@
-import tours from './tours'
-import packages from './packages'
 import PlaceButton from './PlaceButton'
+import packages from './packages'
 
 const TourPackage = ({ id }: { id: string }) => {
-    // const content = tours[id - 1]
     const romans = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']
 
     const data = packages.find(item => item.id == parseInt(id))

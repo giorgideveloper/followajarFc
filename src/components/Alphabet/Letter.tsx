@@ -3,8 +3,6 @@
 import { FC, useState } from "react";
 import { Alphabet } from "./types";
 
-import Modal from 'react-modal';
-
 interface LetterProps extends Alphabet {
 
 }
@@ -82,6 +80,5 @@ const Letter: FC<LetterProps> = ({ letter, src }) => {
 
     )
 }
-
 
 export default Letter

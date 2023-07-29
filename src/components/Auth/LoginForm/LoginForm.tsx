@@ -79,7 +79,7 @@ const LoginForm: FC<LoginFormProps> = () => {
                 {errors.password && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>}
 
                 <div className="flex items-center justify-end">
-                    <Link href='reset' className="btn btn-ghost self-end" >დაგავიწყდათ პაროლი?</Link>
+                    <Link href='reset' className="self-end hover:text-blue-800 hover:underline" >დაგავიწყდათ პაროლი?</Link>
                 </div>
 
                 <div >
