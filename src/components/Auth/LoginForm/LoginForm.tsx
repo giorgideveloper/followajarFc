@@ -68,7 +68,7 @@ const LoginForm: FC<LoginFormProps> = () => {
                     rules={{ required: true }}
                     render={({ field }) => <Input {...field} label="ელ. ფოსტა" placeholder="ელ. ფოსტა" />}
                 />
-                {errors.email && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>}
+                {errors.email && <span className="text-red-700 text-sm mt-2">* აუცილებელი ველი</span>}
 
                 <Controller
                     name="password"
@@ -76,7 +76,7 @@ const LoginForm: FC<LoginFormProps> = () => {
                     rules={{ required: true }}
                     render={({ field }) => <Input {...field} label="პაროლი" type="password" placeholder="შეიყვანეთ პაროლი" />}
                 />
-                {errors.password && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>}
+                {errors.password && <span className="text-red-700 text-sm mt-2">* აუცილებელი ველი</span>}
 
                 <div className="flex items-center justify-end">
                     <Link href='reset' className="self-end hover:text-blue-800 hover:underline" >დაგავიწყდათ პაროლი?</Link>
@@ -87,7 +87,7 @@ const LoginForm: FC<LoginFormProps> = () => {
                         {loading && <span className="loading loading-spinner"></span>}
                         შესვლა</button>
                 </div>
-                {error && <span className="text-red-700 mt-2">{error}</span>}
+                {error && <span className="text-red-700 text-sm mt-2">{error}</span>}
             </form>
             <span className='mt-8'>{`არ გაქვს არგარიში`}?
                 <Link href="/register" className="text-blue-600 hover:text-blue-800 hover:underline"> რეგისტრაცია</Link>
