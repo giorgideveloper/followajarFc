@@ -182,6 +182,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                         />
                         {errors.email && <span className="text-red-700 text-sm mt-2">{errors.email.message}</span>}
                     </div>
+
                     <div className="w-full">
                         <Controller
                             name="birthday"
