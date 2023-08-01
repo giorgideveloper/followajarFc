@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const Page = async () => {
     const supabase = createServerComponentClient({ cookies })
-    const res = await supabase.from('profiles').select('*').order('created_at', { ascending: true })
+    const res = await supabase.from('profiles').select('*').order('created_at', { ascending: false })
 
 
 
