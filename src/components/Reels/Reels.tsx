@@ -1,18 +1,22 @@
 'use client'
-import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+// import 'swiper/css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
+// import { Navigation, Pagination } from 'swiper/modules';
 
 const Reels = ({ data }: any) => {
     return (
         <div className='my-20'>
             <h1 className="font-medium text-xl sm:text-2xl md:text-2xl lg:text-2xl p-1 ml-10 text-gray-900">კამპანიის ფარგლებში ბოლოს დამატებული პოსტები</h1>
             <div className="divider"></div>
-            <Swiper
+
+            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <div className="elfsight-app-90b57122-2111-48a4-b17e-531f7939aae7"></div>
+
+            {/* <Swiper
 
                 // onSwiper={setSwiperRef}
                 slidesPerView={1}
@@ -50,20 +54,9 @@ const Reels = ({ data }: any) => {
                             :
                             <div dangerouslySetInnerHTML={{ __html: item.html }}></div>
                         }
-
-                        {/* <iframe
-                        className='w-full'
-                        src="https://www.tiktok.com/embed/7072819797184171310"
-                        // width={300}
-                        height={600}
-                        // className={iframe}
-                        // allowfullscreen
-                        // scrolling="no"
-                        allow="encrypted-media;"
-                    ></iframe> */}
                     </SwiperSlide>
                 )}
-            </Swiper>
+            </Swiper> */}
         </div>
     )
 }

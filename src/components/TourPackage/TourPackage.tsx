@@ -31,6 +31,8 @@ const TourPackage = ({ id }: { id: string }) => {
                     <PlaceButton key={index} {...item} id={index} />
                 )}
             </div>
+
+            <p className='mt-5'>სასარგებლო ბმულების მისაღებად, დააკლიკე თითოეულ უჯრას</p>
             {/* <div dangerouslySetInnerHTML={{ __html: content }} className='text-black' /> */}
         </div>
     )
