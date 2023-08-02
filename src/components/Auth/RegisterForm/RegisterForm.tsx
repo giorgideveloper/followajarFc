@@ -24,7 +24,11 @@ const schema = yup
     lastname: yup.string().required("* აუცილებელი ველი"),
     email: yup.string().email("არასწორი ფორმატი").required("* აუცილებელი ველი"),
     birthday: yup.date().required("* აუცილებელი ველი"),
-    tel: yup.string().required("* აუცილებელი ველი"),
+    tel: yup
+      .string()
+      .length(9, "ნომერი უნდა შედგებოდეს 9 ციფრისაგან!")
+      .matches(/^[0-9]+$/, "გამოიყენეთ მხოლოდ ციფრები!")
+      .required("* აუცილებელი ველი"),
     personalNumber: yup
       .string()
       .length(11, "პირადი ნომერი უნდა შედგებოდეს 11 ციფრისაგან!")
@@ -75,132 +79,6 @@ const RegisterForm: FC<RegisterFormProps> = () => {
   const [confirmation, setConfirmation] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const supabase = createClientComponentClient();
-
-  const [nameToGeorgian, setNameToGeorgian] = useState<string>("");
-  const [lastnameToGeorgian, setLastnameToGeorgian] = useState<string>("");
-
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const originalName = e.target.value;
-    const transliterated = changeToGeorgian(originalName);
-    setNameToGeorgian(transliterated);
-  };
-
-  const handleLastnameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const originalLastname = e.target.value;
-    const transliterated = changeToGeorgian(originalLastname);
-    setLastnameToGeorgian(transliterated);
-  };
-
-  type geoMapTypes = { [key: string]: string };
-
-  const changeToGeorgian = (input: string): string => {
-    const geoMap: geoMapTypes = {
-      a: "ა",
-      b: "ბ",
-      c: "ც",
-      d: "დ",
-      e: "ე",
-      f: "ფ",
-      g: "გ",
-      h: "ჰ",
-      i: "ი",
-      j: "ჯ",
-      k: "კ",
-      l: "ლ",
-      m: "მ",
-      n: "ნ",
-      o: "ო",
-      p: "პ",
-      q: "ქ",
-      r: "რ",
-      s: "ს",
-      t: "ტ",
-      u: "უ",
-      v: "ვ",
-      w: "წ",
-      x: "ხ",
-      y: "ყ",
-      z: "ზ",
-      A: "ა",
-      B: "ბ",
-      C: "ჩ",
-      D: "დ",
-      E: "ე",
-      F: "ფ",
-      G: "გ",
-      H: "ჰ",
-      I: "ი",
-      J: "ჟ",
-      K: "კ",
-      L: "ლ",
-      M: "მ",
-      N: "ნ",
-      O: "ო",
-      P: "პ",
-      Q: "ქ",
-      R: "ღ",
-      S: "შ",
-      T: "თ",
-      U: "უ",
-      V: "ვ",
-      W: "ჭ",
-      X: "ხ",
-      Y: "ყ",
-      Z: "ძ",
-      а: "ა",
-      б: "ბ",
-      ц: "ც",
-      д: "დ",
-      е: "ე",
-      ф: "ფ",
-      г: "გ",
-      и: "ი",
-      дж: "ჯ",
-      к: "კ",
-      л: "ლ",
-      м: "მ",
-      н: "ნ",
-      о: "ო",
-      п: "პ",
-      р: "რ",
-      с: "ს",
-      т: "ტ",
-      у: "უ",
-      в: "ვ",
-      тс: "წ",
-      х: "ხ",
-      з: "ზ",
-      ш: "შ",
-      ж: "ჟ",
-      ч: "ჩ",
-      А: "ა",
-      Б: "ბ",
-      Ч: "ჩ",
-      Д: "დ",
-      Е: "ე",
-      Ф: "ფ",
-      Г: "გ",
-      И: "ი",
-      Ж: "ჟ",
-      Л: "ლ",
-      М: "მ",
-      Н: "ნ",
-      О: "ო",
-      П: "პ",
-      Р: "ღ",
-      С: "შ",
-      Т: "თ",
-      У: "უ",
-      В: "ვ",
-      Х: "ხ",
-      дз: "ძ",
-    };
-
-    return input
-      .split("")
-      .map((char) => geoMap[char] || char)
-      .join("");
-  };
 
   const {
     control,
@@ -306,8 +184,6 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   label="სახელი"
                   placeholder="მაგ: გიორგი"
                   aria-invalid={errors.name ? "true" : "false"}
-                  value={nameToGeorgian}
-                  onChange={handleNameChange}
                 />
               )}
             />
@@ -325,13 +201,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
               control={control}
               rules={{ required: true }}
               render={({ field }) => (
-                <Input
-                  {...field}
-                  label="გვარი"
-                  placeholder="მაგ: ბერიძე"
-                  value={lastnameToGeorgian}
-                  onChange={handleLastnameChange}
-                />
+                <Input {...field} label="გვარი" placeholder="მაგ: ბერიძე" />
               )}
             />
             {/* {errors.lastname && <span className="text-red-700 text-sm mt-2">* აუცილებელი ველი</span>} */}
@@ -351,7 +221,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
               render={({ field }) => (
                 <Input
                   {...field}
-                  type="text"
+                  type="number"
                   label="პირადი ნომერი"
                   placeholder="მაგ: 61001010010"
                   aria-invalid={errors.personalNumber ? "true" : "false"}
@@ -461,7 +331,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
               render={({ field }) => (
                 <Input
                   {...field}
-                  type="tel"
+                  type="number"
                   label="ტელეფონი"
                   placeholder="მაგ: 555112233"
                 />
@@ -520,7 +390,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
               render={({ field }) => (
                 <Input
                   {...field}
-                  type="text"
+                  type="url"
                   label="Facebook"
                   placeholder="https://www.facebook.com/*********/"
                 />
@@ -539,7 +409,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
               render={({ field }) => (
                 <Input
                   {...field}
-                  type="text"
+                  type="url"
                   label="Instagram"
                   placeholder="https://www.instagram.com/*********/"
                 />
@@ -560,7 +430,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
               render={({ field }) => (
                 <Input
                   {...field}
-                  type="text"
+                  type="url"
                   label="YouTube"
                   placeholder="https://www.youtube.com/@*********/"
                 />
@@ -579,7 +449,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
               render={({ field }) => (
                 <Input
                   {...field}
-                  type="text"
+                  type="url"
                   label="TikTok"
                   placeholder="https://www.tiktok.com/@*********/"
                 />
