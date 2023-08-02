@@ -10,6 +10,9 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ref } from "yup";
+import Flatpickr from "react-flatpickr";
+import "flatpickr/dist/l10n/ka.js";
+import "flatpickr/dist/themes/material_green.css";
 
 const getCharacterValidationError = (str: string) => {
   return `პაროლი უნდა შეიცავდეს მინიმუმ 1 ${str}`;
@@ -362,16 +365,24 @@ const RegisterForm: FC<RegisterFormProps> = () => {
             )}
           </div>
           <div className="w-full">
+            <label className="text-lg font-medium text-gray-900">
+              <span className="text-base label-text">დაბადების თარიღი</span>
+            </label>
             <Controller
               name="birthday"
               control={control}
               rules={{ required: true }}
               render={({ field }) => (
-                <Input
+                <Flatpickr
                   {...field}
-                  type="date"
-                  label="დაბადების თარიღი"
-                  placeholder="დაბადების თარიღი"
+                  options={{
+                    dateFormat: "Y-m-d",
+                    minDate: "1900-01-01",
+                    maxDate: "2005-12-31",
+                    locale: "ka",
+                  }}
+                  placeholder="აირჩიეთ დაბადების თარიღი"
+                  className="w-full input input-bordered mt-2 text-md text-gray-500"
                 />
               )}
             />
