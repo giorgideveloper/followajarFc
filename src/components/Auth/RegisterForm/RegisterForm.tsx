@@ -284,7 +284,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                 <Input
                   {...field}
                   label="სახელი"
-                  placeholder="სახელი"
+                  placeholder="მაგ: გიორგი"
                   aria-invalid={errors.name ? "true" : "false"}
                   value={nameToGeorgian}
                   onChange={handleNameChange}
@@ -308,7 +308,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                 <Input
                   {...field}
                   label="გვარი"
-                  placeholder="გვარი"
+                  placeholder="მაგ: ბერიძე"
                   value={lastnameToGeorgian}
                   onChange={handleLastnameChange}
                 />
@@ -333,7 +333,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   {...field}
                   type="email"
                   label="ელ. ფოსტა"
-                  placeholder="ელ. ფოსტა"
+                  placeholder="მაგ: giorgiberidze@mail.com"
                 />
               )}
             />
@@ -376,7 +376,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   {...field}
                   type="tel"
                   label="ტელეფონი"
-                  placeholder="ტელეფონი"
+                  placeholder="მაგ: 555112233"
                 />
               )}
             />
@@ -397,7 +397,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   {...field}
                   type="text"
                   label="პირადი ნომერი"
-                  placeholder="პირადი ნომერი"
+                  placeholder="მაგ: 61001010010"
                   aria-invalid={errors.personalNumber ? "true" : "false"}
                 />
               )}
@@ -420,7 +420,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   {...field}
                   type="password"
                   label="პაროლი"
-                  placeholder="პაროლი"
+                  placeholder="მაგ: Password123!"
                 />
               )}
             />
@@ -440,7 +440,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   {...field}
                   type="password"
                   label="გაიმეორეთ პაროლი"
-                  placeholder="პაროლი"
+                  placeholder="მაგ: Password123!"
                 />
               )}
             />
