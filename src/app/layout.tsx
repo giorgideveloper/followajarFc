@@ -2,12 +2,12 @@ import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar'
 import './globals.css'
 
-import {  firaGo, Adaptirebuli, GeoGza } from '@/styles/fonts'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import Script from 'next/script'
 
-import { Metadata } from 'next';
+import { Metadata } from 'next'
+import Script from 'next/script'
+import { Adaptirebuli, GeoGza, firaGo } from '@/styles/fonts'
 
 export const metadata: Metadata = {
   title: 'Followajara',

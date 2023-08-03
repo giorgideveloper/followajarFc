@@ -1,33 +1,14 @@
 
 'use client'
 
-import LoginForm from "@/components/Auth/LoginForm"
 import Input from "@/components/Form/Input"
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import Link from "next/link"
 import { useRef, useState } from "react"
-import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { sendResetLink } from "./action"
 import Submit from "./form"
 
-
-interface IFormInput {
-    email: string
-}
-
-
 export default function Page() {
-    const supabase = createClientComponentClient()
-    const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>('')
-
-    const {
-        control,
-        handleSubmit,
-        formState: { errors },
-
-    } = useForm<IFormInput>({})
-
 
     const [status, setStatus] = useState<string>('')
     const formRef = useRef<HTMLFormElement>(null)
@@ -49,13 +30,10 @@ export default function Page() {
 
                     <>
                         <form className='space-y-4 my-4' action={formHandle} ref={formRef}>
-                            <Input name="email" type='email' label="ელ. ფოსტა" placeholder="ელ. ფოსტა" required /> 
+                            <Input name="email" type='email' label="ელ. ფოსტა" placeholder="ელ. ფოსტა" required />
 
                             <div >
                                 <Submit />
-                                {/* <button className="btn btn-block btn-primary" type='submit'>
-                                    {loading && <span className="loading loading-spinner"></span>}
-                                    გაგზავნა</button> */}
                             </div>
                             {error && <span className="text-red-700 mt-2">{error}</span>}
                         </form>
