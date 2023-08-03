@@ -23,7 +23,6 @@ export async function sendMail(data: any): Promise<{ status: number, message: st
             to: process.env.NEXT_EMAIL_USER,
             subject: data.subject,
             text: data.text
-            // html: "<b>Hello world?</b>", // html body
         });
 
         console.log("Message sent: %s", info.messageId);
