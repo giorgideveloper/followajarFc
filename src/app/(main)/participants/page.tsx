@@ -17,6 +17,7 @@ const Page = async () => {
   const res = await supabase
     .from("profiles")
     .select("*")
+    .eq('active', true)
     .order("created_at", { ascending: false });
 
   return (
