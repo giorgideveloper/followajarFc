@@ -14,7 +14,10 @@ const Reels = ({ data }: any) => {
             <div className="divider"></div>
 
             <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-            <div className="elfsight-app-90b57122-2111-48a4-b17e-531f7939aae7"></div>
+            <div className="elfsight-app-2bcd1b8a-7d77-4651-8775-3acc1d7ab645"></div>
+
+            {/* <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <div className="elfsight-app-90b57122-2111-48a4-b17e-531f7939aae7"></div> */}
 
             {/* <Swiper
 
