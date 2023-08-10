@@ -19,7 +19,8 @@ const getCharacterValidationError = (str: string) => {
 };
 
 const schema = yup
-  .object({
+  .object()
+  .shape({
     name: yup.string().required("* აუცილებელი ველი"),
     lastname: yup.string().required("* აუცილებელი ველი"),
     email: yup.string().email("არასწორი ფორმატი").required("* აუცილებელი ველი"),
@@ -45,33 +46,32 @@ const schema = yup
       .string()
       .required("* გაიმეორეთ პაროლი")
       .oneOf([ref("password")], "პაროლები არ ემთხვევა"),
-    fb: yup.string(),
-    ig: yup.string(),
-    yt: yup.string(),
-    tk: yup.string(),
+    fb: yup.string()
+      .when(['ig', 'yt', 'tk'], {
+        is: (ig: string, yt: string, tk: string) => !ig && !yt && !tk,
+        then: () => yup.string().required('* მიუთითეთ მინიმუმ ერთი სოციალური ქსელი.'),
+      }),
+    ig: yup.string()
+      .when(['fb', 'yt', 'tk'], {
+        is: (fb: string, yt: string, tk: string) => !fb && !yt && !tk,
+        then: () => yup.string().required('* მიუთითეთ მინიმუმ ერთი სოციალური ქსელი.'),
+      }),
+    yt: yup.string()
+      .when(['fb', 'ig', 'tk'], {
+        is: (fb: string, ig: string, tk: string) => !fb && !ig && !tk,
+        then: () => yup.string().required('* მიუთითეთ მინიმუმ ერთი სოციალური ქსელი.'),
+      }),
+    tk: yup.string()
+      .when(['fb', 'ig', 'yt'], {
+        is: (fb: string, ig: string, yt: string) => !fb && !ig && !yt,
+        then: () => yup.string().required('* მიუთითეთ მინიმუმ ერთი სოციალური ქსელი.'),
+      }),
     avatar_url: yup.string().required("* აუცილებელი ველი"),
     rules: yup.boolean().required("* გთხოვთ დაეთანხმოთ წესებს და პირობებს"),
-  })
+  }, [['fb', 'ig'], ['ig', 'fb'], ['fb', 'yt'], ['fb', 'tk'], ['ig', 'yt'], ['ig', 'tk'], ['yt', 'tk']])
   .required();
 
-// interface IFormInput {
-//     name: string
-//     lastname: string
-//     email: string
-//     birthday: string
-//     tel: string
-//     personalNumber: string
-//     password: string
-//     rePassword: string
-//     avatar_url: string
-//     fb: string
-//     ig: string
-//     yt: string
-//     tk: string
-//     rules: boolean
-// }
-
-interface RegisterFormProps {}
+interface RegisterFormProps { }
 
 const RegisterForm: FC<RegisterFormProps> = () => {
   const router = useRouter();
@@ -87,23 +87,7 @@ const RegisterForm: FC<RegisterFormProps> = () => {
     watch,
     formState: { errors },
     reset,
-  } = useForm({
-    resolver: yupResolver(schema),
-    // defaultValues: {
-    //     // name: 'John',
-    //     // lastname: 'Doe',
-    //     // email: 'mkakh1dz3@gmail.com',
-    //     // password: '1qazXSW@',
-    //     // rePassword: '1qazXSW@',
-    //     // birthday: 'string',
-    //     // tel: 'string',
-    //     // personalNumber: '61006055412',
-    //     // fb: '',
-    //     // ig: '',
-    //     // yt: '',
-    //     // tk: ''
-    // }
-  });
+  } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit: SubmitHandler<any> = async (values) => {
     const { email, password, rules, ...rest } = values;
@@ -187,7 +171,6 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                 />
               )}
             />
-            {/* {errors.name && <span className="text-red-700 mt-2">* აუცილებელი ველი</span>} */}
             {errors.name && (
               <span className="text-red-700 text-sm mt-2">
                 {errors.name.message}
@@ -204,7 +187,6 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                 <Input {...field} label="გვარი" placeholder="მაგ: ბერიძე" />
               )}
             />
-            {/* {errors.lastname && <span className="text-red-700 text-sm mt-2">* აუცილებელი ველი</span>} */}
             {errors.lastname && (
               <span className="text-red-700 text-sm mt-2">
                 {errors.lastname.message}
@@ -395,12 +377,13 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   placeholder="https://www.facebook.com/*********/"
                 />
               )}
-            />{" "}
+            />
             {errors.fb && (
               <span className="text-red-700 text-sm mt-2">
-                * აუცილებელი ველი
+                {errors.fb.message}
               </span>
             )}
+
           </div>
           <div className="w-full">
             <Controller
@@ -414,12 +397,13 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   placeholder="https://www.instagram.com/*********/"
                 />
               )}
-            />{" "}
+            />
             {errors.ig && (
               <span className="text-red-700 text-sm mt-2">
-                * აუცილებელი ველი
+                {errors.ig.message}
               </span>
             )}
+
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-4">
@@ -435,12 +419,13 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   placeholder="https://www.youtube.com/@*********/"
                 />
               )}
-            />{" "}
+            />
             {errors.yt && (
               <span className="text-red-700 text-sm mt-2">
-                * აუცილებელი ველი
+                {errors.yt.message}
               </span>
             )}
+
           </div>
           <div className="w-full">
             <Controller
@@ -454,10 +439,10 @@ const RegisterForm: FC<RegisterFormProps> = () => {
                   placeholder="https://www.tiktok.com/@*********/"
                 />
               )}
-            />{" "}
+            />
             {errors.tk && (
               <span className="text-red-700 text-sm mt-2">
-                * აუცილებელი ველი
+                {errors.tk.message}
               </span>
             )}
           </div>
