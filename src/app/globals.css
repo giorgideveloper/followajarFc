@@ -198,8 +198,8 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  
-  
+
+
 
   /* Center slide text vertically */
   display: flex;
@@ -259,4 +259,11 @@ body {
 
 .video-content {
   z-index: 2;
+}
+
+/* terms bullet */
+.sel>ul>li::marker {
+  content: '✓ ';
+  color: green;
+  font-size: 20px;
 }
