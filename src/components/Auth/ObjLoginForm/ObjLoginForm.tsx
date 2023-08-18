@@ -1,24 +1,25 @@
 'use client';
-import Input from '@/components/Form/Input';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { FC, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import Input from '@/components/Form/Input';
+import Link from 'next/link';
+import { useState, FC } from 'react';
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
+import { loginUser } from '../utils/api';
+import toast from '@/components/helper/toast';
 
 interface IFormInput {
 	email: string;
 	password: string;
 }
-
 interface LoginFormProps {}
-
-const LoginForm: FC<LoginFormProps> = () => {
+const ObjLoginForm: FC<LoginFormProps> = () => {
 	const router = useRouter();
 	const [error, setError] = useState<string>('');
 	const [loading, setLoading] = useState<boolean>(false);
-	const supabase = createClientComponentClient();
-	const user = localStorage.getItem('access_token');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
 	const {
 		control,
@@ -26,74 +27,51 @@ const LoginForm: FC<LoginFormProps> = () => {
 		formState: { errors },
 	} = useForm<IFormInput>({});
 
-	const onSubmit: SubmitHandler<IFormInput> = async values => {
+	const onSubmit: SubmitHandler<IFormInput> = async () => {
 		try {
 			setError('');
 			setLoading(true);
-			const { data, error } = await supabase.auth.signInWithPassword({
-				...values,
-			});
+			await loginUser(email, password);
+			toast('success', 'შესვლა წარმატებულია');
+			router.push('/dashboard');
 
 			if (error) {
-				setError(error?.message);
-			}
-
-			if (data.user) {
-				router.refresh();
-
-				setTimeout(() => {
-					router.replace('/profile');
-				}, 100);
+				setError(error);
 			}
 		} catch (error) {
+			toast('error', 'შესვლა განხორციელდა წარმატებით');
+
 			console.log(error);
 		} finally {
 			setLoading(false);
 		}
 	};
 
-	
-
 	return (
 		<>
 			<form className='space-y-4 my-4' onSubmit={handleSubmit(onSubmit)}>
-				<Controller
-					name='email'
-					control={control}
-					rules={{ required: true }}
-					render={({ field }) => (
-						<Input {...field} label='ელ. ფოსტა' placeholder='ელ. ფოსტა' />
-					)}
+				<Input
+					onChange={e => setEmail(e.target.value)}
+					label='ელ. ფოსტა'
+					placeholder='ელ. ფოსტა'
+					value={email}
 				/>
+
 				{errors.email && (
 					<span className='text-red-700 text-sm mt-2'>* აუცილებელი ველი</span>
 				)}
 
-				<Controller
-					name='password'
-					control={control}
-					rules={{ required: true }}
-					render={({ field }) => (
-						<Input
-							{...field}
-							label='პაროლი'
-							type='password'
-							placeholder='შეიყვანეთ პაროლი'
-						/>
-					)}
+				<Input
+					onChange={e => setPassword(e.target.value)}
+					label='პაროლი'
+					type='password'
+					placeholder='შეიყვანეთ პაროლი'
+					value={password}
 				/>
+
 				{errors.password && (
 					<span className='text-red-700 text-sm mt-2'>* აუცილებელი ველი</span>
 				)}
-
-				<div className='flex items-center justify-end'>
-					<Link
-						href='reset'
-						className='self-end hover:text-blue-800 hover:underline'
-					>
-						დაგავიწყდათ პაროლი?
-					</Link>
-				</div>
 
 				<div>
 					<button className='btn btn-block btn-primary' type='submit'>
@@ -106,7 +84,7 @@ const LoginForm: FC<LoginFormProps> = () => {
 			<span className='mt-8'>
 				{`არ გაქვს არგარიში`}?
 				<Link
-					href='/register'
+					href='/objregister'
 					className='text-blue-600 hover:text-blue-800 hover:underline'
 				>
 					{' '}
@@ -117,4 +95,4 @@ const LoginForm: FC<LoginFormProps> = () => {
 	);
 };
 
-export default LoginForm;
+export default ObjLoginForm;

@@ -1,9 +1,0 @@
-.sel ul li::marker {
-    content: '✓ ' !important;
-    color: green !important;
-    font-size: 20px;
-}
-/* 
-.cust::marker {
-    content: '.';
-} */

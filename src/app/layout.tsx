@@ -39,12 +39,6 @@ export default async function RootLayout({
     .eq('id', userId)
     .single()
 
-  let { data: settings } = await supabase
-    .from('settings')
-    .select(`*`)
-    .eq('name', 'contact')
-    .single()
-
   return (
     <html lang="en">
       <Script id="gllogleApi" async src="https://www.googletagmanager.com/gtag/js?id=G-YB0QW5TRGT" />
@@ -56,7 +50,7 @@ export default async function RootLayout({
         <main className='main'>
           {children}
         </main>
-        <Footer data={settings.data} />
+        <Footer />
       </body>
     </html>
   )
