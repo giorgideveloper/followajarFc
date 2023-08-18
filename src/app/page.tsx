@@ -4,8 +4,6 @@ import Reels from '@/components/Reels'
 import { openGraphImage } from './shared-metadata'
 
 import Map from '@/components/Map'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
 
 export const metadata = {
   title: 'მთავარი',
@@ -17,17 +15,10 @@ export const metadata = {
 
 export default async function Home() {
 
-  const supabase = createServerComponentClient({ cookies })
-
-  let { data } = await supabase
-    .from('links')
-    .select(`*`)
-    .order('letter', { ascending: true })
-
   return (
     <>
       <Hero />
-      <Alphabet links={data} />
+      <Alphabet />
       <Reels data={[]} />
       <Map />
     </>
