@@ -28,7 +28,6 @@ const EditObjc = ({ data }) => {
 	const router = useRouter();
 	const [editStatus, setEditStatus] = useState('');
 	const [uploading, setUploading] = useState(false);
-	console.log('🚀 ~ file: EditObjc.tsx:31 ~ EditObjc ~ editStatus:', uploading);
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
@@ -38,9 +37,16 @@ const EditObjc = ({ data }) => {
 		}));
 	};
 
+	// Number generation
+	function generateRandom11Digits() {
+		const randomNumber = Math.floor(Math.random() * 100000000000);
+		const formattedNumber = String(randomNumber).padStart(11, '0');
+		return formattedNumber;
+	}
+	const random11Digits = generateRandom11Digits();
+
 	const handleNumberDiscountChange = e => {
 		const value = e.target.value;
-		console.log(value);
 		setEditData(prevData => ({
 			...prevData,
 			discount: value,
@@ -58,25 +64,67 @@ const EditObjc = ({ data }) => {
 		}));
 	};
 
-	if (editData.image1 && typeof editData.image1 === 'string') {
-		fetch(editData.image1)
-			.then(response => response.blob())
-			.then(blob => {
-				// Create a new File object
-				const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
-				console.log('File object:', file);
-				setEditData(prevData => ({
-					...prevData,
-					image1: file,
-					image2: file,
-					image3: file,
-				}));
-				setUploading(false);
-			})
-			.catch(error => {
-				console.error('Error fetching image:', error);
-			});
-	}
+	console.log(typeof editData.image1);
+
+	useEffect(() => {
+		if (editData.image1 && typeof editData.image1 === 'string') {
+			fetch(editData.image1)
+				.then(response => response.blob())
+				.then(blob => {
+					// Create a new File object
+					const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+					console.log('File object:', file);
+					setEditData(prevData => ({
+						...prevData,
+						image1: file,
+						image2: file,
+						image3: file,
+					}));
+					setUploading(false);
+				})
+				.catch(error => {
+					console.error('Error fetching image:', error);
+				});
+		}
+		if (editData.image2 && typeof editData.image2 === 'string') {
+			fetch(editData.image1)
+				.then(response => response.blob())
+				.then(blob => {
+					// Create a new File object
+					const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+					console.log('File object:', file);
+					setEditData(prevData => ({
+						...prevData,
+						image2: file,
+					}));
+					setUploading(false);
+				})
+				.catch(error => {
+					console.error('Error fetching image:', error);
+				});
+		}
+		if (editData.image3 && typeof editData.image3 === 'string') {
+			fetch(editData.image1)
+				.then(response => response.blob())
+				.then(blob => {
+					// Create a new File object
+					const file = new File([blob], 'image.jpg', {
+						type: 'image/jpeg',
+					});
+					console.log('File object:', file);
+					setEditData(prevData => ({
+						...prevData,
+						image3: file,
+					}));
+					setUploading(false);
+				})
+				.catch(error => {
+					console.error('Error fetching image:', error);
+				});
+		}
+	}, []);
+
+	console.log(editData.image1);
 	const handleTimeInputChange = (name, value) => {
 		setEditData(prevData => ({
 			...prevData,
@@ -86,11 +134,15 @@ const EditObjc = ({ data }) => {
 
 	useEffect(() => {
 		setEditData(data);
+		setEditData(prevData => ({
+			...prevData,
+			id_number: random11Digits,
+		}));
 	}, []);
-	console.log(editData);
 
 	const handleSubmit = async e => {
 		e.preventDefault();
+
 		try {
 			const response = await postEditUserData(editData);
 			setEditStatus(response.message);
@@ -454,21 +506,6 @@ const EditObjc = ({ data }) => {
 						className='file-input file-input-bordered w-full'
 					/>
 
-					<label
-						htmlFor='id_number'
-						className={'text-lg font-medium text-gray-900'}
-					>
-						id_number
-					</label>
-					<input
-						name='id_number'
-						value={editData.id_number}
-						onChange={handleInputChange}
-						type='text'
-						id='id_number'
-						className='w-full input input-bordered mt-2 text-md text-gray-500'
-						// {...register('id_number')}
-					/>
 					<button className='btn btn-block btn-primary' onClick={handleSubmit}>
 						Submit
 					</button>

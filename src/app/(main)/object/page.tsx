@@ -46,7 +46,8 @@ const Page = () => {
 	}, []);
 
 	// console.log(data);
-	const userId = typeof window !== "undefined" ? localStorage.getItem('userId') : false;
+	const userId =
+		typeof window !== 'undefined' ? localStorage.getItem('userId') : false;
 	return (
 		<>
 			<div className='container mx-auto my-4 px-7 '>
@@ -88,77 +89,73 @@ const Page = () => {
 				<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4'>
 					{lodaing
 						? data.map(item => (
-							// eslint-disable-next-line react/jsx-key
-							<Link key={item.id} href={`/object/${item.id}`}>
-								<div
-									className='card card-compact  cursor-pointer '
-									key={item.id}
-								>
-									<div className={`card-body ${Banner_caps.className}`}>
-										<div className='avatar'>
-											<div className='w-full h-80 rounded-t-lg border-b-4 border-[#D98200] relative'>
-												<div className='top-left absolute  '>
-													<div className='top-left-bg'>
-														<span>
-															{((item.discount ?? 0) >= 100 && (
-																<span>Free</span>
-															)) || <span>{item.discount} %</span>}
-														</span>
+								// eslint-disable-next-line react/jsx-key
+								<Link key={item.id} href={`/object/${item.id}`}>
+									<div
+										className='card card-compact  cursor-pointer '
+										key={item.id}
+									>
+										<div className={`card-body ${Banner_caps.className}`}>
+											<div className='avatar'>
+												<div className='w-full h-80 rounded-t-lg border-b-4 border-[#D98200] relative'>
+													<div className='top-left absolute  '>
+														<div className='top-left-bg'>
+															<span>
+																{((item.discount ?? 0) >= 100 && (
+																	<span>Free</span>
+																)) || <span>{item.discount} %</span>}
+															</span>
+														</div>
 													</div>
+													<div className='bottom-left absolute'>
+														{(item.object_type === 1 && 'ატრაქცია') ||
+															(item.object_type === 2 && 'განთავსება') ||
+															(item.object_type === 3 && 'კვება')}
+													</div>
+													<Image
+														className='w-full'
+														src={`${item.image1}`}
+														alt='anbani'
+														width={500}
+														height={500}
+													/>
 												</div>
-												<div className='bottom-left absolute'>
-													{(item.object_type === 1 && 'ატრაქცია') ||
-														(item.object_type === 2 && 'განთავსება') ||
-														(item.object_type === 3 && 'კვება')}
+											</div>
+											<div className='card-content '>
+												<div className='card-title '>
+													<h1 className={`text-3xl Banner_caps pt-3 pl-2 `}>
+														{item.object_name}
+													</h1>
 												</div>
-												<Image
-													className='w-full'
-													src={
-														item.image1 === undefined || item.image1 === null
-															? ''
-															: `${item.image1}`
-													}
-													alt='anbani'
-													width={500}
-													height={500}
-												/>
-											</div>
-										</div>
-										<div className='card-content '>
-											<div className='card-title '>
-												<h1 className={`text-3xl Banner_caps pt-3 pl-2 `}>
-													{item.object_name}
-												</h1>
-											</div>
 
-											<div className='card-info'>
-												<ul className='ul w-full'>
-													<li className='li'>
-														<Image className='w-4' src={location} alt='' />
+												<div className='card-info'>
+													<ul className='ul w-full'>
+														<li className='li'>
+															<Image className='w-4' src={location} alt='' />
 
-														<span className='pl-2 '>{item.address}</span>
-													</li>
-													<li className='li'>
-														<Image className='w-5 ' src={clock} alt='' />
+															<span className='pl-2 '>{item.address}</span>
+														</li>
+														<li className='li'>
+															<Image className='w-5 ' src={clock} alt='' />
 
-														<span className='pl-2'>{`${item.time_from.slice(
-															0,
-															5
-														)}-${item.time_to.slice(0, 5)}`}</span>
-													</li>
-												</ul>
-											</div>
+															<span className='pl-2'>{`${item.time_from.slice(
+																0,
+																5
+															)}-${item.time_to.slice(0, 5)}`}</span>
+														</li>
+													</ul>
+												</div>
 
-											<div className='card-description'>
-												<p className='font-banner-caps text-gray-500 pl-2'>
-													{item.description}
-												</p>
+												<div className='card-description'>
+													<p className='font-banner-caps text-gray-500 pl-2'>
+														{item.description}
+													</p>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</Link>
-						))
+								</Link>
+						  ))
 						: 'Loading...'}
 				</div>
 			</div>
