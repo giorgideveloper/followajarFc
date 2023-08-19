@@ -26,7 +26,11 @@ const navLinks = [
     {
         href: '/register',
         name: 'რეგისტრაცია',
-        protected: true
+        protected: true,
+    },
+    {
+        href: '/object',
+        name: 'ობიექტები',
     },
     {
         href: '/contact',
@@ -63,7 +67,7 @@ const Navbar = ({ metadata }: any) => {
             setSession(sess)
         })
     }, [])
-
+    // const userId = localStorage.getItem('userId');
     return (
         <div className={`navbar px-5 md:px-20 bg-base-100 shadow-sm font-fira-go`}>
             <div className="navbar-start">
@@ -140,7 +144,16 @@ const Navbar = ({ metadata }: any) => {
                             </div>
                         </>
                         :
-                        <Link href='/login' className="font-fira-go text-gray-600">შესვლა</Link>
+                        <Link href='/login' className="font-fira-go text-gray-600">
+                            შესვლა
+                            {/* {userId ? (
+							<Link href='/dashboard' className='font-fira-go text-gray-600'>
+								პროფილი
+							</Link>
+						) : (
+							'შესვლა'
+						)} */}
+                        </Link>
                 }
             </div>
         </div>
