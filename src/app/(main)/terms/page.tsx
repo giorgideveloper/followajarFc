@@ -1,7 +1,9 @@
 import { Metadata } from 'next'
-import './terms.css'
+import './page.module.css'
 import { openGraphImage } from '@/app/shared-metadata'
 import Image from 'next/image'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
 
 export const metadata: Metadata = {
     title: 'წესები და პირობები',
@@ -12,7 +14,15 @@ export const metadata: Metadata = {
 }
 
 
-const Page = () => {
+const Page = async () => {
+    const supabase = createServerComponentClient({ cookies })
+
+    let { data } = await supabase
+        .from('contents')
+        .select(`*`)
+        .eq('name', 'terms')
+        .single()
+
     return (
         <>
             <Image src='/1600x200.jpg' width={1600} height={200} objectFit='cover' className='w-full' alt='გვერდი' />
@@ -21,7 +31,9 @@ const Page = () => {
                 <div className="mx-5 sm:m-auto max-w-sm md:max-w-5xl text-black">
                     <article className="prose max-w-full text-justify ">
                         <h1 className="text-center text-2xl md:text-4xl">წესები და პირობები</h1>
-                        <h3>მონაწილეობის კრიტერიუმები: ვის შეუძლია მონაწილეობა?</h3>
+                        <div className="text-black sel" dangerouslySetInnerHTML={{ __html: data.content }}></div>
+
+                        {/* <h3>მონაწილეობის კრიტერიუმები: ვის შეუძლია მონაწილეობა?</h3>
                         <ul className="text-black lis">
                             <li className='li'>პროექტში მონაწილეობა შეუძლია მხოლოდ საქართველოს მოქალაქეებს.</li>
                             <li className='li'>პროექტში მონაწილეობა შეუძლია ყველას, ვინც იყენებს შემდეგი პლატფორმებიდან ერთ-ერთს მაინც: Facebook, Instagram, Tik-Tok, Youtube და ამასთანავე, პროექტის განმავლობაში, შეძლებს პოსტების წვდომის (Reach) სტატისტიკის მოწოდებას, შემსყიდველის მიერ შემუშავებული ფორმატის მიხედვით, მათ შორის შესაძლებელია ეს მოხდეს ვიდეო სქრინების სახით.</li>
@@ -52,7 +64,7 @@ const Page = () => {
                             <li className='li'>აჭარის ტურიზმის დეპარტამენტი უფლებას იტოვებს, პროექტის განმავლობაში მონაწილეების მიერ სოციალურ ქსელებში გაზიარებული კონტენტი გამოიყენოს აჭარის პოპულარიზაციისთვის.</li>
                             <li className='li'>არასრულწლოვანი მონაწილის შემთხვევაში აუცილებელია მშობლების/კანონიერი წარმოამდგენლის ნოტარიულად დამოწმებული თანხმობა.</li>
                             <li className='li'>აჭარის ტურიზმისა და კურორტების დეპარტამენტი არ ანაზღაურებს პროექტის მონაწილეების განთავსების, კვების, ტრანსპორტირებისა თუ სხვა ხარჯებს.</li>
-                        </ul>
+                        </ul> */}
                     </article>
                 </div>
             </div>
