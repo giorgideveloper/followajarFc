@@ -2,7 +2,7 @@
 import { useForm } from 'react-hook-form';
 import moment from 'moment';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RegistrationType } from '@/app/(main)/api/api.types';
 import { postUserData } from '@/app/(main)/api/api';
 import toast from '@/components/helper/toast';
@@ -12,8 +12,12 @@ const ObjRegisterForm = () => {
 	const form = useForm<RegistrationType>();
 	const { register, control, handleSubmit } = form;
 	const [image, setImage] = useState('');
-
+	const [errorsMessage, setErrorsMessage] = useState([]);
 	const [registrationStatus, setRegistrationStatus] = useState('');
+	console.log(
+		'🚀 ~ file: ObjRegisterForm.tsx:17 ~ ObjRegisterForm ~ registrationStatus:',
+		errorsMessage
+	);
 	// Image FC
 	const handleImageChange = (event: any) => {
 		const imageFile = event.target.files[0];
@@ -36,6 +40,28 @@ const ObjRegisterForm = () => {
 			...prevData,
 			image3: imageFile,
 		}));
+	};
+
+	const errorMessage = () => {
+		if (errorsMessage.address) {
+			toast('error', `მეილი არ არის შეყვანილი`);
+		} else if (errorsMessage.description) {
+			toast('error', `მოკლე აღწერა არ არის შევსებული`);
+		} else if (errorsMessage.last_name) {
+			toast('error', 'გვარიი არ არის შევსებული');
+		} else if (errorsMessage.mobile) {
+			toast('error', 'მობილური არ არის შევსებული');
+		} else if (errorsMessage.name) {
+			toast('error', 'სახელი არ არის შევსებული');
+		} else if (errorsMessage.object_name) {
+			toast('error', 'ობიექტის სახელი არ არის შევსებული');
+		} else if (errorsMessage.password) {
+			toast('error', 'პაროლი არ არის შევსებული');
+		} else if (errorsMessage.time_from) {
+			toast('error', 'დაწყება არ არის შევსებული');
+		} else if (errorsMessage.time_to) {
+			toast('error', 'დასრულება არ არის შევსებული');
+		}
 	};
 
 	const onSubmit = async (data: RegistrationType) => {
@@ -113,9 +139,9 @@ const ObjRegisterForm = () => {
 
 			console.log('Registration successful');
 		} catch (error) {
-			toast('error', `${error}`);
-			console.error('Error registering user:', error);
+			setErrorsMessage(error.response.data);
 			setRegistrationStatus('Error during registration');
+			errorMessage();
 		}
 	};
 
