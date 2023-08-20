@@ -26,7 +26,7 @@ const ObjRegisterForm = () => {
 		const imageFile = event.target.files[0];
 		setImage(prevData => ({
 			...prevData,
-			image1: imageFile,
+			image2: imageFile,
 		}));
 	};
 
@@ -34,7 +34,7 @@ const ObjRegisterForm = () => {
 		const imageFile = event.target.files[0];
 		setImage(prevData => ({
 			...prevData,
-			image1: imageFile,
+			image3: imageFile,
 		}));
 	};
 
@@ -45,7 +45,6 @@ const ObjRegisterForm = () => {
 			name,
 			last_name,
 			address,
-			id_number,
 			mobile,
 			time_from_type,
 			time_to_type,
@@ -69,48 +68,54 @@ const ObjRegisterForm = () => {
 		}
 		const random11Digits = generateRandom11Digits();
 
-		if (image) {
-			const formData: any = new FormData();
+		const formData: any = new FormData();
 
-			formData.append('image1', image.image1);
-			formData.append('image2', image.image2);
-			formData.append('image3', image.image3);
-
-			// Append other fields to the formData
-			formData.append('object_name', object_name);
-			formData.append('object_type', object_type);
-			formData.append('name', name);
-			formData.append('facebook', facebook);
-			formData.append('instagram', instagram);
-
-			formData.append('last_name', last_name);
-			formData.append('address', address);
-			formData.append('id_number', random11Digits);
-			formData.append('mobile', mobile);
-			formData.append('time_from', time_from);
-			formData.append('time_to', time_to);
-			formData.append('discount', discount.toString());
-			formData.append('email', email);
-			formData.append('password', password);
-			formData.append('description', description);
-
-			try {
-				const response = await postUserData(formData);
-				setRegistrationStatus(response.message);
-				toast('success', 'დარეგისტრირებულია წარმატებით');
-
-				setTimeout(() => {
-					router.push('/dashboard');
-				}, 100);
-
-				console.log('Registration successful');
-			} catch (error) {
-				toast('error', `${error}`);
-				console.error('Error registering user:', error);
-				setRegistrationStatus('Error during registration');
-			}
+		if (image.image1 === undefined) {
+			formData.append('', '');
 		} else {
-			console.log('Please select an image');
+			formData.append('image1', image.image1);
+		}
+		if (image.image2 === undefined) {
+			formData.append('', '');
+		} else {
+			formData.append('image2', image.image2);
+		}
+		if (image.image2 === undefined) {
+			formData.append('', '');
+		} else {
+			formData.append('image3', image.image3);
+		}
+		// Append other fields to the formData
+		formData.append('object_name', object_name);
+		formData.append('object_type', object_type);
+		formData.append('name', name);
+		formData.append('facebook', facebook);
+		formData.append('instagram', instagram);
+		formData.append('last_name', last_name);
+		formData.append('address', address);
+		formData.append('id_number', random11Digits);
+		formData.append('mobile', mobile);
+		formData.append('time_from', time_from);
+		formData.append('time_to', time_to);
+		formData.append('discount', discount.toString());
+		formData.append('email', email);
+		formData.append('password', password);
+		formData.append('description', description);
+
+		try {
+			const response = await postUserData(formData);
+			setRegistrationStatus(response.message);
+			toast('success', 'დარეგისტრირებულია წარმატებით');
+
+			setTimeout(() => {
+				router.push('/dashboard');
+			}, 100);
+
+			console.log('Registration successful');
+		} catch (error) {
+			toast('error', `${error}`);
+			console.error('Error registering user:', error);
+			setRegistrationStatus('Error during registration');
 		}
 	};
 

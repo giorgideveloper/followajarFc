@@ -178,12 +178,7 @@ const Page = () => {
 											<div className='bottom-left absolute'>{categoryType}</div>
 											<Image
 												className='w-full'
-												src={
-													userData.image1 === undefined ||
-													userData.image1 === null
-														? 'https://follow.geoevents.ge/media/media/obieqtebi/318123540_140831465410945_5078453068844189760_n.jpg'
-														: `${userData.image1}`
-												}
+												src={`${userData.image1}`}
 												alt='anbani'
 												width={500}
 												height={500}
