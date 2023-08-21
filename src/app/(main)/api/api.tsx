@@ -1,4 +1,5 @@
 // Add more functions for other API requests
+'use client';
 import axios from 'axios';
 import { RegistrationType, RegistrationResponse } from './api.types';
 import { refreshAccessToken } from '@/components/Auth/utils/api';

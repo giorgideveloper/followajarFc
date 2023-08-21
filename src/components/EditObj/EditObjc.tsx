@@ -50,7 +50,6 @@ const EditObjc = ({ data }) => {
 		setEditData(prevData => ({
 			...prevData,
 			discount: value,
-			object_type: value,
 		}));
 	};
 
