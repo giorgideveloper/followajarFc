@@ -98,10 +98,11 @@ export default function Page({ params }: { params: { id: string } }) {
 														<div className='swiper-slide'>
 															<Image
 																className='w-full'
+																loading='lazy'
 																src={
 																	post.image1 === undefined ||
 																	post.image1 === null
-																		? 'https://follow.geoevents.ge/media/media/obieqtebi/318123540_140831465410945_5078453068844189760_n.jpg'
+																		? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
 																		: `${post.image1}`
 																}
 																alt={`Image`}
@@ -112,10 +113,11 @@ export default function Page({ params }: { params: { id: string } }) {
 														<div className='swiper-slide'>
 															<Image
 																className='w-full'
+																loading='lazy'
 																src={
 																	post.image2 === undefined ||
 																	post.image2 === null
-																		? 'https://follow.geoevents.ge/media/media/obieqtebi/318123540_140831465410945_5078453068844189760_n.jpg'
+																		? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
 																		: `${post.image2}`
 																}
 																alt={`Image`}
@@ -126,10 +128,11 @@ export default function Page({ params }: { params: { id: string } }) {
 														<div className='swiper-slide'>
 															<Image
 																className='w-full'
+																loading='lazy'
 																src={
 																	post.image3 === undefined ||
 																	post.image3 === null
-																		? 'https://follow.geoevents.ge/media/media/obieqtebi/318123540_140831465410945_5078453068844189760_n.jpg'
+																		? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
 																		: `${post.image3}`
 																}
 																alt={`Image`}

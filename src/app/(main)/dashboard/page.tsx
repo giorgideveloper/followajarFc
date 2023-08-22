@@ -183,10 +183,11 @@ const Page = () => {
 
 												<Image
 													className='w-full'
+													loading='lazy'
 													src={
 														userData.image1 === undefined ||
 														userData.image1 === null
-															? 'https://follow.geoevents.ge/media/media/obieqtebi/318123540_140831465410945_5078453068844189760_n.jpg'
+															? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
 															: `${userData.image1}`
 													}
 													alt={`${userData.name}`}
