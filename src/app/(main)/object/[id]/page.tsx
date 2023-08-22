@@ -18,31 +18,12 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { objIdType } from './ObjId.Interface';
 
-interface Item {
-	id?: number;
-	object_name?: string;
-	last_name?: string;
-	name?: string;
-	address?: string;
-	id_number?: string;
-	email?: string;
-	mobile?: string;
-	time_from?: string;
-	time_to?: string;
-	discount?: number;
-	facebook?: string;
-	instagram?: string;
-	description?: string;
-	image1?: string | null;
-	image2?: string | null;
-	image3?: string | null;
-	object_type?: number;
-}
 const API_URL = 'https://follow.geoevents.ge/api';
 
 export default function Page({ params }: { params: { id: string } }) {
-	const [post, setPost] = useState<Item[]>([]);
+	const [post, setPost] = useState<objIdType[]>([]);
 	const [categoryType, setCategoryType] = useState('');
 
 	useEffect(() => {
@@ -87,12 +68,12 @@ export default function Page({ params }: { params: { id: string } }) {
 	useEffect(() => {
 		typeSettings();
 	});
-
+	console.log(post);
 	return (
 		<>
 			<div className='container mx-auto my-4 px-7'>
 				<div className='  grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-2'>
-					{post && (
+					{post ? (
 						<>
 							<div className='card card-compact col-span-3'>
 								<div className={`card-body ${Banner_caps.className}`}>
@@ -117,7 +98,13 @@ export default function Page({ params }: { params: { id: string } }) {
 														<div className='swiper-slide'>
 															<Image
 																className='w-full'
-																src={`${post.image1}`}
+																loading='lazy'
+																src={
+																	post.image1 === undefined ||
+																	post.image1 === null
+																		? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																		: `${post.image1}`
+																}
 																alt={`Image`}
 																width={400}
 																height={500}
@@ -126,7 +113,13 @@ export default function Page({ params }: { params: { id: string } }) {
 														<div className='swiper-slide'>
 															<Image
 																className='w-full'
-																src={`${post.image2}`}
+																loading='lazy'
+																src={
+																	post.image2 === undefined ||
+																	post.image2 === null
+																		? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																		: `${post.image2}`
+																}
 																alt={`Image`}
 																width={400}
 																height={500}
@@ -135,7 +128,13 @@ export default function Page({ params }: { params: { id: string } }) {
 														<div className='swiper-slide'>
 															<Image
 																className='w-full'
-																src={`${post.image3}`}
+																loading='lazy'
+																src={
+																	post.image3 === undefined ||
+																	post.image3 === null
+																		? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																		: `${post.image3}`
+																}
 																alt={`Image`}
 																width={400}
 																height={500}
@@ -220,6 +219,8 @@ export default function Page({ params }: { params: { id: string } }) {
 								</div>
 							</div>
 						</>
+					) : (
+						'loading'
 					)}
 				</div>
 			</div>

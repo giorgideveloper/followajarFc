@@ -55,7 +55,8 @@ const Page = () => {
 		fetchUserData();
 	}, []);
 	const clearLocal = () => {
-		localStorage.clear();
+		localStorage.removeItem('access_token');
+		localStorage.removeItem('userId');
 		router.replace('/');
 	};
 	// Type Setting
@@ -84,148 +85,161 @@ const Page = () => {
 
 			<div>
 				<div className='container-2xl mx-auto '>
-					<div
-						className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  gap-4${Banner_caps.className} `}
-					>
-						<div className=' portfolio'>
-							<div className='avatar pt-5 align-middle flex justify-center'>
-								<div className='relative flex text-center items-center justify-center w-20 h-20 overflow-hidden text-3xl bg-gray-100 rounded-full dark:bg-gray-600'>
-									<span className='font-medium text-gray-600 dark:text-gray-300'>
-										{'J'}
-										{'R'}
-									</span>
+					{userData ? (
+						<div
+							className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3  gap-4${Banner_caps.className} `}
+						>
+							<div className=' portfolio'>
+								<div className='avatar pt-5 align-middle flex justify-center'>
+									<div className='relative flex text-center items-center justify-center w-20 h-20 overflow-hidden text-3xl bg-gray-100 rounded-full dark:bg-gray-600'>
+										<span className='font-medium text-gray-600 dark:text-gray-300'>
+											{'J'}
+											{'R'}
+										</span>
+									</div>
 								</div>
-							</div>
 
-							<h2 className='text-white text-center	font-bold text-lg pt-4'>
-								{userData.object_name}
-							</h2>
+								<h2 className='text-white text-center	font-bold text-lg pt-4'>
+									{userData.object_name}
+								</h2>
 
-							<div className='detail clearfix pt-10 text-slate-400'>
-								<ul className='mb-0'>
-									<li>
-										<span>
-											<i className='fa fa-map-marker'></i> {userData.address}
-										</span>
-									</li>
-									<li>
-										<span className='active'>
-											<i className='fa fa-user'></i>
-											{userData.email}
-										</span>
-									</li>
-									<li>
-										<span>
-											<i className='fa fa-list' aria-hidden='true'></i>
-											{userData.mobile}
-										</span>
-									</li>
-									<li>
-										<span>
-											<i className='fa fa-heart' aria-hidden='true'></i>
-											{userData.time_from === undefined ||
-											userData.time_from === null
-												? ''
-												: `${userData.time_from.slice(
-														0,
-														5
-												  )} - ${userData.time_to.slice(0, 5)}`}
-										</span>
-									</li>
-									<li>
-										<Link href={`/editobject`}>
-											<span className='cursor-pointer'>
-												<i className='fa fa-list' aria-hidden='true'></i>
-												რედაქტირება
+								<div className='detail clearfix pt-10 text-slate-400'>
+									<ul className='mb-0'>
+										<li>
+											<span>
+												<i className='fa fa-map-marker'></i> {userData.address}
 											</span>
-										</Link>
-									</li>
-									<li className='flex text-left'>
-										<span
-											className='cursor-pointer log-out '
-											onClick={clearLocal}
-										>
-											<Image
-												className='w-full log-out-img pr-2 '
-												src={logOut}
-												alt='log-out'
-												width={50}
-												height={50}
-											/>
-											გამოსვლა
-										</span>
-									</li>
-								</ul>
+										</li>
+										<li>
+											<span className='active'>
+												<i className='fa fa-user'></i>
+												{userData.email}
+											</span>
+										</li>
+										<li>
+											<span>
+												<i className='fa fa-list' aria-hidden='true'></i>
+												{userData.mobile}
+											</span>
+										</li>
+										<li>
+											<span>
+												<i className='fa fa-heart' aria-hidden='true'></i>
+												{userData.time_from === undefined ||
+												userData.time_from === null
+													? ''
+													: `${userData.time_from.slice(
+															0,
+															5
+													  )} - ${userData.time_to.slice(0, 5)}`}
+											</span>
+										</li>
+										<li>
+											<Link href={`/editobject`}>
+												<span className='cursor-pointer'>
+													<i className='fa fa-list' aria-hidden='true'></i>
+													რედაქტირება
+												</span>
+											</Link>
+										</li>
+										<li className='flex text-left'>
+											<span
+												className='cursor-pointer log-out '
+												onClick={clearLocal}
+											>
+												<Image
+													className='w-full log-out-img pr-2 '
+													src={logOut}
+													alt='log-out'
+													width={50}
+													height={50}
+												/>
+												გამოსვლა
+											</span>
+										</li>
+									</ul>
+								</div>
 							</div>
-						</div>
-						<Link href={`/object/${userData.id}`}>
-							<div
-								className='card card-compact  cursor-pointer '
-								key={userData.id}
-							>
-								<div className={`card-body `}>
-									<div className='avatar'>
-										<div className='w-full h-80 rounded-t-lg border-b-4 border-[#D98200] relative'>
-											<div className='top-left absolute  '>
-												<div className='top-left-bg'>
-													<span>
-														{(userData.discount >= 100 && (
-															<span>Free</span>
-														)) || <span>{userData.discount} %</span>}
-													</span>
+							<Link href={`/object/${userData.id}`}>
+								<div
+									className='card card-compact  cursor-pointer '
+									key={userData.id}
+								>
+									<div className={`card-body `}>
+										<div className='avatar'>
+											<div className='w-full h-80 rounded-t-lg border-b-4 border-[#D98200] relative'>
+												<div className='top-left absolute  '>
+													<div className='top-left-bg'>
+														<span>
+															{(userData.discount >= 100 && (
+																<span>Free</span>
+															)) || <span>{userData.discount} %</span>}
+														</span>
+													</div>
 												</div>
+												<div className='bottom-left absolute'>
+													{categoryType}
+												</div>
+
+												<Image
+													className='w-full'
+													loading='lazy'
+													src={
+														userData.image1 === undefined ||
+														userData.image1 === null
+															? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+															: `${userData.image1}`
+													}
+													alt={`${userData.name}`}
+													width={400}
+													height={500}
+												/>
 											</div>
-											<div className='bottom-left absolute'>{categoryType}</div>
-											<Image
-												className='w-full'
-												src={`${userData.image1}`}
-												alt='anbani'
-												width={500}
-												height={500}
-											/>
 										</div>
-									</div>
-									<div className='card-content '>
-										<div className='card-title '>
-											<h1 className={`text-3xl Banner_caps pt-3 pl-2 `}>
-												{userData.object_name}
-											</h1>
-										</div>
+										<div className='card-content '>
+											<div className='card-title '>
+												<h1 className={`text-3xl Banner_caps pt-3 pl-2 `}>
+													{userData.object_name}
+												</h1>
+											</div>
 
-										<div className='card-info'>
-											<ul className='ul'>
-												<li className='li'>
-													<Image className='w-4' src={location} alt='' />
+											<div className='card-info'>
+												<ul className='ul'>
+													<li className='li'>
+														<Image className='w-4' src={location} alt='' />
 
-													<span className='pl-2 '>{userData.address}</span>
-												</li>
-												<li className='li'>
-													<Image className='w-5 ' src={clock} alt='' />
+														<span className='pl-2 '>{userData.address}</span>
+													</li>
+													<li className='li'>
+														<Image className='w-5 ' src={clock} alt='' />
 
-													<span className='pl-2'>
-														{' '}
-														{userData.time_from === undefined ||
-														userData.time_from === null
-															? ''
-															: `${userData.time_from.slice(
-																	0,
-																	5
-															  )} - ${userData.time_to.slice(0, 5)}`}
-													</span>
-												</li>
-											</ul>
-										</div>
+														<span className='pl-2'>
+															{' '}
+															{userData.time_from === undefined ||
+															userData.time_from === null
+																? ''
+																: `${userData.time_from.slice(
+																		0,
+																		5
+																  )} - ${userData.time_to.slice(0, 5)}`}
+														</span>
+													</li>
+												</ul>
+											</div>
 
-										<div className='card-description'>
-											<p className='font-banner-caps text-gray-500 pl-2'>
-												{userData.description}
-											</p>
+											<div className='card-description'>
+												<p className='font-banner-caps text-gray-500 pl-2'>
+													{userData.description}
+												</p>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</Link>
-					</div>
+							</Link>
+						</div>
+					) : (
+						'loading'
+					)}
 				</div>
 			</div>
 		</div>
