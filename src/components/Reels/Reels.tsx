@@ -1,4 +1,7 @@
 'use client'
+
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs"
+
 // import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -13,11 +16,29 @@ const Reels = ({ data }: any) => {
             <h1 className="font-medium text-xl sm:text-2xl md:text-2xl lg:text-2xl p-1 ml-10 text-gray-900">კამპანიის ფარგლებში ბოლოს დამატებული პოსტები</h1>
             <div className="divider"></div>
 
-            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-            <div className="elfsight-app-2bcd1b8a-7d77-4651-8775-3acc1d7ab645"></div>
 
-            {/* <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-            <div className="elfsight-app-90b57122-2111-48a4-b17e-531f7939aae7"></div> */}
+            <Tabs
+                className=""
+
+                selectedTabClassName='tab-active'>
+                <TabList>
+                    <Tab className="tab tab-lg tab-lifted font-fira-go">Instagram</Tab>
+                    <Tab className="tab tab-lg tab-lifted font-fira-go">Facebook</Tab>
+                    <Tab className="tab tab-lg tab-lifted font-fira-go">Tiktok</Tab>
+                </TabList>
+                <TabPanel>
+                    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+                    <div className="elfsight-app-2bcd1b8a-7d77-4651-8775-3acc1d7ab645"></div>
+                </TabPanel>
+                <TabPanel>
+
+                </TabPanel>
+                <TabPanel>
+                    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+                    <div className="elfsight-app-7761cb95-401c-46e4-8ec7-6548960b1308"></div>
+                </TabPanel>
+            </Tabs>
+
 
             {/* <Swiper
 

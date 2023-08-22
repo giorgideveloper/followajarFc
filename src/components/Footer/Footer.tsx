@@ -1,6 +1,5 @@
-"use client";
 
-const Footer = async ({ data }: any) => {
+const Footer = ({ data }: any) => {
 
   return (
     <div className="container mx-auto ">
