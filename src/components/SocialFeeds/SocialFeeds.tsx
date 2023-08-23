@@ -34,8 +34,7 @@ const Tabs = ({ index }: { index: number }) => {
 
 
             <Script src='https://static.elfsight.com/platform/platform.js' data-use-service-core defer></Script>
-            <Script src='https://widgets.sociablekit.com/facebook-hashtag-posts/widget.js' async defer></Script>
-            <Script src='https://static.elfsight.com/platform/platform.js' data-use-service-core defer></Script>
+            <Script src='https://widgets.sociablekit.com/facebook-hashtag-posts/widget.js' async defer></Script> 
         </>
     )
 }
