@@ -1,6 +1,6 @@
 import Alphabet from '@/components/Alphabet/Alphabet'
 import Hero from '@/components/Hero'
-import Reels from '@/components/Reels'
+import SocialFeeds from '@/components/SocialFeeds'
 import { openGraphImage } from './shared-metadata'
 
 import Map from '@/components/Map'
@@ -28,7 +28,7 @@ export default async function Home() {
     <>
       <Hero />
       <Alphabet links={data} />
-      <Reels data={[]} />
+      <SocialFeeds />
       <Map />
     </>
   )
