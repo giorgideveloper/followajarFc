@@ -9,7 +9,9 @@ const Footer = ({ data }: any) => {
           <span className="footer-title text-base label-text font-fira-go">
             ჩვენი ვებ-საიტები
           </span>
-          <a
+<div dangerouslySetInnerHTML={{__html: data.sites}}></div>
+        
+          {/* <a
             className="link link-hover text-md text-gray-500 font-fira-go"
             target="_blank"
             href="http://visitbatumi.com"
@@ -29,7 +31,7 @@ const Footer = ({ data }: any) => {
             href="http://Batumievents.com"
           >
             batumievents.com
-          </a>
+          </a> */}
         </div>
         <div>
           <span className="footer-title text-base label-text font-fira-go">

@@ -24,9 +24,16 @@ export default async function Home() {
     .select(`*`)
     .order('letter', { ascending: true })
 
+    let { data: settings } = await supabase
+    .from('settings')
+    .select(`*`)
+    .eq('name', 'contact')
+    .single()
+console.log(settings);
+
   return (
     <>
-      <Hero />
+      <Hero content={settings.data.text} />
       <Alphabet links={data} />
       <SocialFeeds />
       <Map />
