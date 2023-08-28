@@ -24,16 +24,16 @@ export default async function Home() {
     .select(`*`)
     .order('letter', { ascending: true })
 
-    let { data: settings } = await supabase
+  let { data: settings } = await supabase
     .from('settings')
     .select(`*`)
     .eq('name', 'contact')
     .single()
-console.log(settings);
+  console.log(settings);
 
   return (
     <>
-      <Hero content={settings.data.text} />
+      <Hero content={settings.data.text} video_url={settings.data.video_url} />
       <Alphabet links={data} />
       <SocialFeeds />
       <Map />

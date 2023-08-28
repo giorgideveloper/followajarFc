@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
-const Hero = ({ content }: { content: string }) => {
+const Hero = ({ content, video_url }: { content: string, video_url: string }) => {
     const videoRef = useRef<HTMLVideoElement>(null)
     const bluredVideoRef = useRef<HTMLVideoElement>(null)
 
@@ -18,7 +18,7 @@ const Hero = ({ content }: { content: string }) => {
             <div className="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
                 <video
                     className="min-w-full min-h-full absolute object-cover"
-                    src="/Ajara-Tourist-Alphabet.mp4"
+                    src={video_url}
                     autoPlay
                     muted
                     loop>
