@@ -91,7 +91,7 @@ export const postEditUserData = async (
 		const accessToken = localStorage.getItem('access_token');
 		const userId = localStorage.getItem('userId');
 		const response = await axios.put<RegistrationResponse>(
-			`${baseURL}/user/update`,
+			`${baseURL}/user/update/`,
 			userData,
 			{
 				headers: {

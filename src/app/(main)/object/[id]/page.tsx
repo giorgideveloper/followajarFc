@@ -76,23 +76,26 @@ export default function Page({ params }: { params: { id: string } }) {
 													modules={[Navigation]}
 												>
 													<div className='swiper-wrapper'>
-														{post?.images?.map(img => (
-															// eslint-disable-next-line react/jsx-key
-															<div className='swiper-slide' key={img.id}>
-																<Image
-																	className='w-full'
-																	loading='lazy'
-																	src={
-																		img === undefined || img === null
-																			? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-																			: `${img.image}`
-																	}
-																	alt={`${post.name}`}
-																	width={400}
-																	height={500}
-																/>
-															</div>
-														))}
+														{post.images
+															? post?.images?.map(img => (
+																	// eslint-disable-next-line react/jsx-key
+																	<div className='swiper-slide' key={img.id}>
+																		<Image
+																			className='w-full'
+																			loading='lazy'
+																			src={
+																				img.image === undefined ||
+																				img.image === null
+																					? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																					: `${img.image}`
+																			}
+																			alt={`${post.name}`}
+																			width={400}
+																			height={500}
+																		/>
+																	</div>
+															  ))
+															: 'ფოტო'}
 														...
 													</div>
 

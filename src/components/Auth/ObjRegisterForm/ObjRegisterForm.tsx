@@ -62,10 +62,6 @@ const ObjRegisterForm = () => {
 				formData.append('uploaded_images', element);
 			});
 		}
-		// if (image3) {
-		// 	formData.append('image3', image3);
-		// Uploaded_images
-		// }
 
 		formData.append('id_number', idNumber);
 		formData.append('object_name', data.object_name);
