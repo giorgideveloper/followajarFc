@@ -33,7 +33,6 @@ const Page = () => {
 	}
 
 	const [userData, setUserData] = useState<Item[]>([]);
-	const [categoryType, setCategoryType] = useState('');
 
 	useEffect(() => {
 		async function fetchUserData() {
@@ -61,25 +60,6 @@ const Page = () => {
 		localStorage.removeItem('userId');
 		router.replace('/');
 	};
-	// Type Setting
-	const typeSettings = () => {
-		switch (userData.object_type) {
-			case 1:
-				setCategoryType('ატრაქცია');
-				break;
-			case 2:
-				setCategoryType('განთავსება');
-				break;
-			case 3:
-				setCategoryType('კვება');
-				break;
-			default:
-				setCategoryType('...');
-		}
-	};
-	useEffect(() => {
-		typeSettings();
-	});
 
 	return (
 		<div>
@@ -180,7 +160,7 @@ const Page = () => {
 													</div>
 												</div>
 												<div className='bottom-left absolute'>
-													{categoryType}
+													{userData?.object_type?.name}
 												</div>
 												{userData?.images?.map(img => (
 													// eslint-disable-next-line react/jsx-key

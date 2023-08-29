@@ -44,8 +44,7 @@ const Page = () => {
 		fetchData();
 		fetchInfo();
 	}, []);
-	console.log(data);
-	// console.log(data);
+
 	const userId =
 		typeof window !== 'undefined' ? localStorage.getItem('userId') : false;
 	return (
@@ -108,9 +107,7 @@ const Page = () => {
 														</div>
 													</div>
 													<div className='bottom-left absolute'>
-														{(item.object_type === 1 && 'ატრაქცია') ||
-															(item.object_type === 2 && 'განთავსება') ||
-															(item.object_type === 3 && 'კვება')}
+														{item?.object_type?.name}
 													</div>
 													{item?.images?.map(img => (
 														// eslint-disable-next-line react/jsx-key

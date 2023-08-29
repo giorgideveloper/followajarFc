@@ -24,7 +24,6 @@ const API_URL = 'https://follow.geoevents.ge/api';
 
 export default function Page({ params }: { params: { id: string } }) {
 	const [post, setPost] = useState<objIdType[]>([]);
-	const [categoryType, setCategoryType] = useState('');
 
 	useEffect(() => {
 		const fetchPost = async () => {
@@ -50,25 +49,7 @@ export default function Page({ params }: { params: { id: string } }) {
 
 		// configure Swiper to use modules
 	});
-	const typeSettings = () => {
-		switch (post.object_type) {
-			case 1:
-				setCategoryType('ატრაქცია');
-				break;
-			case 2:
-				setCategoryType('განთავსება');
-				break;
-			case 3:
-				setCategoryType('კვება');
-				break;
-			default:
-				setCategoryType('...');
-		}
-	};
-	useEffect(() => {
-		typeSettings();
-	});
-	console.log(post);
+
 	return (
 		<>
 			<div className='container mx-auto my-4 px-7'>
@@ -97,9 +78,8 @@ export default function Page({ params }: { params: { id: string } }) {
 													<div className='swiper-wrapper'>
 														{post?.images?.map(img => (
 															// eslint-disable-next-line react/jsx-key
-															<div className='swiper-slide'>
+															<div className='swiper-slide' key={img.id}>
 																<Image
-																	key={img.id}
 																	className='w-full'
 																	loading='lazy'
 																	src={
@@ -176,7 +156,11 @@ export default function Page({ params }: { params: { id: string } }) {
 										<li className='li-post'>
 											<Image className='w-4' src={folder} alt='' />
 
-											<span className='pl-2 '>{categoryType}</span>
+											<span className='pl-2 '>
+												{post?.object_type?.name === undefined
+													? 'loading'
+													: post?.object_type?.name}
+											</span>
 										</li>
 										<li className='li-post cursor-pointer'>
 											<a className='pr-4' href={`${post.facebook}`}>
