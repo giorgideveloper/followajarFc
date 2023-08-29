@@ -95,51 +95,24 @@ export default function Page({ params }: { params: { id: string } }) {
 													modules={[Navigation]}
 												>
 													<div className='swiper-wrapper'>
-														<div className='swiper-slide'>
-															<Image
-																className='w-full'
-																loading='lazy'
-																src={
-																	post.image1 === undefined ||
-																	post.image1 === null
-																		? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-																		: `${post.image1}`
-																}
-																alt={`Image`}
-																width={400}
-																height={500}
-															/>
-														</div>
-														<div className='swiper-slide'>
-															<Image
-																className='w-full'
-																loading='lazy'
-																src={
-																	post.image2 === undefined ||
-																	post.image2 === null
-																		? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-																		: `${post.image2}`
-																}
-																alt={`Image`}
-																width={400}
-																height={500}
-															/>
-														</div>
-														<div className='swiper-slide'>
-															<Image
-																className='w-full'
-																loading='lazy'
-																src={
-																	post.image3 === undefined ||
-																	post.image3 === null
-																		? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-																		: `${post.image3}`
-																}
-																alt={`Image`}
-																width={400}
-																height={500}
-															/>
-														</div>
+														{post?.images?.map(img => (
+															// eslint-disable-next-line react/jsx-key
+															<div className='swiper-slide'>
+																<Image
+																	key={img.id}
+																	className='w-full'
+																	loading='lazy'
+																	src={
+																		img === undefined || img === null
+																			? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																			: `${img.image}`
+																	}
+																	alt={`${post.name}`}
+																	width={400}
+																	height={500}
+																/>
+															</div>
+														))}
 														...
 													</div>
 

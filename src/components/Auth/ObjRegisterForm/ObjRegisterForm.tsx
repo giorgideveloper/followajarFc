@@ -18,29 +18,10 @@ const ObjRegisterForm = () => {
 		formState: { errors },
 	} = useForm<RegisterFromType>();
 	const [images, setImages] = useState<File[]>([]);
-	const [myImage, setMyImage] = useState<File | null>(null);
-	console.log(
-		'🚀 ~ file: ObjRegisterForm.tsx:22 ~ ObjRegisterForm ~ myImage:',
-		...images
-	);
-
-	const imgEdit = () => {
-		images.map(element => {
-			setMyImage(element);
-		});
-	};
-
-	useEffect(() => {
-		imgEdit();
-	}, [images]);
 
 	const handleImagesUploaded = (uploadedImages: File[]) => {
 		setImages(uploadedImages);
 	};
-
-	const [image1, setImage1] = useState<File | null>(null);
-	const [image2, setImage2] = useState<File | null>(null);
-	const [image3, setImage3] = useState<File | null>(null);
 
 	const [errorsMessage, setErrorsMessage] = useState([]);
 	const [registrationStatus, setRegistrationStatus] = useState('');
@@ -76,9 +57,11 @@ const ObjRegisterForm = () => {
 		const idNumber = generateRandom11Digits();
 		const formData = new FormData();
 
-		 if (images ) {
-		formData.append('Uploaded_image', ...images);
-		 }
+		if (images) {
+			images.map(element => {
+				formData.append('uploaded_images', element);
+			});
+		}
 		// if (image3) {
 		// 	formData.append('image3', image3);
 		// Uploaded_images
@@ -120,22 +103,6 @@ const ObjRegisterForm = () => {
 		}
 	};
 
-	const handleImageChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.files && event.target.files.length > 0) {
-			setImage1(event.target.files[0]);
-			console.log(event.target.files[0])
-		}
-	};
-	const handleImageChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.files && event.target.files.length > 0) {
-			setImage2(event.target.files[0]);
-		}
-	};
-	const handleImageChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
-		if (event.target.files && event.target.files.length > 0) {
-			setImage3(event.target.files[0]);
-		}
-	};
 	return (
 		<>
 			{loading ? (
@@ -449,7 +416,7 @@ const ObjRegisterForm = () => {
 						</svg>
 						<strong className='ml-2'>სოციალური ქსელები</strong>
 					</h3>
-					<div className='flex flex-col md:flex-row gap-4'>
+					<div className='flex flex-col md:flex-row gap-4 mb-5'>
 						<div className='w-full'>
 							<Input
 								label='Facebook'
@@ -481,42 +448,23 @@ const ObjRegisterForm = () => {
 							)}
 						</div>
 					</div>
-
-					<Input
-						label='ფოტო'
-						type='file'
-						id='image1'
-						accept='image/*'
-						// onChange={handleImageChange}
-						className='file-input file-input-bordered w-full'
-						multiple
-						name='image1'
-						onChange={handleImageChange1}
-					/>
-
-					<Input
-						label='ფოტო2'
-						type='file'
-						id='image2'
-						accept='image/*'
-						// onChange={handleImageChangeTow}
-						className='file-input file-input-bordered w-full'
-						multiple
-						name='image2'
-						onChange={handleImageChange2}
-					/>
-
-					<Input
-						label='ფოტო3'
-						type='file'
-						id='image3'
-						accept='image/*'
-						// onChange={handleImageChangeThree}
-						className='file-input file-input-bordered w-full'
-						multiple
-						name='image3'
-						onChange={handleImageChange3}
-					/>
+					<h3 className='flex'>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							fill='none'
+							viewBox='0 0 24 24'
+							strokeWidth='1.5'
+							stroke='currentColor'
+							className='w-6 h-6'
+						>
+							<path
+								strokeLinecap='round'
+								strokeLinejoin='round'
+								d='M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z'
+							/>
+						</svg>
+						<strong className='ml-2'>ობიექტის ფოტო</strong>
+					</h3>
 					<ImageUploader onImagesUploaded={handleImagesUploaded} />
 					<button className='btn btn-block btn-primary'>Submit</button>
 				</form>

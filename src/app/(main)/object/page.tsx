@@ -44,7 +44,7 @@ const Page = () => {
 		fetchData();
 		fetchInfo();
 	}, []);
-
+	console.log(data);
 	// console.log(data);
 	const userId =
 		typeof window !== 'undefined' ? localStorage.getItem('userId') : false;
@@ -112,14 +112,22 @@ const Page = () => {
 															(item.object_type === 2 && 'განთავსება') ||
 															(item.object_type === 3 && 'კვება')}
 													</div>
-													<Image
-														className='w-full'
-														src={`${item.image1}`}
-														alt='anbani'
-														width={500}
-														height={500}
-														loading='lazy'
-													/>
+													{item?.images?.map(img => (
+														// eslint-disable-next-line react/jsx-key
+														<Image
+															key={img.id}
+															className='w-full'
+															loading='lazy'
+															src={
+																img === undefined || img === null
+																	? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																	: `${img.image}`
+															}
+															alt={`${item.name}`}
+															width={400}
+															height={500}
+														/>
+													))}
 												</div>
 											</div>
 											<div className='card-content '>
