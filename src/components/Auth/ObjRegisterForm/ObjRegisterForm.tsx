@@ -1,12 +1,13 @@
 'use client';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { postUserData } from '@/app/(main)/api/api';
 import toast from '@/components/helper/toast';
 import { RegisterFromType } from './ObjRegisterForm.interface';
 import Input from '@/components/Form/Input';
 import Loading from '@/components/Loading';
+import ImageUploader from '@/components/ImageUploader/ImageUploader';
 
 const ObjRegisterForm = () => {
 	const [loading, setLoading] = useState(false);
@@ -16,137 +17,33 @@ const ObjRegisterForm = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<RegisterFromType>();
+	const [images, setImages] = useState<File[]>([]);
+	const [myImage, setMyImage] = useState<File | null>(null);
+	console.log(
+		'🚀 ~ file: ObjRegisterForm.tsx:22 ~ ObjRegisterForm ~ myImage:',
+		...images
+	);
+
+	const imgEdit = () => {
+		images.map(element => {
+			setMyImage(element);
+		});
+	};
+
+	useEffect(() => {
+		imgEdit();
+	}, [images]);
+
+	const handleImagesUploaded = (uploadedImages: File[]) => {
+		setImages(uploadedImages);
+	};
+
 	const [image1, setImage1] = useState<File | null>(null);
 	const [image2, setImage2] = useState<File | null>(null);
 	const [image3, setImage3] = useState<File | null>(null);
 
 	const [errorsMessage, setErrorsMessage] = useState([]);
 	const [registrationStatus, setRegistrationStatus] = useState('');
-
-	// 	const imageFile = event.target.files[0];
-	// 	setImage(prevData => ({
-	// 		...prevData,
-	// 		image1: imageFile,
-	// 	}));
-	// };
-	// const handleImageChangeTow = (event: any) => {
-	// 	const imageFile = event.target.files[0];
-	// 	setImage(prevData => ({
-	// 		...prevData,
-	// 		image2: imageFile,
-	// 	}));
-	// };
-
-	// const handleImageChangeThree = (event: any) => {
-	// 	const imageFile = event.target.files[0];
-	// 	setImage(prevData => ({
-	// 		...prevData,
-	// 		image3: imageFile,
-	// 	}));
-	// };
-
-	// const errorMessage = () => {
-	// 	if (errorsMessage.address) {
-	// 		toast('error', `მეილი არ არის შეყვანილი`);
-	// 	} else if (errorsMessage.description) {
-	// 		toast('error', `მოკლე აღწერა არ არის შევსებული`);
-	// 	} else if (errorsMessage.last_name) {
-	// 		toast('error', 'გვარიი არ არის შევსებული');
-	// 	} else if (errorsMessage.mobile) {
-	// 		toast('error', 'მობილური არ არის შევსებული');
-	// 	} else if (errorsMessage.name) {
-	// 		toast('error', 'სახელი არ არის შევსებული');
-	// 	} else if (errorsMessage.object_name) {
-	// 		toast('error', 'ობიექტის სახელი არ არის შევსებული');
-	// 	} else if (errorsMessage.password) {
-	// 		toast('error', 'პაროლი არ არის შევსებული');
-	// 	} else if (errorsMessage.time_from) {
-	// 		toast('error', 'დაწყება არ არის შევსებული');
-	// 	} else if (errorsMessage.time_to) {
-	// 		toast('error', 'დასრულება არ არის შევსებული');
-	// 	}
-	// };
-
-	// const onSubmit = async (data: RegisterFromType) => {
-	// 	const {
-	// 		object_name,
-	// 		object_type_value,
-	// 		name,
-	// 		last_name,
-	// 		address,
-	// 		mobile,
-	// 		time_from_type,
-	// 		time_to_type,
-	// 		numberDiscount,
-	// 		description,
-	// 		email,
-	// 		password,
-	// 		facebook,
-	// 		instagram,
-	// 	} = data;
-
-	// 	let object_type: number = +object_type_value;
-	// 	let discount: number = +numberDiscount;
-	// 	let time_from = moment(time_from_type, 'hh:mm:ss').format('hh:mm');
-	// 	let time_to = moment(time_to_type, 'hh:mm:ss').format('hh:mm');
-	// 	// Number generation
-	// 	function generateRandom11Digits() {
-	// 		const randomNumber = Math.floor(Math.random() * 100000000000);
-	// 		const formattedNumber = String(randomNumber).padStart(11, '0');
-	// 		return formattedNumber;
-	// 	}
-	// 	const random11Digits = generateRandom11Digits();
-
-	// 	const formData: any = new FormData();
-
-	// 	if (image.image1 === undefined) {
-	// 		formData.append('', '');
-	// 	} else {
-	// 		formData.append('image1', image.image1);
-	// 	}
-	// 	if (image.image2 === undefined) {
-	// 		formData.append('', '');
-	// 	} else {
-	// 		formData.append('image2', image.image2);
-	// 	}
-	// 	if (image.image2 === undefined) {
-	// 		formData.append('', '');
-	// 	} else {
-	// 		formData.append('image3', image.image3);
-	// 	}
-	// 	// Append other fields to the formData
-	// 	formData.append('object_name', object_name);
-	// 	formData.append('object_type', object_type);
-	// 	formData.append('name', name);
-	// 	formData.append('facebook', facebook);
-	// 	formData.append('instagram', instagram);
-	// 	formData.append('last_name', last_name);
-	// 	formData.append('address', address);
-	// 	formData.append('id_number', random11Digits);
-	// 	formData.append('mobile', mobile);
-	// 	formData.append('time_from', time_from);
-	// 	formData.append('time_to', time_to);
-	// 	formData.append('discount', discount.toString());
-	// 	formData.append('email', email);
-	// 	formData.append('password', password);
-	// 	formData.append('description', description);
-
-	// 	try {
-	// 		const response = await postUserData(formData);
-	// 		setRegistrationStatus(response.message);
-	// 		toast('success', 'დარეგისტრირებულია წარმატებით');
-
-	// 		setTimeout(() => {
-	// 			router.push('/dashboard');
-	// 		}, 100);
-
-	// 		console.log('Registration successful');
-	// 	} catch (error) {
-	// 		setErrorsMessage(error.response.data);
-	// 		setRegistrationStatus('Error during registration');
-	// 		errorMessage();
-	// 	}
-	// };
 
 	const errorMessage = () => {
 		if (errorsMessage.address) {
@@ -179,16 +76,13 @@ const ObjRegisterForm = () => {
 		const idNumber = generateRandom11Digits();
 		const formData = new FormData();
 
-		if (image1) {
-			formData.append('image1', image1);
-		}
-
-		if (image2) {
-			formData.append('image2', image2);
-		}
-		if (image3) {
-			formData.append('image3', image3);
-		}
+		 if (images ) {
+		formData.append('Uploaded_image', ...images);
+		 }
+		// if (image3) {
+		// 	formData.append('image3', image3);
+		// Uploaded_images
+		// }
 
 		formData.append('id_number', idNumber);
 		formData.append('object_name', data.object_name);
@@ -229,6 +123,7 @@ const ObjRegisterForm = () => {
 	const handleImageChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.files && event.target.files.length > 0) {
 			setImage1(event.target.files[0]);
+			console.log(event.target.files[0])
 		}
 	};
 	const handleImageChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -622,7 +517,7 @@ const ObjRegisterForm = () => {
 						name='image3'
 						onChange={handleImageChange3}
 					/>
-
+					<ImageUploader onImagesUploaded={handleImagesUploaded} />
 					<button className='btn btn-block btn-primary'>Submit</button>
 				</form>
 			)}

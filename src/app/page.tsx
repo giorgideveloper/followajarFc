@@ -1,6 +1,6 @@
 import Alphabet from '@/components/Alphabet/Alphabet'
 import Hero from '@/components/Hero'
-import Reels from '@/components/Reels'
+import SocialFeeds from '@/components/SocialFeeds'
 import { openGraphImage } from './shared-metadata'
 
 import Map from '@/components/Map'
@@ -24,11 +24,18 @@ export default async function Home() {
     .select(`*`)
     .order('letter', { ascending: true })
 
+  let { data: settings } = await supabase
+    .from('settings')
+    .select(`*`)
+    .eq('name', 'contact')
+    .single()
+  console.log(settings);
+
   return (
     <>
-      <Hero />
+      <Hero content={settings.data.text} video_url={settings.data.video_url} />
       <Alphabet links={data} />
-      <Reels data={[]} />
+      <SocialFeeds />
       <Map />
     </>
   )

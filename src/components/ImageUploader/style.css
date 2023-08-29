@@ -1,0 +1,22 @@
+.dropzone {
+	border: 2px dashed #cccccc;
+	padding: 20px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.uploaded-files {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 20px;
+}
+
+.uploaded-file {
+	margin: 10px;
+	text-align: center;
+}
+
+.uploaded-file img {
+	max-width: 100px;
+	max-height: 100px;
+}

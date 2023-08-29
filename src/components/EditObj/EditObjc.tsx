@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { postEditUserData } from '@/app/(main)/api/api';
 import toast from '../helper/toast';
 import Loading from '../Loading';
+import ImageUploader from '../ImageUploader/ImageUploader';
 
 const EditObjc = ({ data }) => {
 	const defaultValues: any = {
@@ -416,7 +417,6 @@ const EditObjc = ({ data }) => {
 									// {...register('description')}
 								/>
 							</div>
-
 							<h3 className='flex'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
@@ -471,7 +471,6 @@ const EditObjc = ({ data }) => {
 									/>
 								</div>
 							</div>
-
 							<label
 								htmlFor='file'
 								className={'text-lg font-medium text-gray-900'}
