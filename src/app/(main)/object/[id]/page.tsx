@@ -11,20 +11,20 @@ import user from '../icon/user.svg';
 import fb from '../icon/fb.svg';
 import inst from '../icon/inst.svg';
 import { Banner_caps } from '../fonts/fonts';
-//Swiper Js
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-// import Swiper and modules styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { objIdType } from './ObjId.Interface';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+
+// import Swiper and modules styles
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/swiper-bundle.css'; // Import Swiper styles
 
 const API_URL = 'https://follow.geoevents.ge/api';
 
 export default function Page({ params }: { params: { id: string } }) {
 	const [post, setPost] = useState<objIdType[]>([]);
-
+	const [swiperInstance, setSwiperInstance] = useState(null);
 	useEffect(() => {
 		const fetchPost = async () => {
 			try {
@@ -38,17 +38,6 @@ export default function Page({ params }: { params: { id: string } }) {
 			fetchPost();
 		}
 	}, [params.id]);
-
-	//Swiper Js
-	const swiper = new Swiper('.swiper', {
-		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
-		},
-		modules: [Navigation, Pagination],
-
-		// configure Swiper to use modules
-	});
 
 	return (
 		<>
@@ -70,33 +59,52 @@ export default function Page({ params }: { params: { id: string } }) {
 												</div>
 											</div>
 											<div className='w-full'>
-												<div
-													className='swiper'
-													pagination={true}
-													modules={[Navigation]}
+												<Swiper
+													modules={[Navigation, Pagination, Scrollbar, A11y]}
+													spaceBetween={50}
+													slidesPerView={1}
+													navigation
+													pagination={{ clickable: true }}
+													scrollbar={{ draggable: true }}
+													onSlideChange={() => console.log('slide change')}
 												>
+													{post?.images?.map(img => (
+														<SwiperSlide key={img.id}>
+															{' '}
+															<Image
+																className='w-full'
+																loading='lazy'
+																src={
+																	img.image ||
+																	'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																}
+																alt={`${post.name}`}
+																width={400}
+																height={500}
+															/>
+														</SwiperSlide>
+													))}
+													...
+												</Swiper>
+												{/* <div className='swiper' modules={[Navigation]}>
 													<div className='swiper-wrapper'>
-														{post.images
-															? post?.images?.map(img => (
-																	// eslint-disable-next-line react/jsx-key
-																	<div className='swiper-slide' key={img.id}>
-																		<Image
-																			className='w-full'
-																			loading='lazy'
-																			src={
-																				img.image === undefined ||
-																				img.image === null
-																					? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-																					: `${img.image}`
-																			}
-																			alt={`${post.name}`}
-																			width={400}
-																			height={500}
-																		/>
-																	</div>
-															  ))
-															: 'ფოტო'}
-														...
+														{post?.images &&
+															post?.images?.map(img => (
+																// eslint-disable-next-line react/jsx-key
+																<div className='swiper-slide' key={img.id}>
+																	<Image
+																		className='w-full'
+																		loading='lazy'
+																		src={
+																			img.image ||
+																			'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																		}
+																		alt={`${post.name}`}
+																		width={400}
+																		height={500}
+																	/>
+																</div>
+															))}
 													</div>
 
 													<div className='swiper-pagination'></div>
@@ -105,7 +113,7 @@ export default function Page({ params }: { params: { id: string } }) {
 													<div className='swiper-button-next'></div>
 
 													<div className='swiper-scrollbar'></div>
-												</div>
+												</div> */}
 											</div>
 										</div>
 									</div>
