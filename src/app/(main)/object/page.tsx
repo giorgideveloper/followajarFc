@@ -45,6 +45,14 @@ const Page = () => {
 		fetchInfo();
 	}, []);
 
+	const replaceAll=(str) =>{
+		const regex = /(<([^>]+)>)/gi;
+    const newString = str.replace(regex, "");
+    return newString;
+	}
+    
+
+
 	const userId =
 		typeof window !== 'undefined' ? localStorage.getItem('userId') : false;
 	return (
@@ -57,7 +65,7 @@ const Page = () => {
 								className={` ${Banner_caps.className} m-4 pb-3`}
 								key={item.id}
 							>
-								{item.description}
+								{replaceAll(item.description)}
 							</h2>
 							{userId ? (
 								''

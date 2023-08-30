@@ -7,35 +7,25 @@ import toast from '../helper/toast';
 import Loading from '../Loading';
 import ImageUploader from '../ImageUploader/ImageUploader';
 
-const EditObjc = ({ data }) => {
+const EditObjc = ({ data }): JSX.Element => {
 	const [images, setImages] = useState<File[]>([]);
 
 	const handleImagesUploaded = (uploadedImages: File[]) => {
 		setImages(uploadedImages);
 	};
-	const defaultValues: any = {
-		object_name: data.object_name,
-		object_type_value: data.object_type,
-		name: data.name,
-		last_name: data.last_name,
-		address: data.address,
-		id_number: data.id_number,
-		email: data.email,
-		mobile: data.mobile,
-		time_from_type: data.time_from,
-		time_to_type: data.time_to,
-		numberDiscount: data.discount,
-		facebook: data.facebook,
-		instagram: data.instagram,
-		description: data.description,
-		images: data.images.image,
-	};
-	// image1: null as File | string, // TODO : ปรับ type เป็น file
+
+
 	const [editData, setEditData] = useState<any>(data);
 	const router = useRouter();
 	const [editStatus, setEditStatus] = useState('');
 	const [uploading, setUploading] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const [imageDef, setImageDef] =useState<string>('')
+	console.log("🚀 ~ file: EditObjc.tsx:24 ~ EditObjc ~ imageDef:", imageDef)
+
+useEffect(()=>{
+	data.images.map(img => setImageDef(img.image))
+})
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setEditData(prevData => ({
@@ -68,22 +58,7 @@ const EditObjc = ({ data }) => {
 			}));
 		});
 	};
-	// const handleImageInputChange2 = e => {
-	// 	const imageFile = e.target.files[0];
-	// 	setEditData(prevData => ({
-	// 		...prevData,
-	// 		image2: imageFile,
-	// 	}));
-	// };
-	// const handleImageInputChange3 = e => {
-	// 	const imageFile = e.target.files[0];
-	// 	setEditData(prevData => ({
-	// 		...prevData,
-	// 		image3: imageFile,
-	// 	}));
-	// };
 
-	console.log(editData);
 
 	useEffect(() => {
 		editData?.images?.map(img => {
