@@ -29,11 +29,10 @@ const Page = () => {
 		facebook: string;
 		instagram: string;
 		description: string;
-		image1: null;
+		images: null;
 	}
 
 	const [userData, setUserData] = useState<Item[]>([]);
-	const [categoryType, setCategoryType] = useState('');
 
 	useEffect(() => {
 		async function fetchUserData() {
@@ -52,32 +51,15 @@ const Page = () => {
 				}
 			}
 		}
+
 		fetchUserData();
 	}, []);
+
 	const clearLocal = () => {
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('userId');
 		router.replace('/');
 	};
-	// Type Setting
-	const typeSettings = () => {
-		switch (userData.object_type) {
-			case 1:
-				setCategoryType('ატრაქცია');
-				break;
-			case 2:
-				setCategoryType('განთავსება');
-				break;
-			case 3:
-				setCategoryType('კვება');
-				break;
-			default:
-				setCategoryType('...');
-		}
-	};
-	useEffect(() => {
-		typeSettings();
-	});
 
 	return (
 		<div>
@@ -178,22 +160,24 @@ const Page = () => {
 													</div>
 												</div>
 												<div className='bottom-left absolute'>
-													{categoryType}
+													{userData?.object_type?.name}
 												</div>
-
-												<Image
-													className='w-full'
-													loading='lazy'
-													src={
-														userData.image1 === undefined ||
-														userData.image1 === null
-															? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-															: `${userData.image1}`
-													}
-													alt={`${userData.name}`}
-													width={400}
-													height={500}
-												/>
+												{userData?.images?.map(img => (
+													// eslint-disable-next-line react/jsx-key
+													<Image
+														key={img.id}
+														className='w-full'
+														loading='lazy'
+														src={
+															img === undefined || img === null
+																? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																: `${img.image}`
+														}
+														alt={`${userData.name}`}
+														width={400}
+														height={500}
+													/>
+												))}
 											</div>
 										</div>
 										<div className='card-content '>

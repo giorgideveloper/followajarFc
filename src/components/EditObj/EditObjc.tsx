@@ -5,31 +5,27 @@ import { useEffect, useState } from 'react';
 import { postEditUserData } from '@/app/(main)/api/api';
 import toast from '../helper/toast';
 import Loading from '../Loading';
+import ImageUploader from '../ImageUploader/ImageUploader';
 
-const EditObjc = ({ data }) => {
-	const defaultValues: any = {
-		object_name: data.object_name,
-		object_type_value: data.object_type,
-		name: data.name,
-		last_name: data.last_name,
-		address: data.address,
-		id_number: data.id_number,
-		email: data.email,
-		mobile: data.mobile,
-		time_from_type: data.time_from,
-		time_to_type: data.time_to,
-		numberDiscount: data.discount,
-		facebook: data.facebook,
-		instagram: data.instagram,
-		description: data.description,
-		image1: data.image1,
+const EditObjc = ({ data }): JSX.Element => {
+	const [images, setImages] = useState<File[]>([]);
+
+	const handleImagesUploaded = (uploadedImages: File[]) => {
+		setImages(uploadedImages);
 	};
-	// image1: null as File | string, // TODO : ปรับ type เป็น file
+
+
 	const [editData, setEditData] = useState<any>(data);
 	const router = useRouter();
 	const [editStatus, setEditStatus] = useState('');
 	const [uploading, setUploading] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const [imageDef, setImageDef] =useState<string>('')
+	console.log("🚀 ~ file: EditObjc.tsx:24 ~ EditObjc ~ imageDef:", imageDef)
+
+useEffect(()=>{
+	data.images.map(img => setImageDef(img.image))
+})
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setEditData(prevData => ({
@@ -54,84 +50,38 @@ const EditObjc = ({ data }) => {
 		}));
 	};
 
-	const handleImageInputChange1 = e => {
-		const imageFile = e.target.files[0];
-		setEditData(prevData => ({
-			...prevData,
-			image1: imageFile,
-		}));
-	};
-	const handleImageInputChange2 = e => {
-		const imageFile = e.target.files[0];
-		setEditData(prevData => ({
-			...prevData,
-			image2: imageFile,
-		}));
-	};
-	const handleImageInputChange3 = e => {
-		const imageFile = e.target.files[0];
-		setEditData(prevData => ({
-			...prevData,
-			image3: imageFile,
-		}));
+	const handleImageInputChange1 = () => {
+		images.map(element => {
+			setEditData(prevData => ({
+				...prevData,
+				uploaded_images: element,
+			}));
+		});
 	};
 
-	console.log(typeof editData.image1);
 
 	useEffect(() => {
-		if (editData.image1 && typeof editData.image1 === 'string') {
-			fetch(editData.image1)
-				.then(response => response.blob())
-				.then(blob => {
-					// Create a new File object
-					const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
-					console.log('File object:', file);
-					setEditData(prevData => ({
-						...prevData,
-						image1: file,
-					}));
-					setUploading(false);
-				})
-				.catch(error => {
-					console.error('Error fetching image:', error);
-				});
-		}
-		if (editData.image2 && typeof editData.image2 === 'string') {
-			fetch(editData.image1)
-				.then(response => response.blob())
-				.then(blob => {
-					// Create a new File object
-					const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
-					console.log('File object:', file);
-					setEditData(prevData => ({
-						...prevData,
-						image2: file,
-					}));
-					setUploading(false);
-				})
-				.catch(error => {
-					console.error('Error fetching image:', error);
-				});
-		}
-		if (editData.image3 && typeof editData.image3 === 'string') {
-			fetch(editData.image1)
-				.then(response => response.blob())
-				.then(blob => {
-					// Create a new File object
-					const file = new File([blob], 'image.jpg', {
-						type: 'image/jpeg',
+		editData?.images?.map(img => {
+			if (img.image && typeof img.image === 'string') {
+				fetch(img.image)
+					.then(response => response.blob())
+					.then(blob => {
+						// Create a new File object
+						const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+						console.log('File object:', file);
+						setEditData(prevData => ({
+							...prevData,
+							uploaded_images: file,
+						}));
+						setUploading(false);
+					})
+					.catch(error => {
+						console.error('Error fetching image:', error);
 					});
-					console.log('File object:', file);
-					setEditData(prevData => ({
-						...prevData,
-						image3: file,
-					}));
-					setUploading(false);
-				})
-				.catch(error => {
-					console.error('Error fetching image:', error);
-				});
-		}
+			}
+		});
+
+		handleImageInputChange1();
 	}, []);
 
 	console.log(editData.image1);
@@ -416,7 +366,6 @@ const EditObjc = ({ data }) => {
 									// {...register('description')}
 								/>
 							</div>
-
 							<h3 className='flex'>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
@@ -471,55 +420,24 @@ const EditObjc = ({ data }) => {
 									/>
 								</div>
 							</div>
-
-							<label
-								htmlFor='file'
-								className={'text-lg font-medium text-gray-900'}
-							>
-								ფოტო 1
-							</label>
-							<input
-								onChange={handleImageInputChange1}
-								type='file'
-								id='image1'
-								accept='image/*'
-								name='image1'
-								// onChange={handleImageChange}
-
-								className='file-input file-input-bordered w-full'
-							/>
-							<label
-								htmlFor='file'
-								className={'text-lg font-medium text-gray-900'}
-							>
-								ფოტო 2
-							</label>
-							<input
-								onChange={handleImageInputChange2}
-								type='file'
-								id='image2'
-								accept='image/*'
-								name='image2'
-								// onChange={handleImageChange}
-
-								className='file-input file-input-bordered w-full'
-							/>
-							<label
-								htmlFor='file'
-								className={'text-lg font-medium text-gray-900'}
-							>
-								ფოტო 3
-							</label>
-							<input
-								onChange={handleImageInputChange3}
-								type='file'
-								id='image2'
-								accept='image/*'
-								name='image3'
-								// onChange={handleImageChange}
-
-								className='file-input file-input-bordered w-full'
-							/>
+							<h3 className='flex'>
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									fill='none'
+									viewBox='0 0 24 24'
+									strokeWidth='1.5'
+									stroke='currentColor'
+									className='w-6 h-6'
+								>
+									<path
+										strokeLinecap='round'
+										strokeLinejoin='round'
+										d='M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z'
+									/>
+								</svg>
+								<strong className='ml-2'>ობიექტის ფოტო</strong>
+							</h3>
+							<ImageUploader onImagesUploaded={handleImagesUploaded} />
 
 							<button
 								className='btn btn-block btn-primary'

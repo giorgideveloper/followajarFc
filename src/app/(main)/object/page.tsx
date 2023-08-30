@@ -45,7 +45,14 @@ const Page = () => {
 		fetchInfo();
 	}, []);
 
-	// console.log(data);
+	const replaceAll=(str) =>{
+		const regex = /(<([^>]+)>)/gi;
+    const newString = str.replace(regex, "");
+    return newString;
+	}
+    
+
+
 	const userId =
 		typeof window !== 'undefined' ? localStorage.getItem('userId') : false;
 	return (
@@ -58,7 +65,7 @@ const Page = () => {
 								className={` ${Banner_caps.className} m-4 pb-3`}
 								key={item.id}
 							>
-								{item.description}
+								{replaceAll(item.description)}
 							</h2>
 							{userId ? (
 								''
@@ -108,18 +115,24 @@ const Page = () => {
 														</div>
 													</div>
 													<div className='bottom-left absolute'>
-														{(item.object_type === 1 && 'ატრაქცია') ||
-															(item.object_type === 2 && 'განთავსება') ||
-															(item.object_type === 3 && 'კვება')}
+														{item?.object_type?.name}
 													</div>
-													<Image
-														className='w-full'
-														src={`${item.image1}`}
-														alt='anbani'
-														width={500}
-														height={500}
-														loading='lazy'
-													/>
+													{item?.images?.map(img => (
+														// eslint-disable-next-line react/jsx-key
+														<Image
+															key={img.id}
+															className='w-full'
+															loading='lazy'
+															src={
+																img === undefined || img === null
+																	? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+																	: `${img.image}`
+															}
+															alt={`${item.name}`}
+															width={400}
+															height={500}
+														/>
+													))}
 												</div>
 											</div>
 											<div className='card-content '>

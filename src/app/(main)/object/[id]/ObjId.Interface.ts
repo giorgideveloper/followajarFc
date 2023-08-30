@@ -14,7 +14,5 @@ export interface objIdType {
 	facebook: string;
 	instagram: string;
 	description: string;
-	image1: string;
-	image2: string;
-	image3: string;
+	images: string;
 }
