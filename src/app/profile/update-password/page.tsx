@@ -7,7 +7,6 @@ const Page = async () => {
     const supabase = createServerComponentClient({ cookies })
 
     const { data: { session } } = await supabase.auth.getSession()
-    console.log('session', session);
 
     const userEmail = ''
 

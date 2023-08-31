@@ -116,7 +116,6 @@ const RegisterForm: FC<RegisterFormProps> = () => {
 
       // if (onSub) onSub()
       if (data) {
-        console.log("balaa");
 
         setConfirmation(true);
         reset();
