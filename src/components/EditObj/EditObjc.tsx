@@ -14,18 +14,17 @@ const EditObjc = ({ data }): JSX.Element => {
 		setImages(uploadedImages);
 	};
 
-
 	const [editData, setEditData] = useState<any>(data);
+	console.log('🚀 ~ file: EditObjc.tsx:18 ~ EditObjc ~ editData:', editData);
 	const router = useRouter();
 	const [editStatus, setEditStatus] = useState('');
 	const [uploading, setUploading] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const [imageDef, setImageDef] =useState<string>('')
-	console.log("🚀 ~ file: EditObjc.tsx:24 ~ EditObjc ~ imageDef:", imageDef)
+	const [imageDef, setImageDef] = useState<string>('');
 
-useEffect(()=>{
-	data.images.map(img => setImageDef(img.image))
-})
+	useEffect(() => {
+		data.images.map(img => setImageDef(img.image));
+	});
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setEditData(prevData => ({
@@ -50,25 +49,15 @@ useEffect(()=>{
 		}));
 	};
 
-	const handleImageInputChange1 = () => {
-		images.map(element => {
-			setEditData(prevData => ({
-				...prevData,
-				uploaded_images: element,
-			}));
-		});
-	};
-
-
 	useEffect(() => {
-		editData?.images?.map(img => {
+		data?.images?.map(img => {
 			if (img.image && typeof img.image === 'string') {
 				fetch(img.image)
 					.then(response => response.blob())
 					.then(blob => {
 						// Create a new File object
 						const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
-						console.log('File object:', file);
+
 						setEditData(prevData => ({
 							...prevData,
 							uploaded_images: file,
@@ -80,11 +69,8 @@ useEffect(()=>{
 					});
 			}
 		});
-
-		handleImageInputChange1();
 	}, []);
 
-	console.log(editData.image1);
 	const handleTimeInputChange = (name, value) => {
 		setEditData(prevData => ({
 			...prevData,
@@ -93,7 +79,6 @@ useEffect(()=>{
 	};
 
 	useEffect(() => {
-		setEditData(data);
 		setEditData(prevData => ({
 			...prevData,
 			id_number: random11Digits,
@@ -102,6 +87,15 @@ useEffect(()=>{
 
 	const handleSubmit = async e => {
 		e.preventDefault();
+
+		if (images) {
+			images.map(element => {
+				setEditData(prevData => ({
+					...prevData,
+					uploaded_images: element,
+				}));
+			});
+		}
 
 		try {
 			setLoading(true);

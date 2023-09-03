@@ -90,7 +90,7 @@ const ObjRegisterForm = () => {
 			setTimeout(() => {
 				router.push('/dashboard');
 			}, 100);
-		} catch (error) {
+		} catch (error: any) {
 			toast('error', `${error}`);
 			setErrorsMessage(error.response.data);
 			setRegistrationStatus('Error during registration');
