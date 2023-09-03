@@ -50,14 +50,16 @@ const EditObjc = ({ data }): JSX.Element => {
 	};
 
 	useEffect(() => {
-		data?.images?.map(img => {
+		// Create an array to store promises for each image fetch
+		const fetchPromises = data?.images?.map(img => {
 			if (img.image && typeof img.image === 'string') {
-				fetch(img.image)
+				return fetch(img.image)
 					.then(response => response.blob())
 					.then(blob => {
 						// Create a new File object
 						const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
 
+						// Update the state with the uploaded_images
 						setEditData(prevData => ({
 							...prevData,
 							uploaded_images: file,
@@ -69,7 +71,16 @@ const EditObjc = ({ data }): JSX.Element => {
 					});
 			}
 		});
-	}, []);
+
+		// Use Promise.all to wait for all fetches to complete
+		Promise.all(fetchPromises)
+			.then(() => {
+				console.log('All images fetched and processed.');
+			})
+			.catch(error => {
+				console.error('Error fetching or processing images:', error);
+			});
+	}, [data?.images]);
 
 	const handleTimeInputChange = (name, value) => {
 		setEditData(prevData => ({

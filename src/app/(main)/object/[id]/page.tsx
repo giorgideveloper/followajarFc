@@ -24,7 +24,7 @@ const API_URL = 'https://follow.geoevents.ge/api';
 
 export default function Page({ params }: { params: { id: string } }) {
 	const [post, setPost] = useState<objIdType[]>([]);
-	const [swiperInstance, setSwiperInstance] = useState(null);
+
 	useEffect(() => {
 		const fetchPost = async () => {
 			try {
