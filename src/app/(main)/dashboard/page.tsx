@@ -39,7 +39,7 @@ const Page = () => {
 			try {
 				const response = await dashboardApi();
 				setUserData(response);
-			} catch (error) {
+			} catch (error: any) {
 				if (error.response && error.response.status === 401) {
 					try {
 						await refreshAccessToken();
@@ -60,7 +60,9 @@ const Page = () => {
 		localStorage.removeItem('userId');
 		router.replace('/');
 	};
-
+	if (userData) {
+	}
+	console.log(userData?.images?.[0]?.image);
 	return (
 		<div>
 			{/* Display user-specific content */}
@@ -162,22 +164,17 @@ const Page = () => {
 												<div className='bottom-left absolute'>
 													{userData?.object_type?.name}
 												</div>
-												{userData?.images?.map(img => (
-													// eslint-disable-next-line react/jsx-key
-													<Image
-														key={img.id}
-														className='w-full'
-														loading='lazy'
-														src={
-															img === undefined || img === null
-																? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-																: `${img.image}`
-														}
-														alt={`${userData.name}`}
-														width={400}
-														height={500}
-													/>
-												))}
+												<Image
+													className='w-full'
+													loading='lazy'
+													src={
+														userData?.images?.[0]?.image ||
+														'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+													}
+													alt={userData?.name || 'Image'}
+													width={400}
+													height={500}
+												/>
 											</div>
 										</div>
 										<div className='card-content '>
