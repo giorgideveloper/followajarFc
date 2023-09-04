@@ -14,7 +14,5 @@ export interface RegisterFromType {
 	instagram: string;
 	description: string;
 	password: string;
-	image1: FileList;
-	image2: FileList;
-	image3: FileList;
+	uploaded_images: FileList;
 }

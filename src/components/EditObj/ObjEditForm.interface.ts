@@ -16,4 +16,5 @@ export interface ObjEditFormType {
 	password: string;
 	images: object;
 	image: string;
+	uploaded_images: FileList;
 }
