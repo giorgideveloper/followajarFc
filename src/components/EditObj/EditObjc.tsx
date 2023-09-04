@@ -15,7 +15,7 @@ const EditObjc = ({ data }): JSX.Element => {
 	};
 
 	const [editData, setEditData] = useState<any>(data);
-	console.log('🚀 ~ file: EditObjc.tsx:18 ~ EditObjc ~ editData:', editData);
+
 	const router = useRouter();
 	const [editStatus, setEditStatus] = useState('');
 	const [uploading, setUploading] = useState(false);
@@ -49,38 +49,38 @@ const EditObjc = ({ data }): JSX.Element => {
 		}));
 	};
 
-	useEffect(() => {
-		// Create an array to store promises for each image fetch
-		const fetchPromises = data?.images?.map(img => {
-			if (img.image && typeof img.image === 'string') {
-				return fetch(img.image)
-					.then(response => response.blob())
-					.then(blob => {
-						// Create a new File object
-						const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+	// useEffect(() => {
+	// 	// Create an array to store promises for each image fetch
+	// 	const fetchPromises = data?.images?.map(img => {
+	// 		if (img.image && typeof img.image === 'string') {
+	// 			return fetch(img.image)
+	// 				.then(response => response.blob())
+	// 				.then(blob => {
+	// 					// Create a new File object
+	// 					const file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
 
-						// Update the state with the uploaded_images
-						setEditData(prevData => ({
-							...prevData,
-							uploaded_images: file,
-						}));
-						setUploading(false);
-					})
-					.catch(error => {
-						console.error('Error fetching image:', error);
-					});
-			}
-		});
+	// 					// Update the state with the uploaded_images
+	// 					setEditData(prevData => ({
+	// 						...prevData,
+	// 						uploaded_images: file,
+	// 					}));
+	// 					setUploading(false);
+	// 				})
+	// 				.catch(error => {
+	// 					console.error('Error fetching image:', error);
+	// 				});
+	// 		}
+	// 	});
 
-		// Use Promise.all to wait for all fetches to complete
-		Promise.all(fetchPromises)
-			.then(() => {
-				console.log('All images fetched and processed.');
-			})
-			.catch(error => {
-				console.error('Error fetching or processing images:', error);
-			});
-	}, [data?.images]);
+	// 	// Use Promise.all to wait for all fetches to complete
+	// 	Promise.all(fetchPromises)
+	// 		.then(() => {
+	// 			console.log('All images fetched and processed.');
+	// 		})
+	// 		.catch(error => {
+	// 			console.error('Error fetching or processing images:', error);
+	// 		});
+	// }, [data?.images]);
 
 	const handleTimeInputChange = (name, value) => {
 		setEditData(prevData => ({
@@ -96,17 +96,22 @@ const EditObjc = ({ data }): JSX.Element => {
 		}));
 	}, []);
 
-	const handleSubmit = async e => {
-		e.preventDefault();
-
+	useEffect(() => {
 		if (images) {
-			images.map(element => {
+			const arr = [];
+			images.map(img => {
+				arr.push(img);
 				setEditData(prevData => ({
 					...prevData,
-					uploaded_images: element,
+					uploaded_images: arr,
 				}));
 			});
 		}
+	}, [images]);
+
+	console.log(editData);
+	const handleSubmit = async e => {
+		e.preventDefault();
 
 		try {
 			setLoading(true);

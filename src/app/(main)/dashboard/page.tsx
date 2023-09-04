@@ -76,7 +76,8 @@ const Page = () => {
 									<ul className='mb-0'>
 										<li>
 											<span>
-												{/* <i className='fa fa-map-marker'></i> {userData.address} */}
+												{/* <i className='fa fa-map-marker'></i>  */}
+												{userData.address}
 											</span>
 										</li>
 										<li>
