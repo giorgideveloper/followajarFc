@@ -45,13 +45,10 @@ const Page = () => {
 		fetchInfo();
 	}, []);
 
-	const replaceAll=(str) =>{
-		const regex = /(<([^>]+)>)/gi;
-    const newString = str.replace(regex, "");
-    return newString;
-	}
-    
-
+	const Dangerously = (str: any) => {
+		const markup = { __html: `${str}` };
+		return markup;
+	};
 
 	const userId =
 		typeof window !== 'undefined' ? localStorage.getItem('userId') : false;
@@ -61,12 +58,8 @@ const Page = () => {
 				{info.map((item, index) => (
 					<>
 						<div key={item.id} className='info text-center pb-3 '>
-							<h2
-								className={` ${Banner_caps.className} m-4 pb-3`}
-								key={item.id}
-							>
-								{replaceAll(item.description)}
-							</h2>
+							<h2 className={` ${Banner_caps.className} m-4 pb-3`}></h2>
+							<div dangerouslySetInnerHTML={Dangerously(item.description)} />
 							{userId ? (
 								''
 							) : (

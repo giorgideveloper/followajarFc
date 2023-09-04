@@ -45,7 +45,7 @@ const Page = () => {
 	};
 	if (userData) {
 	}
-	console.log(userData?.images?.[0]?.image);
+
 	return (
 		<div>
 			{/* Display user-specific content */}
@@ -60,8 +60,10 @@ const Page = () => {
 								<div className='avatar pt-5 align-middle flex justify-center'>
 									<div className='relative flex text-center items-center justify-center w-20 h-20 overflow-hidden text-3xl bg-gray-100 rounded-full dark:bg-gray-600'>
 										<span className='font-medium text-gray-600 dark:text-gray-300'>
-											{'J'}
-											{'R'}
+											{userData.name === undefined || userData.name === null
+												? ''
+												: `${userData.name.slice(0, 1)} 
+												 ${userData.last_name.slice(0, 1)}`}
 										</span>
 									</div>
 								</div>
@@ -74,24 +76,24 @@ const Page = () => {
 									<ul className='mb-0'>
 										<li>
 											<span>
-												<i className='fa fa-map-marker'></i> {userData.address}
+												{/* <i className='fa fa-map-marker'></i> {userData.address} */}
 											</span>
 										</li>
 										<li>
 											<span className='active'>
-												<i className='fa fa-user'></i>
+												{/* <i className='fa fa-user'></i> */}
 												{userData.email}
 											</span>
 										</li>
 										<li>
 											<span>
-												<i className='fa fa-list' aria-hidden='true'></i>
+												{/* <i className='fa fa-list' aria-hidden='true'></i> */}
 												{userData.mobile}
 											</span>
 										</li>
 										<li>
 											<span>
-												<i className='fa fa-heart' aria-hidden='true'></i>
+												{/* <i className='fa fa-heart' aria-hidden='true'></i> */}
 												{userData.time_from === undefined ||
 												userData.time_from === null
 													? ''
@@ -104,7 +106,7 @@ const Page = () => {
 										<li>
 											<Link href={`/editobject`}>
 												<span className='cursor-pointer'>
-													<i className='fa fa-list' aria-hidden='true'></i>
+													{/* <i className='fa fa-list' aria-hidden='true'></i> */}
 													რედაქტირება
 												</span>
 											</Link>
