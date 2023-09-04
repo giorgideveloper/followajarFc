@@ -95,7 +95,7 @@ const Page = () => {
 										className='card card-compact  cursor-pointer '
 										key={item.id}
 									>
-										<div className={`card-body ${Banner_caps.className}`}>
+										<div className={`card-body `}>
 											<div className='avatar'>
 												<div className='w-full h-80 rounded-t-lg border-b-4 border-[#D98200] relative'>
 													<div className='top-left absolute  '>
@@ -130,7 +130,7 @@ const Page = () => {
 											</div>
 											<div className='card-content '>
 												<div className='card-title '>
-													<h1 className={`text-3xl Banner_caps pt-3 pl-2 `}>
+													<h1 className={`text-3xl  pt-3 pl-2 `}>
 														{item.object_name}
 													</h1>
 												</div>
@@ -154,7 +154,7 @@ const Page = () => {
 												</div>
 
 												<div className='card-description'>
-													<p className='font-banner-caps text-gray-500 pl-2'>
+													<p className=' text-gray-500 pl-2'>
 														{item.description}
 													</p>
 												</div>
