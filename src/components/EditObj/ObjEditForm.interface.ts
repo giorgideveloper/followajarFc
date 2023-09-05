@@ -1,4 +1,4 @@
-export interface RegisterFromType {
+export interface ObjEditFormType {
 	object_name: string;
 	object_type: number;
 	name: string;
@@ -14,5 +14,7 @@ export interface RegisterFromType {
 	instagram: string;
 	description: string;
 	password: string;
+	images: object;
+	image: string;
 	uploaded_images: FileList;
 }

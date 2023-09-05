@@ -45,13 +45,10 @@ const Page = () => {
 		fetchInfo();
 	}, []);
 
-	const replaceAll=(str) =>{
-		const regex = /(<([^>]+)>)/gi;
-    const newString = str.replace(regex, "");
-    return newString;
-	}
-    
-
+	const Dangerously = (str: any) => {
+		const markup = { __html: `${str}` };
+		return markup;
+	};
 
 	const userId =
 		typeof window !== 'undefined' ? localStorage.getItem('userId') : false;
@@ -61,12 +58,8 @@ const Page = () => {
 				{info.map((item, index) => (
 					<>
 						<div key={item.id} className='info text-center pb-3 '>
-							<h2
-								className={` ${Banner_caps.className} m-4 pb-3`}
-								key={item.id}
-							>
-								{replaceAll(item.description)}
-							</h2>
+							<h2 className={` ${Banner_caps.className} m-4 pb-3`}></h2>
+							<div dangerouslySetInnerHTML={Dangerously(item.description)} />
 							{userId ? (
 								''
 							) : (
@@ -102,7 +95,7 @@ const Page = () => {
 										className='card card-compact  cursor-pointer '
 										key={item.id}
 									>
-										<div className={`card-body ${Banner_caps.className}`}>
+										<div className={`card-body `}>
 											<div className='avatar'>
 												<div className='w-full h-80 rounded-t-lg border-b-4 border-[#D98200] relative'>
 													<div className='top-left absolute  '>
@@ -137,7 +130,7 @@ const Page = () => {
 											</div>
 											<div className='card-content '>
 												<div className='card-title '>
-													<h1 className={`text-3xl Banner_caps pt-3 pl-2 `}>
+													<h1 className={`text-3xl  pt-3 pl-2 `}>
 														{item.object_name}
 													</h1>
 												</div>
@@ -161,7 +154,7 @@ const Page = () => {
 												</div>
 
 												<div className='card-description'>
-													<p className='font-banner-caps text-gray-500 pl-2'>
+													<p className=' text-gray-500 pl-2'>
 														{item.description}
 													</p>
 												</div>

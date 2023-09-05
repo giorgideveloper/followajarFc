@@ -10,27 +10,10 @@ import { useRouter } from 'next/navigation';
 import { dashboardApi } from '../api/api';
 import { Banner_caps } from '../object/fonts/fonts';
 import logOut from './icon/log-outs.gif';
+import { Item } from './Dashboard.interface';
 
 const Page = () => {
 	const router = useRouter();
-	interface Item {
-		id: number;
-		object_name: string;
-		object_type: 3;
-		name: string;
-		last_name: string;
-		address: string;
-		id_number: string;
-		email: string;
-		mobile: string;
-		time_from: string;
-		time_to: string;
-		discount: null;
-		facebook: string;
-		instagram: string;
-		description: string;
-		images: null;
-	}
 
 	const [userData, setUserData] = useState<Item[]>([]);
 
@@ -39,7 +22,7 @@ const Page = () => {
 			try {
 				const response = await dashboardApi();
 				setUserData(response);
-			} catch (error) {
+			} catch (error: any) {
 				if (error.response && error.response.status === 401) {
 					try {
 						await refreshAccessToken();
@@ -60,6 +43,8 @@ const Page = () => {
 		localStorage.removeItem('userId');
 		router.replace('/');
 	};
+	if (userData) {
+	}
 
 	return (
 		<div>
@@ -75,8 +60,10 @@ const Page = () => {
 								<div className='avatar pt-5 align-middle flex justify-center'>
 									<div className='relative flex text-center items-center justify-center w-20 h-20 overflow-hidden text-3xl bg-gray-100 rounded-full dark:bg-gray-600'>
 										<span className='font-medium text-gray-600 dark:text-gray-300'>
-											{'J'}
-											{'R'}
+											{userData.name === undefined || userData.name === null
+												? ''
+												: `${userData.name.slice(0, 1)} 
+												 ${userData.last_name.slice(0, 1)}`}
 										</span>
 									</div>
 								</div>
@@ -89,24 +76,25 @@ const Page = () => {
 									<ul className='mb-0'>
 										<li>
 											<span>
-												<i className='fa fa-map-marker'></i> {userData.address}
+												{/* <i className='fa fa-map-marker'></i>  */}
+												{userData.address}
 											</span>
 										</li>
 										<li>
 											<span className='active'>
-												<i className='fa fa-user'></i>
+												{/* <i className='fa fa-user'></i> */}
 												{userData.email}
 											</span>
 										</li>
 										<li>
 											<span>
-												<i className='fa fa-list' aria-hidden='true'></i>
+												{/* <i className='fa fa-list' aria-hidden='true'></i> */}
 												{userData.mobile}
 											</span>
 										</li>
 										<li>
 											<span>
-												<i className='fa fa-heart' aria-hidden='true'></i>
+												{/* <i className='fa fa-heart' aria-hidden='true'></i> */}
 												{userData.time_from === undefined ||
 												userData.time_from === null
 													? ''
@@ -119,7 +107,7 @@ const Page = () => {
 										<li>
 											<Link href={`/editobject`}>
 												<span className='cursor-pointer'>
-													<i className='fa fa-list' aria-hidden='true'></i>
+													{/* <i className='fa fa-list' aria-hidden='true'></i> */}
 													რედაქტირება
 												</span>
 											</Link>
@@ -162,22 +150,17 @@ const Page = () => {
 												<div className='bottom-left absolute'>
 													{userData?.object_type?.name}
 												</div>
-												{userData?.images?.map(img => (
-													// eslint-disable-next-line react/jsx-key
-													<Image
-														key={img.id}
-														className='w-full'
-														loading='lazy'
-														src={
-															img === undefined || img === null
-																? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-																: `${img.image}`
-														}
-														alt={`${userData.name}`}
-														width={400}
-														height={500}
-													/>
-												))}
+												<Image
+													className='w-full'
+													loading='lazy'
+													src={
+														userData?.images?.[0]?.image ||
+														'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+													}
+													alt={userData?.name || 'Image'}
+													width={400}
+													height={500}
+												/>
 											</div>
 										</div>
 										<div className='card-content '>
