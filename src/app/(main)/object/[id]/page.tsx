@@ -68,7 +68,6 @@ export default function Page({ params }: { params: { id: string } }) {
 													slidesPerView={1}
 													navigation
 													pagination={{ clickable: true }}
-													scrollbar={{ draggable: true }}
 													onSlideChange={() => console.log('slide change')}
 												>
 													{post?.images?.map(img => (
@@ -81,7 +80,7 @@ export default function Page({ params }: { params: { id: string } }) {
 																	img.image ||
 																	'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
 																}
-																alt={`${post.name}`}
+																alt={`${post.object_name}`}
 																width={400}
 																height={500}
 															/>

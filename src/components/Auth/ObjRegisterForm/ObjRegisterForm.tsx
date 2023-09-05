@@ -412,6 +412,7 @@ const ObjRegisterForm = () => {
 								label='გაინმეორეთ პაროლი'
 								type='password'
 								id='password'
+								placeholder='მაგ: Password123!'
 								className='w-full input input-bordered mt-2 text-md text-gray-500'
 							/>
 						</div>

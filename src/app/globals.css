@@ -360,7 +360,13 @@ body {
 	}
 	.log-out {
 		top: 0;
-		margin-top: 40em;
+		margin-top: 20em;
+		display: flex;
+	justify-content: center;
+	}
+	.detail{
+	display: flex;
+	justify-content: center;
 	}
 }
 
@@ -430,4 +436,10 @@ body {
 .swiper-button-prev,
 .swiper-button-next{
 	background-color:none!important
+}
+.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
+	background-color: #d98200;
+	width: 1em;
+	height: 1em;
 }
