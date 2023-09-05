@@ -196,7 +196,10 @@ const Page = () => {
 
 											<div className='card-description'>
 												<p className='font-banner-caps text-gray-500 pl-2'>
-													{userData.description}
+													{userData.description === undefined ||
+													userData.description === null
+														? ''
+														: `${userData.description.slice(0, 150)}`}
 												</p>
 											</div>
 										</div>

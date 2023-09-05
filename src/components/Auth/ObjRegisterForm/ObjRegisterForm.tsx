@@ -2,7 +2,7 @@
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { postUserData } from '@/app/(main)/api/api';
+import { objectOptionType, postUserData } from '@/app/(main)/api/api';
 import toast from '@/components/helper/toast';
 import { RegisterFromType } from './ObjRegisterForm.interface';
 import Input from '@/components/Form/Input';
@@ -11,6 +11,8 @@ import ImageUploader from '@/components/ImageUploader/ImageUploader';
 
 const ObjRegisterForm = () => {
 	const [loading, setLoading] = useState(false);
+	const [optionType, setOptionType] = useState<string[]>([]);
+
 	const router = useRouter();
 	const {
 		register,
@@ -47,6 +49,21 @@ const ObjRegisterForm = () => {
 			toast('error', 'დასრულება არ არის შევსებული');
 		}
 	};
+	//Get option Type
+
+	const getOptionType = async () => {
+		try {
+			const res = await objectOptionType();
+			setOptionType(res);
+		} catch (e) {
+			console.log(e);
+		}
+	};
+
+	useEffect(() => {
+		getOptionType();
+	}, []);
+
 	function generateRandom11Digits() {
 		const randomNumber = Math.floor(Math.random() * 100000000000);
 		const formattedNumber = String(randomNumber).padStart(11, '0');
@@ -242,7 +259,7 @@ const ObjRegisterForm = () => {
 									htmlFor='object_type'
 									className={'text-base font-medium text-gray-900'}
 								>
-									ობიექტის ტაიპი
+									ობიექტის ტიპი
 								</label>
 								<select
 									id='object_type'
@@ -254,9 +271,13 @@ const ObjRegisterForm = () => {
 										},
 									})}
 								>
-									<option value='1'>ატრაქცია</option>
-									<option value='2'>განთავსება</option>
-									<option value='3'>კვება</option>
+									{optionType.map(item => (
+										<>
+											<option key={item.id} value={item.id}>
+												{item.name}
+											</option>
+										</>
+									))}
 								</select>
 								{errors.object_type && (
 									<span className='text-red-700 text-sm mt-2'>

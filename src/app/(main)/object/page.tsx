@@ -110,22 +110,18 @@ const Page = () => {
 													<div className='bottom-left absolute'>
 														{item?.object_type?.name}
 													</div>
-													{item?.images?.map(img => (
-														// eslint-disable-next-line react/jsx-key
-														<Image
-															key={img.id}
-															className='w-full'
-															loading='lazy'
-															src={
-																img === undefined || img === null
-																	? 'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-																	: `${img.image}`
-															}
-															alt={`${item.name}`}
-															width={400}
-															height={500}
-														/>
-													))}
+
+													<Image
+														className='w-full'
+														loading='lazy'
+														src={
+															item?.images?.[0]?.image ||
+															'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
+														}
+														alt={`${data.name}`}
+														width={400}
+														height={500}
+													/>
 												</div>
 											</div>
 											<div className='card-content '>
@@ -155,7 +151,9 @@ const Page = () => {
 
 												<div className='card-description'>
 													<p className=' text-gray-500 pl-2'>
-														{item.description}
+														{item.description === undefined
+															? ''
+															: item.description.slice(0, 150)}
 													</p>
 												</div>
 											</div>

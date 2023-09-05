@@ -38,7 +38,10 @@ export default function Page({ params }: { params: { id: string } }) {
 			fetchPost();
 		}
 	}, [params.id]);
-
+	const Dangerously = (str: any) => {
+		const markup = { __html: `${str}` };
+		return markup;
+	};
 	return (
 		<>
 			<div className='container mx-auto my-4 px-7'>
@@ -86,34 +89,6 @@ export default function Page({ params }: { params: { id: string } }) {
 													))}
 													...
 												</Swiper>
-												{/* <div className='swiper' modules={[Navigation]}>
-													<div className='swiper-wrapper'>
-														{post?.images &&
-															post?.images?.map(img => (
-																// eslint-disable-next-line react/jsx-key
-																<div className='swiper-slide' key={img.id}>
-																	<Image
-																		className='w-full'
-																		loading='lazy'
-																		src={
-																			img.image ||
-																			'https://follow.geoevents.ge/media/media/obieqtebi/default.jpg'
-																		}
-																		alt={`${post.name}`}
-																		width={400}
-																		height={500}
-																	/>
-																</div>
-															))}
-													</div>
-
-													<div className='swiper-pagination'></div>
-
-													<div className='swiper-button-prev'></div>
-													<div className='swiper-button-next'></div>
-
-													<div className='swiper-scrollbar'></div>
-												</div> */}
 											</div>
 										</div>
 									</div>
@@ -124,7 +99,15 @@ export default function Page({ params }: { params: { id: string } }) {
 
 										<div className='card-description'>
 											<p className='font-banner-caps text-gray-500 pl-2 text-lg'>
-												{post.description}
+												{post.description === undefined ? (
+													'loading'
+												) : (
+													<div
+														dangerouslySetInnerHTML={Dangerously(
+															post.description
+														)}
+													/>
+												)}
 											</p>
 										</div>
 									</div>
@@ -174,11 +157,15 @@ export default function Page({ params }: { params: { id: string } }) {
 											</span>
 										</li>
 										<li className='li-post cursor-pointer'>
-											<a className='pr-4' href={`${post.facebook}`}>
+											<a
+												className='pr-4'
+												target='blank'
+												href={`${post.facebook}`}
+											>
 												{' '}
 												<Image className='w-4' src={fb} alt='' />
 											</a>
-											<a href={`${post.instagram}`}>
+											<a target='blank' href={`${post.instagram}`}>
 												{' '}
 												<Image className='w-4' src={inst} alt='' />
 											</a>

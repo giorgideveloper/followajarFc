@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { postEditUserData } from '@/app/(main)/api/api';
+import { objectOptionType, postEditUserData } from '@/app/(main)/api/api';
 import toast from '../helper/toast';
 import Loading from '../Loading';
 import ImageUploader from '../ImageUploader/ImageUploader';
@@ -12,26 +12,33 @@ import Input from '../Form/Input';
 
 const EditObjc = ({ data }): JSX.Element => {
 	const [images, setImages] = useState<File[]>([]);
-
-	const handleImagesUploaded = (uploadedImages: File[]) => {
-		setImages(uploadedImages);
-	};
 	const [editData, setEditData] = useState<any>(data);
 	const router = useRouter();
 	const [editStatus, setEditStatus] = useState('');
 	const [uploading, setUploading] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [imageDef, setImageDef] = useState<string>('');
+	const [optionType, setOptionType] = useState<string[]>([]);
+
+	console.log(data);
+	//Get Image
+	const handleImagesUploaded = (uploadedImages: File[]) => {
+		setImages(uploadedImages);
+	};
+	//Get option Type
+
+	const getOptionType = async () => {
+		try {
+			const res = await objectOptionType();
+			setOptionType(res);
+		} catch (e) {
+			console.log(e);
+		}
+	};
 
 	useEffect(() => {
-		data.images.map(img => setImageDef(img.image));
-	});
-
-	const optionType = [
-		{ value: 'კვება', lable: 'კევბა' },
-		{ value: 'განთავსება', lable: 'განთავსება' },
-		{ value: 'ატრაქვია', lable: 'განთავსება' },
-	];
+		getOptionType();
+	}, []);
 
 	const {
 		register,
@@ -45,40 +52,49 @@ const EditObjc = ({ data }): JSX.Element => {
 		const formattedNumber = String(randomNumber).padStart(11, '0');
 		return formattedNumber;
 	}
-	const random11Digits = generateRandom11Digits();
 
-	const onSubmit = async (fromValues: ObjEditFormType) => {
+	const onSubmit = async (data: ObjEditFormType) => {
+		const idNumber = generateRandom11Digits();
 		const formData = new FormData();
 
-		if (images && images.length > 0) {
+		if (images) {
 			images.map(element => {
-				// formData.append('uploaded_images', element);
-				const mergedData = {
-					...fromValues,
-					uploaded_images: element,
-					id_number: random11Digits,
-				};
-				console.log(mergedData);
+				formData.append('uploaded_images', element);
 			});
 		}
 
-		// fromValues = { ...fromValues, ...formData };
-		// fromValues = { ...fromValues, id_number: random11Digits };
+		formData.append('id_number', idNumber);
+		formData.append('object_name', data.object_name);
+		formData.append('object_type', data.object_type);
+		formData.append('name', data.name);
+		formData.append('facebook', data.facebook);
+		formData.append('instagram', data.instagram);
+		formData.append('last_name', data.last_name);
+		formData.append('address', data.address);
+		formData.append('mobile', data.mobile);
+		formData.append('time_from', data.time_from);
+		formData.append('time_to', data.time_to);
+		formData.append('discount', data.discount.toString());
+		formData.append('email', data.email);
+		formData.append('password', data.password);
+		formData.append('description', data.description);
+		// Append other form fields to formData
 
-		// try {
-		// 	setLoading(true);
-		// 	const response = await postEditUserData(fromValues);
-		// 	setLoading(false);
-		// 	setEditStatus(response.message);
-		// 	toast('success', 'წარმატებით შეიცვალა ინფორმაცია');
-		// 	setTimeout(() => {
-		// 		router.replace('/dashboard');
-		// 	}, 1000);
-		// } catch (error) {
-		// 	setLoading(false);
-		// 	console.error('Error editing user:', error);
-		// 	setEditStatus('Error editing user');
-		// }
+		console.log(data.object_type.toString());
+		try {
+			setLoading(true);
+			const response = await postEditUserData(formData);
+			setLoading(false);
+			setEditStatus(response.message);
+			toast('success', 'წარმატებით შეიცვალა ინფორმაცია');
+			setTimeout(() => {
+				router.replace('/dashboard');
+			}, 1000);
+		} catch (error) {
+			setLoading(false);
+			console.error('Error editing user:', error);
+			setEditStatus('Error editing user');
+		}
 	};
 
 	return (
@@ -224,8 +240,9 @@ const EditObjc = ({ data }): JSX.Element => {
 									htmlFor='object_type'
 									className={'text-base font-medium text-gray-900'}
 								>
-									ობიექტის ტაიპი
+									ობიექტის ტიპი
 								</label>
+
 								<select
 									id='object_type'
 									className='w-full input input-bordered mt-2 text-md text-gray-500'
@@ -236,9 +253,16 @@ const EditObjc = ({ data }): JSX.Element => {
 										},
 									})}
 								>
-									<option value='ატრაქცია'>ატრაქცია</option>
-									<option value='განთავსება'>განთავსება</option>
-									<option value='კვება'>კვება</option>
+									<option value={data?.object_type?.id}>
+										{data?.object_type?.name}
+									</option>
+									{optionType.map(item => (
+										<>
+											<option key={item.id} value={item.id}>
+												{item.name}
+											</option>
+										</>
+									))}
 								</select>
 								{errors.object_type && (
 									<span className='text-red-700 text-sm mt-2'>
@@ -371,6 +395,7 @@ const EditObjc = ({ data }): JSX.Element => {
 								label='გაინმეორეთ პაროლი'
 								type='password'
 								id='password'
+								placeholder='მაგ: Password123!'
 								className='w-full input input-bordered mt-2 text-md text-gray-500'
 							/>
 						</div>

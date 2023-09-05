@@ -106,6 +106,21 @@ export const postEditUserData = async (
 		console.log(error);
 	}
 };
+// Type List
+export const objectOptionType = async () => {
+	try {
+		const response = await axios.get(`${baseURL}/type/`);
+		if (response.status === 400) {
+			refreshAccessToken();
+		}
+		if (response.status === 401) {
+			refreshAccessToken();
+		}
+		return response.data.results;
+	} catch (error) {
+		throw error;
+	}
+};
 
 // Add more functions for other API requests
 // export const postEditUserData = async (
