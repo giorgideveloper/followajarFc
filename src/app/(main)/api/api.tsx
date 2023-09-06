@@ -4,6 +4,8 @@ import axios from 'axios';
 import { RegistrationType, RegistrationResponse } from './api.types';
 import { refreshAccessToken } from '@/components/Auth/utils/api';
 
+import { useRouter } from 'next/navigation';
+
 const baseURL = 'https://follow.geoevents.ge/api';
 // Get all object
 export const objectApi = async () => {
@@ -11,9 +13,13 @@ export const objectApi = async () => {
 		const response = await axios.get(`${baseURL}/object/`);
 		if (response.status === 400) {
 			refreshAccessToken();
+			localStorage.removeItem('access_token');
+			localStorage.removeItem('userId');
 		}
 		if (response.status === 401) {
 			refreshAccessToken();
+			localStorage.removeItem('access_token');
+			localStorage.removeItem('userId');
 		}
 		return response.data.results;
 	} catch (error) {

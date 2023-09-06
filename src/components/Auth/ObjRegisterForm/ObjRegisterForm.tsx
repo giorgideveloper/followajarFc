@@ -114,6 +114,7 @@ const ObjRegisterForm = () => {
 			errorMessage();
 			setLoading(false);
 		}
+		console.log(data);
 	};
 
 	return (

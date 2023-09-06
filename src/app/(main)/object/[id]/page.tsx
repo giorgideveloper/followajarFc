@@ -8,9 +8,6 @@ import phone from '../icon/phone.svg';
 import email from '../icon/email.svg';
 import folder from '../icon/folder.svg';
 import user from '../icon/user.svg';
-import fb from '../icon/fb.svg';
-import inst from '../icon/inst.svg';
-import { Banner_caps } from '../fonts/fonts';
 import { objIdType } from './ObjId.Interface';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
@@ -49,24 +46,31 @@ export default function Page({ params }: { params: { id: string } }) {
 		<>
 			<div className='container mx-auto my-4 px-7'>
 				{lodaing ? (
-					<div className='  grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-2'>
+					<div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-4 gap-2'>
 						{post ? (
 							<>
 								<div className='card card-compact col-span-3'>
 									<div className={`card-body `}>
 										<div className='avatar'>
 											<div className='w-full h-80 post-card rounded-t-lg border-b-4 border-[#D98200] relative'>
-												<div className='top-left-main  absolute  '>
+												<div className='top-left-main  absolute z-50 '>
 													<div className='top-left-bg'>
 														<span>
-															{(post.discount >= 100 && <span>Free</span>) || (
-																<span>{post.discount} %</span>
+															{(post.discount >= 100 && (
+																<span>
+																	<strong>Free</strong>
+																</span>
+															)) || (
+																<span>
+																	<strong>{post.discount} %</strong>
+																</span>
 															)}
 														</span>
 													</div>
 												</div>
 												<div className='w-full '>
 													<Swiper
+														className='relative'
 														modules={[Navigation, Pagination, Scrollbar, A11y]}
 														spaceBetween={50}
 														slidesPerView={1}

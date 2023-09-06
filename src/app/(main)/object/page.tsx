@@ -97,21 +97,27 @@ const Page = () => {
 									<div className={`card-body `}>
 										<div className='avatar'>
 											<div className='w-full h-80 rounded-t-lg border-b-4 border-[#D98200] relative'>
-												<div className='top-left absolute  '>
+												<div className='top-left absolute z-50 '>
 													<div className='top-left-bg'>
 														<span>
 															{((item.discount ?? 0) >= 100 && (
-																<span>Free</span>
-															)) || <span>{item.discount} %</span>}
+																<span>
+																	<strong>Free</strong>
+																</span>
+															)) || (
+																<span>
+																	<strong>{item.discount} %</strong>
+																</span>
+															)}
 														</span>
 													</div>
 												</div>
-												<div className='bottom-left absolute'>
+												<div className='bottom-left absolute z-50'>
 													{item?.object_type?.name}
 												</div>
 
 												<Image
-													className='w-full'
+													className='w-full  transition duration-300 ease-in-out hover:scale-110'
 													loading='lazy'
 													src={
 														item?.images?.[0]?.image ||

@@ -6,15 +6,15 @@ const ImageUploader: React.FC = ({ onImagesUploaded }) => {
 	const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
 	const [imgLarg, setImgLarg] = useState();
 	const onDrop = (acceptedFiles: File[]) => {
-		const maxSize = 5242880; // Maximum size in bytes (5MB)
+		const maxSize = 2242880; // Maximum size in bytes (2MB)
 
 		acceptedFiles.forEach(file => {
 			if (file.size > maxSize) {
 				setImgLarg(
-					`File ${file.name} აღემატება მაქსიმალური ზომის ლიმიტს 5 მეგაბაიტი.`
+					`File ${file.name} აღემატება მაქსიმალური ზომის ლიმიტს 2 მეგაბაიტი.`
 				);
 			} else {
-				setImgLarg(`ფოტოს მაქსიმალური ზომა 5 მეგაბაიტი`);
+				setImgLarg('ფოტოს მაქსიმალური ზომა 2 მეგაბაიტი');
 				// Process the accepted file
 				setUploadedFiles([...uploadedFiles, ...acceptedFiles]);
 				onImagesUploaded([...uploadedFiles, ...acceptedFiles]);
@@ -35,7 +35,7 @@ const ImageUploader: React.FC = ({ onImagesUploaded }) => {
 				{imgLarg ? (
 					<p className='text-red-500'> {imgLarg}</p>
 				) : (
-					<p className='text-neutral-400'>ფოტოს მაქსიმალური ზომა 5 მეგაბაიტი</p>
+					<p className='text-neutral-400'>ფოტოს მაქსიმალური ზომა 2 მეგაბაიტი</p>
 				)}
 			</div>
 			<div className='uploaded-files'>

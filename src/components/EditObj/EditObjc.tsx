@@ -6,7 +6,7 @@ import { objectOptionType, postEditUserData } from '@/app/(main)/api/api';
 import toast from '../helper/toast';
 import Loading from '../Loading';
 import ImageUploader from '../ImageUploader/ImageUploader';
-import { useForm, useController } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { ObjEditFormType } from './ObjEditForm.interface';
 import Input from '../Form/Input';
 
@@ -17,7 +17,6 @@ const EditObjc = ({ data }): JSX.Element => {
 	const [editStatus, setEditStatus] = useState('');
 	const [uploading, setUploading] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const [imageDef, setImageDef] = useState<string>('');
 	const [optionType, setOptionType] = useState<string[]>([]);
 
 	//Get Image
@@ -98,7 +97,7 @@ const EditObjc = ({ data }): JSX.Element => {
 	return (
 		<>
 			{loading ? (
-				<Loading />
+				'loading'
 			) : (
 				<form
 					className=' w-full space-y-4 my-4'
