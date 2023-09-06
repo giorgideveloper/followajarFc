@@ -28,27 +28,6 @@ const ObjRegisterForm = () => {
 	const [errorsMessage, setErrorsMessage] = useState([]);
 	const [registrationStatus, setRegistrationStatus] = useState('');
 
-	const errorMessage = () => {
-		if (errorsMessage.address) {
-			toast('error', `მეილი არ არის შეყვანილი`);
-		} else if (errorsMessage.description) {
-			toast('error', `მოკლე აღწერა არ არის შევსებული`);
-		} else if (errorsMessage.last_name) {
-			toast('error', 'გვარიი არ არის შევსებული');
-		} else if (errorsMessage.mobile) {
-			toast('error', 'მობილური არ არის შევსებული');
-		} else if (errorsMessage.name) {
-			toast('error', 'სახელი არ არის შევსებული');
-		} else if (errorsMessage.object_name) {
-			toast('error', 'ობიექტის სახელი არ არის შევსებული');
-		} else if (errorsMessage.password) {
-			toast('error', 'პაროლი არ არის შევსებული');
-		} else if (errorsMessage.time_from) {
-			toast('error', 'დაწყება არ არის შევსებული');
-		} else if (errorsMessage.time_to) {
-			toast('error', 'დასრულება არ არის შევსებული');
-		}
-	};
 	//Get option Type
 
 	const getOptionType = async () => {
@@ -108,10 +87,12 @@ const ObjRegisterForm = () => {
 				router.push('/dashboard');
 			}, 100);
 		} catch (error: any) {
-			toast('error', `${error}`);
-			setErrorsMessage(error.response.data);
+			if (error.response.data.mobile) {
+				toast('error', `მომხმარებელი ამ მობილურით უკვე არსებობს`);
+			}
+
 			setRegistrationStatus('Error during registration');
-			errorMessage();
+
 			setLoading(false);
 		}
 		console.log(data);

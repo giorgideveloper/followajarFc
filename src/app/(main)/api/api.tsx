@@ -4,8 +4,6 @@ import axios from 'axios';
 import { RegistrationType, RegistrationResponse } from './api.types';
 import { refreshAccessToken } from '@/components/Auth/utils/api';
 
-import { useRouter } from 'next/navigation';
-
 const baseURL = 'https://follow.geoevents.ge/api';
 // Get all object
 export const objectApi = async () => {
@@ -127,19 +125,3 @@ export const objectOptionType = async () => {
 		throw error;
 	}
 };
-
-// Add more functions for other API requests
-// export const postEditUserData = async (
-// 	userData: RegistrationType
-// ): Promise<RegistrationResponse> => {
-// 	try {
-// 		const response = await axios.put<RegistrationResponse>(
-// 			`${baseURL}/user/update`,
-// 			userData,
-// 			{
-// 				headers: {
-// 					'Content-Type': 'multipart/form-data',
-// 				},
-// 			}
-// 		);
-// };

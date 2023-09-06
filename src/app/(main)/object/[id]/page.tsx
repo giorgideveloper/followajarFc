@@ -10,7 +10,6 @@ import folder from '../icon/folder.svg';
 import user from '../icon/user.svg';
 import { objIdType } from './ObjId.Interface';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-
 // import Swiper and modules styles
 import { Swiper, SwiperSlide } from 'swiper/react';
 

@@ -45,7 +45,7 @@ const Page = () => {
 	const clearLocal = () => {
 		localStorage.removeItem('access_token');
 		localStorage.removeItem('userId');
-		router.replace('/');
+		router.replace('/objlogin');
 	};
 	if (userData) {
 	}
