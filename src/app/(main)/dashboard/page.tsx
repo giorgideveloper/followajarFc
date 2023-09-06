@@ -62,8 +62,10 @@ const Page = () => {
 										<span className='font-medium text-gray-600 dark:text-gray-300'>
 											{userData.name === undefined || userData.name === null
 												? ''
-												: `${userData.name.slice(0, 1)} 
-												 ${userData.last_name.slice(0, 1)}`}
+												: `${userData.name.slice(
+														0,
+														1
+												  )}/${userData.last_name.slice(0, 1)}`}
 										</span>
 									</div>
 								</div>

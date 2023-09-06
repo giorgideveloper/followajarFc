@@ -78,9 +78,6 @@ export default function Page({ params }: { params: { id: string } }) {
 															<SwiperSlide key={img.id}>
 																{' '}
 																<Image
-																	onLoad={e =>
-																		console.log(e.target.naturalWidth)
-																	}
 																	className='w-full '
 																	src={
 																		img.image ||
