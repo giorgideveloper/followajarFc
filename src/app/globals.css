@@ -349,6 +349,7 @@ body {
 	background-color: #1d293e;
 }
 
+
 @media only screen and (max-width: 601px) {
 	.portfolio {
 		width: 100%;
@@ -402,12 +403,12 @@ body {
 
 .swiper-button-next:after,
 .swiper-rtl .swiper-button-prev:after {
-	color: #d98200;
+	color: #ececec;
 	font-weight: bold;
 }
 .swiper-button-prev:after,
 .swiper-rtl .swiper-button-next:after {
-	color: #d98200;
+	color: #ececec;
 	font-weight: bold;
 }
 .log-out-img {
@@ -439,7 +440,7 @@ body {
 }
 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
 .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
-	background-color: #d98200;
+	background-color: #ffffff;
 	width: 1em;
 	height: 1em;
 }

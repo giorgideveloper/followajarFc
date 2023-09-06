@@ -58,12 +58,12 @@ const Page = () => {
 				{info.map((item, index) => (
 					<>
 						<div key={item.id} className='info text-center pb-3 '>
-							<h2 className={` ${Banner_caps.className} m-4 pb-3`}></h2>
+							<h2 className={` m-4 pb-3`}></h2>
 							<div dangerouslySetInnerHTML={Dangerously(item.description)} />
 							{userId ? (
 								''
 							) : (
-								<div className='id'>
+								<div className='id pt-5 pb-5'>
 									<Link
 										className='bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-4  border border-gray-400 rounded shadow '
 										href={{
@@ -150,11 +150,14 @@ const Page = () => {
 												</div>
 
 												<div className='card-description'>
-													<p className=' text-gray-500 pl-2'>
-														{item.description === undefined
-															? ''
-															: item.description.slice(0, 150)}
-													</p>
+													<p
+														className=' text-gray-500 pl-2'
+														dangerouslySetInnerHTML={
+															item.description === undefined
+																? ''
+																: Dangerously(item.description.slice(0, 150))
+														}
+													></p>
 												</div>
 											</div>
 										</div>
