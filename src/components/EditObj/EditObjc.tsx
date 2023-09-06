@@ -20,7 +20,6 @@ const EditObjc = ({ data }): JSX.Element => {
 	const [imageDef, setImageDef] = useState<string>('');
 	const [optionType, setOptionType] = useState<string[]>([]);
 
-	console.log(data);
 	//Get Image
 	const handleImagesUploaded = (uploadedImages: File[]) => {
 		setImages(uploadedImages);
@@ -80,7 +79,6 @@ const EditObjc = ({ data }): JSX.Element => {
 		formData.append('description', data.description);
 		// Append other form fields to formData
 
-		console.log(data.object_type.toString());
 		try {
 			setLoading(true);
 			const response = await postEditUserData(formData);
