@@ -40,8 +40,6 @@ const UpsertForm = ({ id, userId, defaultValues }: { id: string, userId: string,
         try {
             setError('')
             setLoading(true)
-            console.log(values);
-
             if (defaultValues?.id) {
 
                 const { data, error } = await supabase
