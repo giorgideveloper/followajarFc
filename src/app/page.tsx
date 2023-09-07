@@ -29,7 +29,6 @@ export default async function Home() {
     .select(`*`)
     .eq('name', 'contact')
     .single()
-  console.log(settings);
 
   return (
     <>
