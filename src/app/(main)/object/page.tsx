@@ -7,12 +7,16 @@ import { infoText, objectApi } from '../api/api';
 import { ObjectType } from '../api/api.types';
 import clock from './icon/clock.svg';
 import location from './icon/location.svg';
+import { openGraphImage } from '@/app/shared-metadata';
+import { Metadata } from 'next';
 
-const Banner_caps = localFont({
-	src: './fonts/bpg_banner_caps.ttf',
-	display: 'swap',
-	variable: '--BPG-ExtraSquare-Mtavruli',
-});
+export const metadata: Metadata = {
+	title: 'ობიექტები',
+	openGraph: {
+		...openGraphImage,
+		title: 'ობიექტები',
+	},
+};
 
 interface InfoType {
 	id: number;
@@ -156,7 +160,7 @@ const Page = () => {
 
 											<div className='card-description'>
 												<p
-													className=' text-gray-500 pl-2'
+													className=' text-gray-500 pl-2 text-justify'
 													dangerouslySetInnerHTML={
 														item.description === undefined
 															? ''

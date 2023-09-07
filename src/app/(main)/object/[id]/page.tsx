@@ -103,7 +103,7 @@ export default function Page({ params }: { params: { id: string } }) {
 											</div>
 
 											<div className='card-description'>
-												<p className='font-banner-caps text-gray-500 pl-2 text-lg'>
+												<p className='font-banner-caps text-gray-500 pl-2 text-lg text-justify'>
 													{post.description === undefined ? (
 														'loading'
 													) : (

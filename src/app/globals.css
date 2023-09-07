@@ -408,11 +408,13 @@ body {
 .swiper-rtl .swiper-button-prev:after {
 	color: #ececec;
 	font-weight: bold;
+	background: none !important;
 }
 .swiper-button-prev:after,
 .swiper-rtl .swiper-button-next:after {
 	color: #ececec;
 	font-weight: bold;
+	background: none !important;
 }
 .log-out-img {
 	width: 28px;
