@@ -7,16 +7,6 @@ import { infoText, objectApi } from '../api/api';
 import { ObjectType } from '../api/api.types';
 import clock from './icon/clock.svg';
 import location from './icon/location.svg';
-import { openGraphImage } from '@/app/shared-metadata';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-	title: 'ობიექტები',
-	openGraph: {
-		...openGraphImage,
-		title: 'ობიექტები',
-	},
-};
 
 interface InfoType {
 	id: number;
