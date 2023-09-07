@@ -25,8 +25,8 @@ const ObjRegisterForm = () => {
 		setImages(uploadedImages);
 	};
 
-	const [errorsMessage, setErrorsMessage] = useState([]);
-	const [registrationStatus, setRegistrationStatus] = useState('');
+	const [errorsMessage, setErrorsMessage] = useState('');
+	const [emailErrors, setEmailErrors] = useState('');
 
 	//Get option Type
 
@@ -79,7 +79,7 @@ const ObjRegisterForm = () => {
 		try {
 			setLoading(true);
 			const response = await postUserData(formData);
-			setRegistrationStatus(response.message);
+
 			setLoading(false);
 			toast('success', 'დარეგისტრირებულია წარმატებით');
 
@@ -88,15 +88,27 @@ const ObjRegisterForm = () => {
 			}, 100);
 		} catch (error: any) {
 			if (error.response.data.mobile) {
-				toast('error', `მომხმარებელი ამ მობილურით უკვე არსებობს`);
+				setErrorsMessage('მომხმარებელი ამ მობილურით უკვე არსებობს');
 			}
-
-			setRegistrationStatus('Error during registration');
+			if (error.response.data.email) {
+				setEmailErrors('მომხმარებელი ამ მეილით უკვე არსებობს');
+			}
 
 			setLoading(false);
 		}
 	};
 
+	const mobileError = e => {
+		if (e.target.value) {
+			setErrorsMessage('');
+		}
+	};
+
+	const emailError = e => {
+		if (e.target.value) {
+			setEmailErrors('');
+		}
+	};
 	return (
 		<>
 			{loading ? (
@@ -168,9 +180,18 @@ const ObjRegisterForm = () => {
 								className='w-full input input-bordered mt-2 text-md text-gray-500'
 								placeholder='მაგ: 555112233'
 								{...register('mobile', {
+									onChange: e => {
+										mobileError(e);
+									},
 									required: { value: true, message: 'შეიყვანეთ: მობილური' },
 								})}
 							/>
+							{errorsMessage && (
+								<span className='text-red-700 text-sm mt-2'>
+									{errorsMessage}
+								</span>
+							)}
+
 							{errors.mobile && (
 								<span className='text-red-700 text-sm mt-2'>
 									{errors.mobile.message}
@@ -185,9 +206,15 @@ const ObjRegisterForm = () => {
 								className='w-full input input-bordered mt-2 text-md text-gray-500'
 								placeholder='მაგ: giorgiberidze@mail.com'
 								{...register('email', {
+									onChange: e => {
+										emailError(e);
+									},
 									required: { value: true, message: 'შეიყვანეთ: მეილი' },
 								})}
 							/>
+							{emailErrors && (
+								<span className='text-red-700 text-sm mt-2'>{emailErrors}</span>
+							)}
 							{errors.email && (
 								<span className='text-red-700 text-sm mt-2'>
 									{errors.email.message}
